@@ -25,12 +25,11 @@ spec:
           secretKeyRef:
             name: authentik-secrets
             key: secret_key
-      - name:
-        valueFrom: POSTGRES_PASSWORD
+      - name: POSTGRES_PASSWORD
+        valueFrom:
           secretKeyRef:
             name: authentik-secrets
             key: postgres_password
-
     redis:
       enabled: true
     postgresql:
@@ -58,7 +57,7 @@ spec:
         enabled: true
         existingClaim: authentik-config
     # podAnnotations:
-      # configmap.reloader.stakater.com/reload: "hajimari-settings"
+    # configmap.reloader.stakater.com/reload: "hajimari-settings"
     resources:
       requests:
         cpu: 100m
