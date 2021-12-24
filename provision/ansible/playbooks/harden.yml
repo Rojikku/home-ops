@@ -14,6 +14,13 @@
     - devsec.hardening.ssh_hardening
   vars:
     sysctl_overwrite:
-      net.ipv4.ip_forward: 1
+      net.ipv4.ip_forward: 1 # For kubernetes
+    # SSH Hardening
     sftp_enabled: true
     sftp_chroot: false
+    network_ipv6_enable: false
+    # OS Hardening
+    ufw_enable_ipv6: false
+    # Irrelevant stuff
+    os_selinux_enabled: false
+    os_yum_enabled: false
