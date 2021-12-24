@@ -29,7 +29,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: authentik-secrets
-            key: postgres_password
+            key: postgre_password
     redis:
       enabled: true
     postgresql:
