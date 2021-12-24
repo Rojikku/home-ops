@@ -26,7 +26,7 @@ spec:
         matchNames:
           - default
           - networking
-      name: "you"
+      name: "Rojikku"
       # customApps:
       #   - name: Some External Cluster Service
       #     url: http://192.168.1.100:5000
@@ -62,7 +62,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/enable: "true"
+          hajimari.io/enable: "false"
           hajimari.io/icon: "weather-sunset"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
