@@ -51,7 +51,7 @@ spec:
             - name: Bedroom Stairs
               url: "http://172.16.0.87/"
         - name: Tasmota
-          links
+          links:
             - name: Hall Bathroom Fan
               url: "http://172.16.0.100"
             - name: Master Bathroom Dimmer Switch
