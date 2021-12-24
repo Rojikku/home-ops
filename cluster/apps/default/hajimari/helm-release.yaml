@@ -50,6 +50,12 @@ spec:
               url: "http://172.16.0.86/"
             - name: Bedroom Stairs
               url: "http://172.16.0.87/"
+        - name: Tasmota
+          links
+            - name: Hall Bathroom Fan
+              url: "http://172.16.0.100"
+            - name: Master Bathroom Dimmer Switch
+              url: "http://172.16.0.17/"
     ingress:
       main:
         enabled: true
