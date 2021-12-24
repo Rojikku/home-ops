@@ -8,7 +8,7 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/Rojikku/k3s
+  url: ssh://git@github.com/Rojikku/k3s
   secretRef:
     name: ssh-credentials
 ---

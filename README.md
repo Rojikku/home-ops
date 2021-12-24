@@ -230,8 +230,9 @@ cat ~/.config/sops/age/keys.txt |
     -n flux-system create secret generic sops-age \
     --from-file=age.agekey=/dev/stdin
 ```
+`ssh-keyscan github.com > ./known_hosts`
 ```
-kubectl --kubeconfig=./provision/kubeconfig create secret generic ssh-credentials --from-file=identity=/home/rojikku/.ssh/id_ed25519 -n flux-system
+kubectl --kubeconfig=./provision/kubeconfig -n flux-system create secret generic ssh-credentials --from-file=identity=/home/rojikku/.ssh/id_ed25519 --from-file=identity.pub=/home/rojikku/.ssh/id_ed25519.pub --from-file=./known_hosts
 ```
 
 :round_pushpin: Variables defined in `./cluster/base/cluster-secrets.sops.yaml` and `./cluster/base/cluster-settings.sops.yaml` will be usable anywhere in your YAML manifests under `./cluster`
