@@ -45,17 +45,23 @@ spec:
         - name: Shelly
           links:
             - name: Garage
-              url: "http://172.16.0.236/"
+              url: "http://172.16.0.158/"
             - name: Basement Stairs
-              url: "http://172.16.0.86/"
+              url: "http://172.16.0.156/"
             - name: Bedroom Stairs
-              url: "http://172.16.0.87/"
+              url: "http://172.16.0.157/"
         - name: Tasmota
           links:
+            - name: Hall Bathroom Light Dimmer
+              url: "http://172.16.0.154"
             - name: Hall Bathroom Fan
-              url: "http://172.16.0.100"
+              url: "http://172.16.0.155"
             - name: Master Bathroom Dimmer Switch
-              url: "http://172.16.0.17/"
+              url: "http://172.16.0.152/"
+            - name: Master Bathroom Shower Light
+              url: "http://172.16.0.151/"
+            - name: Master Bathroom Fan
+              url: "http://172.16.0.153/"
     ingress:
       main:
         enabled: true
