@@ -22,8 +22,13 @@ spec:
       enabled: true
     ingress:
       dashboard:
+        enabled: true
+        ingressClassName: "traefik"
         annotations:
-          kubernetes.io/ingress.class: "nginx"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "database"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         host:
           name: "rook.${SECRET_DOMAIN}"
           path: "/"
