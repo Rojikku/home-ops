@@ -62,6 +62,16 @@ spec:
               url: "http://172.16.0.151/"
             - name: Master Bathroom Fan
               url: "http://172.16.0.153/"
+        - name: Networking
+          links:
+            - name: Cerberus
+              url: "https://172.16.0.1"
+            - name: Giggy
+              url: "http://172.16.0.200/"
+            - name: UltraSwitch
+              url: "http://172.16.0.201/"
+            - name: Ugly
+              url: "172.16.0.202"
     ingress:
       main:
         enabled: true
