@@ -65,10 +65,10 @@ spec:
         nodes:
           - name: "k8s-3"
             devices:
-              - name: "/dev/disk/by-id/scsi-SATA_Samsung_SSD_850_S33CNB0J803846K"
+              - name: "sdb"
           - name: "k8s-0"
             devices:
-              - name: "/dev/disk/by-id/scsi-SSeagate_Portable_NACA75JN"
+              - name: "sda"
           # - name: "k8s-5"
           #   devices:
           #     - name: "nvme0n1"
