@@ -5,3 +5,6 @@ resources:
   - metallb-system.yaml
   - networking.yaml
   - rook-ceph.yaml
+  - hass.yaml
+  - sonarr.yaml
+  - media.yaml
