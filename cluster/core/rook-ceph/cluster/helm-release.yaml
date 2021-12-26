@@ -18,8 +18,8 @@ spec:
   dependsOn:
     - name: rook-ceph
   values:
-    monitoring:
-      enabled: true
+    # monitoring:
+    #   enabled: true
     ingress:
       dashboard:
         enabled: true
@@ -37,6 +37,10 @@ spec:
               - "rook.${SECRET_DOMAIN}"
             secretName: "rook-tls"
     cephClusterSpec:
+      # The path on the host where configuration files will be persisted. Must be specified.
+      # Important: if you reinstall the cluster, make sure you delete this directory from each host or else the mons will fail to start on the new cluster.
+      # In Minikube, the '/data' directory is configured to persist across reboots. Use "/data/rook" in Minikube environment.
+      dataDirHostPath: /var/lib/rook
       # placement:
       #   mon:
       #     tolerations:
@@ -52,7 +56,6 @@ spec:
         count: 2
       dashboard:
         enabled: true
-        urlPrefix: /
         ssl: false
       storage:
         useAllNodes: false
@@ -84,12 +87,12 @@ spec:
           parameters:
             imageFormat: "2"
             imageFeatures: layering
-    #         csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
-    #         csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
-    #         csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
-    #         csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
-    #         csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
-    #         csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+            csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+            csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+            csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+            csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
             csi.storage.k8s.io/fstype: ext4
     cephFileSystems: []
     cephObjectStores: []
