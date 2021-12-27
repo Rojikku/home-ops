@@ -27,6 +27,7 @@ spec:
           - default
           - networking
           - rook-ceph
+          - hass
       name: "Rojikku"
       # customApps:
       #   - name: Some External Cluster Service
