@@ -30,7 +30,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadbalancerIP: "${SVC_HASS_ADDR}"
+        loadBalancerIP: "${SVC_HASS_ADDR}"
         externalTrafficPolicy: Local
     ingress:
       main:
