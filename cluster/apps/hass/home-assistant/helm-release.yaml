@@ -30,9 +30,8 @@ spec:
     service:
       main:
         type: LoadBalancer
-        externalIPs:
-          - "${SVC_HASS_ADDR}"
-        # externalTrafficPolicy: Local
+        loadbalancerIP: "${SVC_HASS_ADDR}"
+        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
