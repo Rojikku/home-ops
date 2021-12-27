@@ -95,11 +95,6 @@ spec:
         env:
           - name: TZ
             value: "America/New_York"
-          - name: PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: home-assistant
-                key: CODE_PASSWORD
         args:
           # - --auth
           # - none
