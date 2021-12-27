@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: home-assistant
-    namespace: home
+    namespace: hass
 stringData:
     HASS_ECOBEE_API_KEY: ENC[AES256_GCM,data:hJwW7m3z06giQiqSNojXLp3i5Or+lF2lY4h1L6LdhtjGKzS/dmpRR/Kb3z0=,iv:nijfTCxHJAull5v8oeNrBu/iwnu7tpU1f3ugMKPqass=,tag:nWBc+xglQgTSCqchVT9JSA==,type:str]
     #ENC[AES256_GCM,data:+eCvdEdCz2sXG+4/Ia+nu3ODMh1rK0xU2rg4,iv:WgOs5V+vlabFDzVhaez/FpHoiaIvA1JUBKmCmWQ9o0s=,tag:FD+XgQoxC72UpGe3FmM2Yw==,type:comment]
@@ -34,8 +34,8 @@ sops:
             d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
             mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2021-12-27T00:45:39Z"
-    mac: ENC[AES256_GCM,data:1h7VnaHgsZ5aTgQ1PeS69Lu3IFLGEH4G7VZd+WO51hhHidpOldLINVwcGb/uTKvAsApIG4iFa/nsPoXENxLd0VfYkggXGXbo6Zx8tc5XizbRldWCbTd2K6NwIddapKTSaHC99WhBNeGm5yUUJMTAxEouavgyWXNAVHdTs7JQ61E=,iv:NYhOdOfk9tuO4TFyF0JlIn1Hs2kDKNCT6J92CKUFK6o=,tag:tPypP+p2lRtNiXaEo5i4HA==,type:str]
+    lastmodified: "2021-12-27T00:58:06Z"
+    mac: ENC[AES256_GCM,data:XyU8C9Ja8TLOYoFLo9mntL6+0ZTBhs8+RHlZfuli5f79v359S8o9Dfd34QGSNQ3/TyZNuzexEbvPd0inDXmMrEYfsm5xH8VRYWK/b2p6UmigqQtyXz2DXi22QGOUm/Th5VQU+ATDg5379L3gj5pPPvl5+7PdWYsFAshuOjjgrtA=,iv:3xOL7l2caQVAZ5worNRY2QbRlDsTr+DKgeYIRoU8xeM=,tag:w7yqqDm7RWHnIwVqiokr6A==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.1
