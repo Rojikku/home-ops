@@ -8,3 +8,4 @@ resources:
   - hass.yaml
   - sonarr.yaml
   - media.yaml
+  - device-manager.yaml
