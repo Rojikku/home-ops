@@ -99,8 +99,6 @@ spec:
                 name: home-assistant
                 key: CODE_PASSWORD
         args:
-          - --auth
-          - "none"
           - --user-data-dir
           - "/config/.vscode"
           - --extensions-dir
