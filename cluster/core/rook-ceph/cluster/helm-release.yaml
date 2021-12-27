@@ -41,15 +41,15 @@ spec:
       # Important: if you reinstall the cluster, make sure you delete this directory from each host or else the mons will fail to start on the new cluster.
       # In Minikube, the '/data' directory is configured to persist across reboots. Use "/data/rook" in Minikube environment.
       dataDirHostPath: /var/lib/rook
-      # placement:
-      #   mon:
-      #     tolerations:
-      #       - effect: NoSchedule
-      #         operator: Exists
-      #   mgr:
-      #     tolerations:
-      #       - effect: NoSchedule
-      #         operator: Exists
+      placement:
+        mon:
+          tolerations:
+            - effect: NoSchedule
+              operator: Exists
+        mgr:
+          tolerations:
+            - effect: NoSchedule
+              operator: Exists
       crashCollector:
         disable: false
       mgr:
