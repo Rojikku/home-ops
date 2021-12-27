@@ -4,3 +4,4 @@ resources:
   - home-assistant
   - nodered
   - mosquitto
+  - zwave
