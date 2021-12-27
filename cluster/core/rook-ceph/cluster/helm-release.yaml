@@ -69,9 +69,9 @@ spec:
           - name: "k8s-0"
             devices:
               - name: "sda"
-          # - name: "k8s-5"
-          #   devices:
-          #     - name: "nvme0n1"
+          - name: "k8s-2"
+            devices:
+              - name: "sda"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
