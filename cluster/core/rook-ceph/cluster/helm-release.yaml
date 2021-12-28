@@ -18,8 +18,8 @@ spec:
   dependsOn:
     - name: rook-ceph
   values:
-    # monitoring:
-    #   enabled: true
+    monitoring:
+      enabled: true
     tolerations:
       - effect: NoSchedule
         operator: Exists
