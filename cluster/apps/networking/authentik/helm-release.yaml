@@ -20,10 +20,6 @@ spec:
     - name: traefik
       namespace: networking
   values:
-    redis:
-      enabled: true
-    postgresql:
-      enabled: true
     ingress:
       main:
         enabled: true
