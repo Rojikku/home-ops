@@ -9,3 +9,4 @@ resources:
   - sonarr.yaml
   - media.yaml
   - device-manager.yaml
+  - monitoring.yaml
