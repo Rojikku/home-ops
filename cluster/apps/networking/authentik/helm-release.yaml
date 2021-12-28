@@ -20,17 +20,6 @@ spec:
     - name: traefik
       namespace: networking
   values:
-    envValueFrom:
-      - name: AUTHENTIK_SECRET_KEY
-        valueFrom:
-          secretKeyRef:
-            name: authentik
-            key: secretKey
-      - name: AUTHENTIK_POSTGRESQL__PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: authentik
-            key: postgresqlPassword
     redis:
       enabled: true
     postgresql:
