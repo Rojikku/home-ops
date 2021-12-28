@@ -6,5 +6,6 @@ resources:
   - networking
   - system-upgrade
   - rook-ceph
-  - hass
   - monitoring
+  - zalando
+  - hass
