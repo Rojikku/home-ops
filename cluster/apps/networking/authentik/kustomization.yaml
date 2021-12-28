@@ -5,4 +5,4 @@ resources:
   - secrets.sops.yaml
   - redis
   # - authentik-db.yaml # Doesn't support arm64 yet, see: https://github.com/zalando/spilo/issues/618
-  - helm-release.yaml
+  # - helm-release.yaml
