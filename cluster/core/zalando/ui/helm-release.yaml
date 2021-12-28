@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: zalando-ui
+  namespace: zalando
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://raw.githubusercontent.com/zalando/postgres-operator/master/charts/postgres-operator-ui/
+      chart: postgres-operator-ui
+      version: 1.7.1
+      sourceRef:
+        kind: HelmRepository
+        name: zalando-postgres-ui
+        namespace: flux-system
+      interval: 5m
+  # https://github.com/zalando/postgres-operator/blob/master/charts/postgres-operator-ui/values.yaml
+  values:
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "Zalando"
+          hajimari.io/icon: "database-check-outline"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      hosts:
+      - host: "zalando.${SECRET_DOMAIN}"
+        paths:
+              - path: /
+                pathType: Prefix
+      tls:
+          - hosts:
+              - "zalando.${SECRET_DOMAIN}"
+            secretName: "zalando-tls"

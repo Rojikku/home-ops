@@ -28,6 +28,7 @@ spec:
           - networking
           - monitoring
           - rook-ceph
+          - zalando
           - hass
       name: "Rojikku"
       # customApps:
