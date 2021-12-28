@@ -17,9 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-  image:
-    repository: redis
-    tag: 6.2.5-alpine
+    image:
+      repository: redis
+      tag: 6.2.5-alpine
     podAnnotations:
       secret.reloader.stakater.com/reload: "authentik"
     exporter:
