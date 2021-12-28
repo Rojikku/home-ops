@@ -23,7 +23,7 @@ spec:
     podAnnotations:
       secret.reloader.stakater.com/reload: "authentik"
     exporter:
-      true
+      enabled: true
   valuesFrom:
     - kind: Secret
       name: "authentik"
