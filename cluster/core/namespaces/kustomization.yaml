@@ -10,3 +10,4 @@ resources:
   - media.yaml
   - device-manager.yaml
   - monitoring.yaml
+  - zalando.yaml
