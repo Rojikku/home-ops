@@ -25,9 +25,6 @@ spec:
     deployment:
       kind: Deployment
       replicas: 3
-      podAnnotations:
-        prometheus.io/port: '8082'
-        prometheus.io/scrape: 'true'
     service:
       enabled: true
       type: LoadBalancer
