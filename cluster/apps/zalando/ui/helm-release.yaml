@@ -21,15 +21,15 @@ spec:
       enabled: true
       ingressClassName: "traefik"
       annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/enable: "true"
-          hajimari.io/appName: "Zalando"
-          hajimari.io/icon: "database-check-outline"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        hajimari.io/enable: "true"
+        hajimari.io/appName: "Zalando"
+        hajimari.io/icon: "database-check-outline"
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-      - host: "zalando.${SECRET_DOMAIN}"
-        paths: [""]
+        - host: "zalando.${SECRET_DOMAIN}"
+          paths: [""]
       tls:
-          - hosts:
-              - "zalando.${SECRET_DOMAIN}"
-            secretName: "zalando-tls"
+        - hosts:
+            - "zalando.${SECRET_DOMAIN}"
+          secretName: "zalando-tls"
