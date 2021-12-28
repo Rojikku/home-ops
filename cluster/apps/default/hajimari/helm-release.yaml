@@ -26,6 +26,7 @@ spec:
         matchNames:
           - default
           - networking
+          - monitoring
           - rook-ceph
           - hass
       name: "Rojikku"
