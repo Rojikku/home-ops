@@ -24,23 +24,24 @@ spec:
     postgresql:
       users:
         postgres:
-        - superuser
-        - createdb
+          - superuser
+          - createdb
       databases:
         postgres: postgres
       postgresql:
         version: "14"
 
-    superuser: {}
+    superuser:
+      {}
       # password: set in secret
 
     persistentVolumes:
       hostPath: /media/db/authentik
       replicaNodes:
-      - ${CLUSTER_DB_NODE_0}
-      - ${CLUSTER_DB_NODE_1}
-      - ${CLUSTER_DB_NODE_2}
-    
+        - ${CLUSTER_DB_NODE_0}
+        - ${CLUSTER_DB_NODE_1}
+        - ${CLUSTER_DB_NODE_2}
+
     dumpBackup:
       enabled: true
       existingClaim: authentikdb-pvc
@@ -48,7 +49,7 @@ spec:
       schedule: "@daily"
 
   valuesFrom:
-  - kind: Secret
-    name: "authentik"
-    valuesKey: postgres.yaml
-    optional: false
+    - kind: Secret
+      name: "authentik"
+      valuesKey: postgres.yaml
+      optional: false
