@@ -20,6 +20,9 @@ spec:
   values:
     # monitoring:
     #   enabled: true
+    tolerations:
+      - effect: NoSchedule
+        operator: Exists
     ingress:
       dashboard:
         enabled: true
