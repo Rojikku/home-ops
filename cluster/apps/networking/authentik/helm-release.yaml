@@ -20,19 +20,17 @@ spec:
     - name: traefik
       namespace: networking
   values:
-    image:
-      tag: 2021.12.4
     envValueFrom:
       - name: AUTHENTIK_SECRET_KEY
         valueFrom:
           secretKeyRef:
-            name: authentik-secrets
+            name: authentik
             key: secretKey
       - name: AUTHENTIK_POSTGRESQL__PASSWORD
         valueFrom:
           secretKeyRef:
-            name: authentik-secrets
-            key: postgresPassword
+            name: authentik
+            key: postgresqlPassword
     redis:
       enabled: true
     postgresql:
@@ -44,6 +42,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
+          hajimari.io/appName: "Authentik"
           hajimari.io/icon: "shield-lock"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
@@ -55,8 +54,8 @@ spec:
           - hosts:
               - "auth.${SECRET_DOMAIN}"
             secretName: "authentik-tls"
-    # podAnnotations:
-    # configmap.reloader.stakater.com/reload: "hajimari-settings"
+    podAnnotations:
+      secret.reloader.stakater.com/reload: "authentik"
     resources:
       requests:
         cpu: 100m
