@@ -36,7 +36,8 @@ spec:
       # password: set in secret
 
     persistentVolumes:
-      hostPath: /media/db/authentik
+      hostPathPrefix: /media
+      hostPath: /db/authentik
       replicaNodes:
         - ${CLUSTER_DB_NODE_0}
         - ${CLUSTER_DB_NODE_1}
