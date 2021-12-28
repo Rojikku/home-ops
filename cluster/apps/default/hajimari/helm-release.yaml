@@ -38,6 +38,8 @@ spec:
       groups:
         - name: Admin
           links:
+            - name: Cluster Github
+              url: "https://github.com/Rojikku/k3s"
             - name: Renovate Logs
               url: "https://app.renovatebot.com/dashboard#github/Rojikku/k3s"
         - name: Tech
