@@ -1,13 +1,31 @@
 {
-  "enabled": true,
-  "semanticCommits": "enabled",
-  "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard",
-  "suppressNotifications": ["prIgnoreNotification"],
+  "extends": [
+    ":enableRenovate",
+    "config:base",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separatePatchReleases",
+    "docker:enableMajor",
+    "github>Rojikku/k3s//.github/renovate/autoMerge",
+    "github>Rojikku/k3s//.github/renovate/labels",
+    "github>Rojikku/k3s//.github/renovate/semanticCommits"
+  ],
+  "timezone": "America/New_York",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": [
+    "prIgnoreNotification"
+  ],
   "rebaseWhen": "conflicted",
+  // set up renovate managers
   "helm-values": {
     "fileMatch": [
       "cluster/.+/helm-release\\.yaml$"
+    ]
+  },
+  "helmv3": {
+    "fileMatch": [
+      "charts/.+/Chart\\.yaml$"
     ]
   },
   "kubernetes": {
@@ -16,7 +34,7 @@
     ],
     "ignorePaths": [
       "cluster/base/"
-    ],
+    ]
   },
   "regexManagers": [
     // regexManager to read and process HelmRelease files
@@ -40,6 +58,16 @@
       ],
       "datasourceTemplate": "helm"
     },
+    // regexManager to read and process kube-prometheus-stack and velero CRD's
+    {
+      "fileMatch": [
+        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
     // regexManager to read and process Traefik CRD's
     {
       "fileMatch": [
@@ -50,52 +78,108 @@
       ],
       "datasourceTemplate": "helm"
     },
+    // regexManager to read and process Rook-Ceph CRD's
+    {
+      "fileMatch": [
+        "cluster/crds/rook-ceph/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    // regexManager to read and process External Snapshotter and External DNS CRD's
+    {
+      "fileMatch": [
+        "cluster/crds/external-snapshotter/.+\\.yaml$",
+        "cluster/crds/external-dns/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "github-releases"
+    }
   ],
   "packageRules": [
     // setup datasources
     {
-      "matchDatasources": ["helm"],
-      "separateMinorPatch": true,
+      "matchDatasources": [
+        "helm"
+      ],
       "ignoreDeprecated": true
     },
-    // global docker datasource settings
     {
-      "matchDatasources": ["docker"],
-      "enabled": true,
-      "commitMessageTopic": "container image {{depName}}",
-      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
-      "matchUpdateTypes": ["major", "minor", "patch"],
+      "matchDatasources": [
+        "docker"
+      ],
+      "commitMessageExtra": "to {{newVersion}}"
     },
-    // add labels according to package and update types
+    // custom versioning
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["renovate/image", "dep/major"]
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["renovate/image", "dep/minor"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>.*)$",
+      "matchPackageNames": [
+        "blakeblackshear/frigate"
+      ]
     },
     {
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["renovate/image", "dep/patch"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "versioning": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z(-(?<compatibility>.*))?$",
+      "matchPackageNames": [
+        "quay.io/minio/minio"
+      ]
     },
     {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["renovate/helm", "dep/major"]
+      "matchDatasources": [
+        "docker"
+      ],
+      "versioning": "loose",
+      "matchPackageNames": [
+        "ghcr.io/k8s-at-home/plex",
+        "ghcr.io/k8s-at-home/qbittorrent"
+      ]
+    },
+    // group packages
+    {
+      "matchDatasources": [
+        "helm",
+        "docker"
+      ],
+      "matchPackagePatterns": [
+        "^rook.ceph"
+      ],
+      "groupName": "rook-ceph-suite",
+      "additionalBranchPrefix": "",
+      "separateMinorPatch": true
     },
     {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["renovate/helm", "dep/minor"]
+      "matchDatasources": [
+        "github-releases",
+        "docker"
+      ],
+      "matchPackagePatterns": [
+        "external-snapshotter",
+        "snapshot-controller"
+      ],
+      "groupName": "external-snapshotter-suite",
+      "additionalBranchPrefix": "",
+      "separateMinorPatch": true
     },
     {
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["renovate/helm", "dep/patch"]
+      "matchDatasources": [
+        "github-tags",
+        "docker"
+      ],
+      "matchPackagePatterns": [
+        "rancher/system-upgrade-controller"
+      ],
+      "groupName": "system-upgrade-controller-suite",
+      "additionalBranchPrefix": "",
+      "separateMinorPatch": true
     }
   ]
 }
