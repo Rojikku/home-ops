@@ -141,36 +141,36 @@ spec:
         enabled: true
         https: true
         insecureSkipVerify: true
-    # kubeScheduler:
-    #   enabled: true
-    #   endpoints:
-    #     - 192.168.0.100
-    #     - 192.168.0.101
-    #     - 192.168.0.102
-    #   service:
-    #     enabled: true
-    #     port: 10259
-    #     targetPort: 10259
-    #   serviceMonitor:
-    #     enabled: true
-    #     https: true
-    #     insecureSkipVerify: true
-    # kubeProxy:
-    #   enabled: true
-    #   endpoints:
-    #     - 192.168.0.100
-    #     - 192.168.0.101
-    #     - 192.168.0.102
-    # kubeEtcd:
-    #   enabled: true
-    #   endpoints:
-    #     - 192.168.0.100
-    #     - 192.168.0.101
-    #     - 192.168.0.102
-    #   service:
-    #     enabled: true
-    #     port: 2381
-    #     targetPort: 2381
+    kubeScheduler:
+      enabled: true
+      endpoints:
+        - 192.168.0.100
+        - 192.168.0.101
+        - 192.168.0.102
+      service:
+        enabled: true
+        port: 10259
+        targetPort: 10259
+      serviceMonitor:
+        enabled: true
+        https: true
+        insecureSkipVerify: true
+    kubeProxy:
+      enabled: true
+      endpoints:
+        - 192.168.0.100
+        - 192.168.0.101
+        - 192.168.0.102
+    kubeEtcd:
+      enabled: true
+      endpoints:
+        - 192.168.0.100
+        - 192.168.0.101
+        - 192.168.0.102
+      service:
+        enabled: true
+        port: 2381
+        targetPort: 2381
     prometheusOperator:
       prometheusConfigReloader:
         resources:
