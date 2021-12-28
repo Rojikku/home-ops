@@ -22,8 +22,8 @@ spec:
     tag: 6.2.5-alpine
     podAnnotations:
       secret.reloader.stakater.com/reload: "authentik"
-  exporter:
-    true
+    exporter:
+      true
   valuesFrom:
     - kind: Secret
       name: "authentik"
