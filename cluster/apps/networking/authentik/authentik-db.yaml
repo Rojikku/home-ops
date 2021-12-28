@@ -20,19 +20,9 @@ spec:
   values:
     env:
       TZ: "America/New York"
-    teamId: auth
-    postgresql:
-      users:
-        postgres:
-          - superuser
-          - createdb
-      databases:
-        postgres: postgres
-      postgresql:
-        version: "14"
+    teamId: acid
 
-    superuser:
-      {}
+    superuser: {}
       # password: set in secret
 
     persistentVolumes:
