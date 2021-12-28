@@ -62,3 +62,8 @@ spec:
         memory: 128Mi
       limits:
         memory: 256Mi
+  valuesFrom:
+    - kind: Secret
+      name: "authentik"
+      valuesKey: authentik.yaml
+      optional: false
