@@ -83,7 +83,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Alert Man"
           hajimari.io/icon: "alarm-bell"
+          hajimari.io/instance: "monitor"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - "alertman.mon.${SECRET_DOMAIN}"
         tls:
@@ -200,7 +202,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Prometheus"
           hajimari.io/icon: "fire"
+          hajimari.io/instance: "hajimari"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - "prometheus.mon.${SECRET_DOMAIN}"
         tls:

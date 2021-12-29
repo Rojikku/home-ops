@@ -1,0 +1,83 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: monitor
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://hajimari.io
+      chart: hajimari
+      version: 1.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: hajimari-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/toboshii/hajimari
+      tag: v0.2.0
+    hajimari:
+      defaultEnable: false
+      namespaceSelector:
+        matchNames:
+          - monitoring
+      name: "admin"
+      # customApps:
+      #   - name: Some External Cluster Service
+      #     url: http://192.168.1.100:5000
+      #     icon: test-tube
+      groups:
+        - name: Admin
+          links:
+            - name: Cluster Github
+              url: "https://github.com/Rojikku/k3s"
+            - name: Renovate Logs
+              url: "https://app.renovatebot.com/dashboard#github/Rojikku/k3s"
+            - name: Prometheus Troubleshooting
+              url: "https://runbooks.prometheus-operator.dev/"
+        - name: Tech
+          links:
+            - name: Hacker News
+              url: "https://news.ycombinator.com/"
+            - name: The Verge
+              url: "https://theverge.com/"
+            - name: MIT Technology Review
+              url: "https://www.technologyreview.com/"
+            - name: ArsTechnica
+              url: "https://arstechnica.com/"
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "monitor"
+          hajimari.io/instance: "hajimari"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+        hosts:
+          - host: "mon.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "mon.${SECRET_DOMAIN}"
+            secretName: "hajimari-mon-tls"
+    persistence:
+      data:
+        enabled: true
+        existingClaim: monitoring-haji-pvc
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "hajimari-settings"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 256Mi
