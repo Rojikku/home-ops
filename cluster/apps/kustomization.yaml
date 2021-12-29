@@ -7,5 +7,5 @@ resources:
   - system-upgrade
   - rook-ceph
   - monitoring
-  - zalando
+  # - zalando
   - hass

@@ -85,10 +85,10 @@ spec:
           hajimari.io/icon: "alarm-bell"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - "alertman.${SECRET_DOMAIN}"
+          - "alertman.mon.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "alertman.${SECRET_DOMAIN}"
+              - "alertman.mon.${SECRET_DOMAIN}"
             secretName: "alertman-tls"
       alertmanagerSpec:
         storage:
@@ -202,10 +202,10 @@ spec:
           hajimari.io/icon: "fire"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - "prometheus.mon.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "prometheus.${SECRET_DOMAIN}"
+              - "prometheus.mon.${SECRET_DOMAIN}"
             secretName: "prometheus-tls"
       thanosService:
         enabled: true

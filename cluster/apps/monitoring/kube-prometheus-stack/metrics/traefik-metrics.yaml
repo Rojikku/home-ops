@@ -8,12 +8,12 @@ metadata:
   namespace: monitoring
 spec:
   endpoints:
-  - port: metrics
-    path: /metrics
+    - port: metrics
+      path: /metrics
   jobLabel: prometheus-traefik
   namespaceSelector:
     matchNames:
-    - networking
+      - networking
   selector:
     matchLabels:
       app: traefik
