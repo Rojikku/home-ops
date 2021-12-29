@@ -202,7 +202,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Prometheus"
           hajimari.io/icon: "fire"
-          hajimari.io/instance: "hajimari"
+          hajimari.io/instance: "monitor"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
