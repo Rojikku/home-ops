@@ -92,7 +92,8 @@
     {
       "fileMatch": [
         "cluster/crds/external-snapshotter/.+\\.yaml$",
-        "cluster/crds/external-dns/.+\\.yaml$"
+        "cluster/crds/external-dns/.+\\.yaml$",
+        "cluster/crds/git-repos/.+\\.yaml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
