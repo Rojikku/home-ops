@@ -238,11 +238,11 @@ spec:
         #     name: thanos-objstore
         #     key: objstore.yml
         additionalScrapeConfigs:
-        #   - job_name: cadvisor
-        #     honor_timestamps: true
-        #     static_configs:
-        #       - targets:
-        #           - "expanse:8005"
+          #   - job_name: cadvisor
+          #     honor_timestamps: true
+          #     static_configs:
+          #       - targets:
+          #           - "expanse:8005"
           - job_name: coredns
             honor_timestamps: true
             static_configs:

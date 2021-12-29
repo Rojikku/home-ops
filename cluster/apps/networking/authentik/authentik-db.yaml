@@ -22,7 +22,8 @@ spec:
       TZ: "America/New York"
     teamId: acid
 
-    superuser: {}
+    superuser:
+      {}
       # password: set in secret
 
     persistentVolumes:
