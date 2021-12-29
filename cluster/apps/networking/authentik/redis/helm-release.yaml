@@ -26,8 +26,9 @@ spec:
       enabled: true
     prometheusRule:
       enabled: true
-  valuesFrom:
-    - kind: Secret
-      name: "authentik"
-      valuesKey: redis.yaml
-      optional: false
+    # auth: true
+  # valuesFrom:
+  #   - kind: Secret
+  #     name: "authentik"
+  #     valuesKey: redis.yaml
+  #     optional: false
