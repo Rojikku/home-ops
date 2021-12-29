@@ -5,7 +5,7 @@ metadata:
   namespace: networking
 spec:
   forwardAuth:
-    address: http://https://auth.***REMOVED***:9000/akprox/auth/traefik
+    address: https://auth.***REMOVED***:9000/akprox/auth/traefik
     trustForwardHeader: true
     authResponseHeaders:
       - X-authentik-username
