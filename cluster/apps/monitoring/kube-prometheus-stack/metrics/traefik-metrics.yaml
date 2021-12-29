@@ -1,7 +1,4 @@
-# traefik-service-monitor.yaml
 jobLabel: traefik-metrics
-metadata:
-  namespace: monitoring
 selector:
   matchLabels:
     app.kubernetes.io/instance: traefik
@@ -11,4 +8,5 @@ namespaceSelector:
     - networking
 endpoints:
   - port: metrics
+    path: /
     # path: /metrics
