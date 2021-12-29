@@ -9,6 +9,8 @@ metadata:
 spec:
   endpoints:
   - port: metrics
+    path: /metrics
+  jobLabel: prometheus-traefik
   namespaceSelector:
     matchNames:
     - networking
