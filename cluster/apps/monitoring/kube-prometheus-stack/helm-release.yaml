@@ -183,7 +183,6 @@ spec:
         image:
           repository: quay.io/prometheus-operator/prometheus-config-reloader
           tag: v0.53.1
-      prometheusConfigReloader:
         resources:
           requests:
             cpu: 100m
