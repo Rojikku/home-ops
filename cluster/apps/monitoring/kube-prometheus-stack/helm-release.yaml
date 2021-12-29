@@ -19,6 +19,9 @@ spec:
   values:
     fullnameOverride: prometheus
     alertmanager:
+      image:
+        repository: quay.io/prometheus/alertmanager
+        tag: v0.23.0
       config:
         global:
           slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
@@ -172,6 +175,14 @@ spec:
         port: 2381
         targetPort: 2381
     prometheusOperator:
+      image:
+        repository: quay.io/prometheus-operator/prometheus-operator
+        tag: v0.53.1
+      prometheusConfigReloader:
+        # image to use for config and rule reloading
+        image:
+          repository: quay.io/prometheus-operator/prometheus-config-reloader
+          tag: v0.53.1
       prometheusConfigReloader:
         resources:
           requests:
@@ -202,6 +213,9 @@ spec:
       thanosServiceMonitor:
         enabled: true
       prometheusSpec:
+        image:
+          repository: quay.io/prometheus/prometheus
+          tag: v2.32.1
         replicas: 1
         replicaExternalLabelName: "replica"
         ruleSelectorNilUsesHelmValues: false
@@ -224,17 +238,17 @@ spec:
         #   objectStorageConfig:
         #     name: thanos-objstore
         #     key: objstore.yml
-        # additionalScrapeConfigs:
+        additionalScrapeConfigs:
         #   - job_name: cadvisor
         #     honor_timestamps: true
         #     static_configs:
         #       - targets:
         #           - "expanse:8005"
-        #   - job_name: coredns
-        #     honor_timestamps: true
-        #     static_configs:
-        #       - targets:
-        #           - "opnsense:9153"
+          - job_name: coredns
+            honor_timestamps: true
+            static_configs:
+              - targets:
+                  - "kube-dns.kube-system.svc.cluster.local:9153"
         #   - job_name: minio
         #     honor_timestamps: true
         #     metrics_path: /minio/v2/metrics/cluster
