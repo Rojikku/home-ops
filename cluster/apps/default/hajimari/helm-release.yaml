@@ -42,6 +42,8 @@ spec:
               url: "https://github.com/Rojikku/k3s"
             - name: Renovate Logs
               url: "https://app.renovatebot.com/dashboard#github/Rojikku/k3s"
+            - name: Prometheus Troubleshooting
+              url: "https://runbooks.prometheus-operator.dev/"
         - name: Tech
           links:
             - name: Hacker News
