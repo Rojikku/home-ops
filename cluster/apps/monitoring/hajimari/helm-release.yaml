@@ -23,6 +23,7 @@ spec:
     hajimari:
       defaultEnable: false
       instanceName: "monitor"
+      title: "Monitoring"
       namespaceSelector:
         matchNames:
           - monitoring
