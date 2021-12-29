@@ -19,7 +19,12 @@ spec:
   dependsOn:
     - name: traefik
       namespace: networking
+    - name: redis
+      namespace: networking
   values:
+    image:
+      repository: ghcr.io/goauthentik/server
+      tag: 2021.12.4
     ingress:
       main:
         enabled: true
@@ -39,6 +44,26 @@ spec:
           - hosts:
               - "auth.${SECRET_DOMAIN}"
             secretName: "authentik-tls"
+    envValueFrom:
+      AUTHENTIK_POSTGRESQL__PASSWORD:
+        secretKeyRef:
+          key: postgresPassword
+          name: authentik
+      AUTHENTIK_SECRET_KEY:
+        secretKeyRef:
+          key: secretKey
+          name: authentik
+    authentik:
+      log_level: debug
+      postgresql:
+        host: "authentik-postgres"
+        name: "postgres"
+        user: "postgres"
+    redis:
+      enabled: true
+      image:
+        repository: library/redis
+        tag: "6.2.6"
     podAnnotations:
       secret.reloader.stakater.com/reload: "authentik"
     resources:
@@ -47,8 +72,3 @@ spec:
         memory: 128Mi
       limits:
         memory: 256Mi
-  valuesFrom:
-    - kind: Secret
-      name: "authentik"
-      valuesKey: authentik.yaml
-      optional: false
