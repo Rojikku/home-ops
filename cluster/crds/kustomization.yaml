@@ -4,5 +4,5 @@ resources:
   - cert-manager
   - traefik
   - rook-ceph
-  - zalando
+  # - zalando
   - git-repos
