@@ -24,6 +24,8 @@ spec:
       secret.reloader.stakater.com/reload: "authentik"
     exporter:
       enabled: true
+      image: oliver006/redis_exporter
+      tag: v1.33.0
     prometheusRule:
       enabled: true
     # auth: true
