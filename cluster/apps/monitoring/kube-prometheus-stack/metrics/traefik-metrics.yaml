@@ -1,12 +1,16 @@
-jobLabel: traefik-metrics
-selector:
-  matchLabels:
-    app.kubernetes.io/instance: traefik
-    app.kubernetes.io/name: traefik
-namespaceSelector:
-  matchNames:
-    - networking
-endpoints:
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: traefik
+    release: prometheus
+  name: traefik
+spec:
+  endpoints:
   - port: metrics
-    path: /
-    # path: /metrics
+  namespaceSelector:
+    matchNames:
+    - networking
+  selector:
+    matchLabels:
+      app: traefik
