@@ -5,7 +5,7 @@ metadata:
   namespace: networking
 spec:
   forwardAuth:
-    address: https://auth.nightskill.com:9000/akprox/auth/traefik
+    address: https://auth.nightskill.com/akprox/auth/traefik
     trustForwardHeader: true
     authResponseHeaders:
       - X-authentik-username
