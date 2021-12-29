@@ -19,8 +19,6 @@ spec:
   dependsOn:
     - name: traefik
       namespace: networking
-    - name: redis
-      namespace: networking
   values:
     image:
       repository: ghcr.io/goauthentik/server
