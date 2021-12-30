@@ -24,7 +24,7 @@ k3s_server:
     # Disable metrics-server - installed with Flux
     - metrics-server
     # Disable local-path-provisioner - Installing ceph with flux
-    - local-path-provisioner
+    - local-storage
   disable-network-policy: true
   disable-cloud-controller: true
   write-kubeconfig-mode: "644"
