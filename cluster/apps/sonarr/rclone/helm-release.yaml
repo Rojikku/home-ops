@@ -24,7 +24,7 @@ spec:
     images:
       container:
         repository: rclone/rclone
-        tag: v1.57.0
+        tag: 1.57.0
       pullPolicy: IfNotPresent
     rclone:
       remote: "drive:/Emby"
