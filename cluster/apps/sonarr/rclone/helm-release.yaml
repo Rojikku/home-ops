@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://rojikku.github.io/charts/
       chart: rclone
-      version: v0.1.4
+      version: v0.1.5
       sourceRef:
         kind: HelmRepository
         name: rojikku-charts
@@ -43,14 +43,14 @@ spec:
   valuesFrom:
     - kind: Secret
       name: "rclone"
-      valuesKey: rclone-files
+      valuesKey: rclone.conf
       optional: false
-      targetPath: files
-    # - kind: Secret
-    #   name: "rclone"
-    #   valuesKey: config-sa.json
-    #   optional: false
-    #   targetPath: files.config-sa\.json
+      targetPath: files.rclone\.conf
+    - kind: Secret
+      name: "rclone"
+      valuesKey: config-sa.json
+      optional: false
+      targetPath: files.config-sa\.json
     - kind: Secret
       name: "rclone"
       valuesKey: impersonateEmail
