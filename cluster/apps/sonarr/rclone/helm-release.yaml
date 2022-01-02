@@ -42,9 +42,14 @@ spec:
   valuesFrom:
     - kind: Secret
       name: "rclone"
-      valuesKey: rclone-files
+      valuesKey: rclone.conf
       optional: false
-      targetPath: files
+      targetPath: files.rclone\.conf
+    - kind: Secret
+      name: "rclone"
+      valuesKey: config-sa.json
+      optional: false
+      targetPath: files.config-sa\.json
     - kind: Secret
       name: "additionalArgs"
       valuesKey: rclone
