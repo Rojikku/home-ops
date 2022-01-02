@@ -1,0 +1,52 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rclone
+  namespace: sonarr
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://rojikku.github.io/charts/
+      chart: rclone
+      version: v0.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: rojikku-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    nodeSelector:
+      rclone: enabled
+    podAnnotations:
+      secret.reloader.stakater.com/reload: "rclone"
+    images:
+      container:
+        repository: rclone/rclone
+        tag: v1.57.0
+      pullPolicy: IfNotPresent
+    rclone:
+      remote: "drive:/Emby"
+      path: /mnt/rclone
+      # additional arguments for customising rclone
+      # mount options can be found here - https://rclone.org/commands/rclone_mount/#options
+      # Values pulled from secret
+    resources:
+      limits:
+        smarter-devices/fuse: 1
+      requests:
+        smarter-devices/fuse: 1
+        cpu: "10m"
+        memory: "100Mi"
+  valuesFrom:
+    - kind: Secret
+      name: "rclone"
+      valuesKey: rclone-files
+      optional: false
+      targetPath: files
+    - kind: Secret
+      name: "additionalArgs"
+      valuesKey: rclone
+      optional: false
+      targetPath: rclone.additionalArgs
