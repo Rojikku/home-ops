@@ -50,8 +50,8 @@ spec:
     #   valuesKey: config-sa.json
     #   optional: false
     #   targetPath: files.config-sa\.json
-    - kind: Secret
-      name: "rclone"
-      valuesKey: additionalArgs
-      optional: false
-      targetPath: rclone.additionalArgs
+    # - kind: Secret
+    #   name: "rclone"
+    #   valuesKey: additionalArgs
+    #   optional: false
+    #   targetPath: rclone.additionalArgs
