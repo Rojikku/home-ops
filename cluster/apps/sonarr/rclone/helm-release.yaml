@@ -51,7 +51,7 @@ spec:
     #   optional: false
     #   targetPath: files.config-sa\.json
     - kind: Secret
-      name: "additionalArgs"
-      valuesKey: rclone
+      name: "rclone"
+      valuesKey: additionalArgs
       optional: false
       targetPath: rclone.additionalArgs
