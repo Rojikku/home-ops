@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://rojikku.github.io/charts/
       chart: rclone
-      version: v0.1.1
+      version: v0.1.2
       sourceRef:
         kind: HelmRepository
         name: rojikku-charts
@@ -29,6 +29,7 @@ spec:
     rclone:
       remote: "drive:/Emby"
       path: /mnt/rclone
+      impersonate: true
       # additional arguments for customising rclone
       # mount options can be found here - https://rclone.org/commands/rclone_mount/#options
       # Values pulled from secret
@@ -50,8 +51,8 @@ spec:
     #   valuesKey: config-sa.json
     #   optional: false
     #   targetPath: files.config-sa\.json
-    # - kind: Secret
-    #   name: "rclone"
-    #   valuesKey: additionalArgs
-    #   optional: false
-    #   targetPath: rclone.additionalArgs
+    - kind: Secret
+      name: "rclone"
+      valuesKey: impersonateEmail
+      optional: false
+      targetPath: rclone.impersonateEmail
