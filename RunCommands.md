@@ -5,5 +5,8 @@ Set k8s master to no schedule
 Specify node with zwave controller  
 `kubectl label node k8s-4 feature.node.kubernetes.io/custom-zwave=true`
 
+Specify rclone boxes with labels
+`kubectl label node k8s-3 rclone=true`
+
 Fix Two Default Storage Classes  
 `kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'`
