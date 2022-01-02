@@ -43,14 +43,14 @@ spec:
   valuesFrom:
     - kind: Secret
       name: "rclone"
-      valuesKey: rclone.conf
+      valuesKey: rclone-files
       optional: false
-      targetPath: files.rclone\.conf
-    - kind: Secret
-      name: "rclone"
-      valuesKey: config-sa.json
-      optional: false
-      targetPath: files.config-sa\.json
+      targetPath: files
+    # - kind: Secret
+    #   name: "rclone"
+    #   valuesKey: config-sa.json
+    #   optional: false
+    #   targetPath: files.config-sa\.json
     - kind: Secret
       name: "rclone"
       valuesKey: impersonateEmail
