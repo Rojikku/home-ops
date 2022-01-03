@@ -4,6 +4,9 @@
 # ...see https://github.com/PyratLabs/ansible-role-k3s
 #
 
+# (string) Use a specific control token, for use with adding to an existing cluster.
+# k3s_control_token: 
+
 # (string) Use a specific version of k3s
 k3s_release_version: false
 
@@ -11,7 +14,7 @@ k3s_release_version: false
 k3s_install_hard_links: true
 
 # (bool) Escalate user privileges for all tasks
-k3s_become_for_all: true
+k3s_become: true
 
 # (bool) Enable debug logging on the k3s service
 k3s_debug: false
