@@ -75,7 +75,7 @@ spec:
               - name: "sda"
           - name: "k8s-2"
             devices:
-              - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_DD56419883893"
+              - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_DD56419883893-part3"
     cephBlockPools:
       - name: ceph-blockpool
         spec:
