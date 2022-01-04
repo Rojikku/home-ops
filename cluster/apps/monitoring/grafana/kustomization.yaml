@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - secrets.sops.yaml
   - postgres-db.yaml
-  # - helm-release.yaml # Let's make the DB first.
+  - helm-release.yaml
