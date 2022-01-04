@@ -9,10 +9,10 @@
     - name: upgrade
       ansible.builtin.apt:
         upgrade: full
-        update_cache: true
-        cache_valid_time: 3600
-        autoclean: true
-        autoremove: true
+        update_cache: yes
+        cache_valid_time: 1
+        autoclean: yes
+        autoremove: yes
       register: apt_upgrade
       retries: 5
       until: apt_upgrade is success
