@@ -23,3 +23,10 @@ Use the normal k3s-install, but specify `k3s_control_token:` in `kubernetes/k3s.
 
 ## Setup RPI 4 to boot from USB
 [Guide](https://jamesachambers.com/raspberry-pi-4-ubuntu-20-04-usb-mass-storage-boot-guide/) - Firmware update not needed
+
+## Get creds
+To login to minio-operator with JWT  
+`kubectl -n minio get secret (kubectl -n minio get serviceaccount console-sa -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode`
+
+To login to rook-ceph  
+`kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo`
