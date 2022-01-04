@@ -68,7 +68,7 @@ spec:
       database:
         type: postgres
         user: postgres
-        host: grafna-postgres
+        host: grafana-postgres
         name: postgres
       log:
         mode: console
