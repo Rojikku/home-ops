@@ -24,6 +24,9 @@ spec:
     csi:
       enableCephfsDriver: false
       enableCephfsSnapshotter: false
+      pluginTolerations:
+        - effect: NoSchedule
+          operator: Exists
     monitoring:
       enabled: true
     resources:
