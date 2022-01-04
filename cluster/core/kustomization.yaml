@@ -9,4 +9,5 @@ resources:
   - system-upgrade
   - rook-ceph
   - device-manager
+  - networking
   # - zalando
