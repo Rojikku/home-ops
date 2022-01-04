@@ -34,6 +34,7 @@ spec:
       tls:
         - hosts:
             - "loki.${SECRET_DOMAIN}"
+          secretName: "loki-tls"
     serviceMonitor:
       enabled: true
     # extraArgs:
