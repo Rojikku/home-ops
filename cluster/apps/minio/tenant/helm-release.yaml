@@ -22,18 +22,19 @@ spec:
       namespace: rook-ceph
   values:
     tenants:
-      namespace: minio
-      pools:
-        - servers: 1
-          volumesPerServer: 4
-          size: 10Gi
-          storageClassName: ceph-block
-          tolerations:
-            - effect: NoSchedule
-              operator: Exists
-      secrets:
-        accessKey: ${SECRET_MINIO_ACCESSKEY}
-        secretKey: ${SECRET_MINIO_SECRETKEY}
-      metrics:
-        enabled: true
-      prometheusOperator: true
+      - name: minio1
+        namespace: minio
+        pools:
+          - servers: 1
+            volumesPerServer: 4
+            size: 10Gi
+            storageClassName: ceph-block
+            tolerations:
+              - effect: NoSchedule
+                operator: Exists
+        secrets:
+          accessKey: ${SECRET_MINIO_ACCESSKEY}
+          secretKey: ${SECRET_MINIO_SECRETKEY}
+        metrics:
+          enabled: true
+        prometheusOperator: true
