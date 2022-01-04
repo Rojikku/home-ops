@@ -22,6 +22,7 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Minio"
           hajimari.io/icon: "cloud"
@@ -32,4 +33,4 @@ spec:
         tls:
           - hosts:
               - "s3.${SECRET_DOMAIN}"
-            secretName: "s3"
+            secretName: "s3-tls"
