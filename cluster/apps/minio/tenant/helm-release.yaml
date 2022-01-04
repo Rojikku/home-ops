@@ -33,6 +33,8 @@ spec:
               - effect: NoSchedule
                 operator: Exists
         secrets:
+          enabled: true
+          name: minio1-secret
           accessKey: ${SECRET_MINIO_ACCESSKEY}
           secretKey: ${SECRET_MINIO_SECRETKEY}
         metrics:
