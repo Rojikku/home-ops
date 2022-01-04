@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://operator.min.io/
+      # renovate: registryUrl=https://operator.min.io
       chart: operator
       version: 4.3.9
       sourceRef:
