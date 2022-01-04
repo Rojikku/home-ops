@@ -23,10 +23,6 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "traefik"
         cert-manager.io/cluster-issuer: "letsencrypt-production"
-        hajimari.io/enable: "true"
-        hajimari.io/appName: "Loki"
-        hajimari.io/icon: "script-text-outline"
-        hajimari.io/instance: "monitor"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - host: "loki.${SECRET_DOMAIN}"
