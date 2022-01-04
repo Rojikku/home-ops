@@ -6,6 +6,9 @@ metadata:
   namespace: monitoring
 spec:
   interval: 5m
+  dependsOn:
+    - name: minio-tenant
+      namespace: minio
   chart:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts

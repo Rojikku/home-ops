@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - config-pvc.yaml
   - home-assistant.sops.yaml
+  - postgres-db.yaml
   - helm-release.yaml
