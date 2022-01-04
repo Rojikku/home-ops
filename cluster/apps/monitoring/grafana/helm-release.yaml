@@ -19,6 +19,10 @@ spec:
   values:
     replicas: 1
     envFromSecret: "grafana"
+    admin:
+      existingSecret: "grafana"
+      userKey: admin-user
+      passwordKey: admin-password
     env:
       GF_EXPLORE_ENABLED: true
       GF_PANELS_DISABLE_SANITIZE_HTML: true
