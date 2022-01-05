@@ -47,20 +47,9 @@ spec:
       # In Minikube, the '/data' directory is configured to persist across reboots. Use "/data/rook" in Minikube environment.
       dataDirHostPath: /var/lib/rook
       placement:
-        mon:
+        all:
           tolerations:
-            - key: node-role.kubernetes.io/master
-              effect: NoSchedule
-              operator: Exists
-        mgr:
-          tolerations:
-            - key: node-role.kubernetes.io/master
-              effect: NoSchedule
-              operator: Exists
-        osd:
-          tolerations:
-            - key: node-role.kubernetes.io/master
-              effect: NoSchedule
+            - effect: NoSchedule
               operator: Exists
       crashCollector:
         disable: false
