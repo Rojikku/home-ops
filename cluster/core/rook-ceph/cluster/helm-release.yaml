@@ -57,6 +57,11 @@ spec:
             - key: node-role.kubernetes.io/master
               effect: NoSchedule
               operator: Exists
+        osd:
+          tolerations:
+            - key: node-role.kubernetes.io/master
+              effect: NoSchedule
+              operator: Exists
       crashCollector:
         disable: false
       mgr:
