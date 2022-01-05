@@ -17,7 +17,8 @@ spec:
         namespace: flux-system
   values:
     tolerations:
-      - effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
         operator: Exists
     crds:
       enabled: false
@@ -25,25 +26,31 @@ spec:
       enableCephfsDriver: false
       enableCephfsSnapshotter: false
       provisionerTolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
           operator: Exists
       pluginTolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
           operator: Exists
       rbdPluginTolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
           operator: Exists
     agent:
       tolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
           operator: Exists
     disover:
       tolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
           operator: Exists
     admissionController:
       tolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
           operator: Exists
     monitoring:
       enabled: true
