@@ -9,16 +9,16 @@ metadata:
     hajimari.io/appName: "traefik"
     hajimari.io/enable: "true"
     hajimari.io/icon: "web"
-    hajimari.io/instance: "hajimari"
+    hajimari.io/instance: "monitor"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   ingressClassName: "traefik"
   tls:
     - hosts:
-        - "traefik.${SECRET_DOMAIN}"
+        - "traefik.mon.${SECRET_DOMAIN}"
       secretName: "traefik-dashboard-tls"
   rules:
-    - host: "traefik.${SECRET_DOMAIN}"
+    - host: "traefik.mon.${SECRET_DOMAIN}"
       http:
         paths:
           - path: /
