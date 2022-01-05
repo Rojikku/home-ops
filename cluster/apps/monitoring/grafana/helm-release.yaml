@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    podAnnotations:
+      secret.reloader.stakater.com/reload: "grafana"
     replicas: 1
     envFromSecret: "grafana"
     admin:
