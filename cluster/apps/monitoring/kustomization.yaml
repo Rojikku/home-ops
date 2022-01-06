@@ -6,4 +6,3 @@ resources:
   - loki
   - grafana
   - speedtest-exporter
-  - calico-system

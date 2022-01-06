@@ -11,3 +11,4 @@ resources:
   # - zalando
   - hass
   - sonarr
+  - calico-system
