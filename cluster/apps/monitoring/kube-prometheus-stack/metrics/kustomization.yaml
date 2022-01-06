@@ -4,5 +4,3 @@ kind: Kustomization
 resources:
   - traefik-metrics.yaml
   - calico-controller-metrics.yaml
-  - felix-metrics.yaml
-  - typha-metrics.yaml
