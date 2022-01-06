@@ -37,8 +37,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Jackett"
           # hajimari.io/icon: ""
-          hajimari.io/instance: "hajimari"
+          hajimari.io/instance: "sonarr"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - host: "jackett.${SECRET_DOMAIN}"
             paths:
