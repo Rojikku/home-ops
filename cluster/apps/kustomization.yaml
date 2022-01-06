@@ -12,3 +12,4 @@ resources:
   - hass
   - sonarr
   - calico-system
+  - flux-system
