@@ -18,6 +18,10 @@ spec:
       interval: 5m
   values:
     console:
+      environment:
+        MINIO_IDENTITY_OPENID_CONFIG_URL: "https://auth.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration" 
+        MINIO_IDENTITY_OPENID_CLIENT_ID: "${SECRET_s3_oauth_clientid}"
+        MINIO_IDENTITY_OPENID_SCOPES: "openid,profile,email,minio"
       ingress:
         enabled: true
         ingressClassName: "traefik"
