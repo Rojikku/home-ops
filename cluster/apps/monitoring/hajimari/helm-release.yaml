@@ -27,6 +27,7 @@ spec:
       namespaceSelector:
         matchNames:
           - monitoring
+          - networking
       name: "admin"
       # customApps:
       #   - name: Some External Cluster Service
