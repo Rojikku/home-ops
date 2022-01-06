@@ -51,7 +51,7 @@ spec:
             secretName: "prowlarr-tls"
     addons:
       vpn:
-        enabled: true
+        enabled: false
         type: openvpn
         env:
           FIREWALL: 'on'
