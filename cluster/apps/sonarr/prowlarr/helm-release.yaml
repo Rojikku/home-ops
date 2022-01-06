@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prowlarr
+  namespace: sonarr
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: prowlarr
+      version: 4.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/prowlarr
+      tag: v0.1.10.1357
+      pullPolicy: IfNotPresent
+
+    env:
+      TZ: America/New_York
+    persistence:
+      config:
+        enabled: true
+        existingClaim: prowlarr-pvc
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "prowlarr"
+          # hajimari.io/icon: ""
+          hajimari.io/instance: "sonarr"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+        hosts:
+          - host: "prowlarr.r.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "prowlarr.r.${SECRET_DOMAIN}"
+            secretName: "prowlarr-tls"
+    addons:
+      vpn:
+        enabled: true
+        type: openvpn
+        env:
+          FIREWALL: 'on'
+          ROUTE: '10.0.0.0/8'
+  valuesFrom:
+    - kind: Secret
+      name: "prowlarr"
+      valuesKey: vpnConfig
+      optional: false
+      targetPath: addons.vpn.configFile
