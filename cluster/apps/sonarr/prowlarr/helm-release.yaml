@@ -49,16 +49,16 @@ spec:
           - hosts:
               - "prowlarr.r.${SECRET_DOMAIN}"
             secretName: "prowlarr-tls"
-    addons:
-      vpn:
-        enabled: false
-        type: openvpn
-        env:
-          FIREWALL: 'on'
-          ROUTE: '10.0.0.0/8'
-  valuesFrom:
-    - kind: Secret
-      name: "prowlarr"
-      valuesKey: vpnConfig
-      optional: false
-      targetPath: addons.vpn.configFile
+  #   addons:
+  #     vpn:
+  #       enabled: true
+  #       type: openvpn
+  #       env:
+  #         FIREWALL: 'on'
+  #         ROUTE: '10.0.0.0/8'
+  # valuesFrom:
+  #   - kind: Secret
+  #     name: "prowlarr"
+  #     valuesKey: vpnConfig
+  #     optional: false
+  #     targetPath: addons.vpn.configFile
