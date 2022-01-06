@@ -19,9 +19,12 @@ spec:
   values:
     operator:
       env:
-        MINIO_IDENTITY_OPENID_CONFIG_URL: "https://auth.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration" 
-        MINIO_IDENTITY_OPENID_CLIENT_ID: "${SECRET_s3_oauth_clientid}"
-        MINIO_IDENTITY_OPENID_SCOPES: "openid,profile,email,minio"
+        - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+          value: "https://auth.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration" 
+        - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+          value: "${SECRET_s3_oauth_clientid}"
+        - name: MINIO_IDENTITY_OPENID_SCOPES
+          value: "openid,profile,email,minio"
     console:
       ingress:
         enabled: true
