@@ -17,7 +17,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    operator:
+    console:
       env:
         - name: MINIO_IDENTITY_OPENID_CONFIG_URL
           value: "https://auth.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration" 
@@ -25,7 +25,6 @@ spec:
           value: "${SECRET_s3_oauth_clientid}"
         - name: MINIO_IDENTITY_OPENID_SCOPES
           value: "openid,profile,email,minio"
-    console:
       ingress:
         enabled: true
         ingressClassName: "traefik"
