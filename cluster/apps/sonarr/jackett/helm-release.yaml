@@ -53,12 +53,7 @@ spec:
       vpn:
         enabled: true
         type: openvpn
+        configFileSecret: jackett
         env:
           FIREWALL: 'on'
           ROUTE: '10.0.0.0/8'
-  valuesFrom:
-    - kind: Secret
-      name: "jackett"
-      valuesKey: vpnConfig
-      optional: false
-      targetPath: addons.vpn.configFile
