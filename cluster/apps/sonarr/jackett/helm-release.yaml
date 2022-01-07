@@ -54,6 +54,6 @@ spec:
         enabled: true
         type: openvpn
         configFileSecret: jackett
-        env:
-          FIREWALL: 'on'
-          ROUTE: '10.0.0.0/8'
+        # env:
+        #   FIREWALL: 'on'
+        #   ROUTE: '10.0.0.0/8'
