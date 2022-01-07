@@ -39,7 +39,7 @@ spec:
           # hajimari.io/icon: ""
           hajimari.io/instance: "sonarr"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - host: "prowlarr.r.${SECRET_DOMAIN}"
             paths:
@@ -54,6 +54,3 @@ spec:
         enabled: true
         type: openvpn
         configFileSecret: prowlarr
-        env:
-          FIREWALL: 'on'
-          ROUTE: '10.0.0.0/8'
