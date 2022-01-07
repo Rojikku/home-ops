@@ -74,9 +74,9 @@ spec:
   valuesFrom:
     - kind: Secret
       name: "qbt"
-      valuesKey: username
+      valuesKey: user
       optional: false
-      targetPath: metrics.exporter.env.username
+      targetPath: metrics.exporter.env.user
     - kind: Secret
       name: "qbt"
       valuesKey: password
