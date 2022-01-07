@@ -28,6 +28,11 @@ spec:
       config:
         enabled: true
         existingClaim: qbittorrent-pvc
+      downloads:
+        enabled: true
+        existingClaim: dlcache-pvc
+        mountPath: /downloads
+
     ingress:
       main:
         enabled: true
@@ -57,3 +62,23 @@ spec:
         # env:
         #   FIREWALL: 'on'
         #   ROUTE: '10.0.0.0/8'
+    metrics:
+      enabled: true
+      prometheusRule:
+        enabled: true
+      exporter:
+        image:
+          repository: esanchezm/prometheus-qbittorrent-exporter
+          tag: v1.2.0
+          pullPolicy: IfNotPresent
+  valuesFrom:
+    - kind: Secret
+      name: "qbt"
+      valuesKey: username
+      optional: false
+      targetPath: metrics.exporter.env.username
+    - kind: Secret
+      name: "qbt"
+      valuesKey: password
+      optional: false
+      targetPath: metrics.exporter.env.password

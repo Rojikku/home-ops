@@ -11,4 +11,16 @@ spec:
     requests:
       storage: 128Mi
   storageClassName: ceph-block
-
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dlcache-pvc
+  namespace: sonarr
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: ceph-block
