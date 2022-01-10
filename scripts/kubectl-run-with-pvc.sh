@@ -17,8 +17,8 @@ do
             ;;
         c)  COMMAND=$OPTARG
             ;;
-	n)  NAMESPACE=$OPTARG
-	    ;;
+        n)  NAMESPACE=$OPTARG
+            ;;
         h)  usage_exit
             ;;
         \?) usage_exit
