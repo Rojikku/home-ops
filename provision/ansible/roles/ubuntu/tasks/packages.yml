@@ -40,7 +40,7 @@
 - name: Check if Raspberry Pi
   command: grep -q  "Raspberry Pi" /proc/cpuinfo
   ignore_errors: true
-  register: is_raspberry 
+  register: is_raspberry
 
 - name: Install raspberry specific packages for Ubuntu 21 or greater
   ansible.builtin.apt:
