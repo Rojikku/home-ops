@@ -143,25 +143,6 @@ source ~/.bashrc
 
 4. Fill out the Age public key in the `.config.env` under `BOOTSTRAP_AGE_PUBLIC_KEY`, **note** the public key should start with `age`...
 
-### :cloud:&nbsp; Global Cloudflare API Key
-
-In order to use Terraform and `cert-manager` with the Cloudflare DNS challenge you will need to create a API key.
-
-1. Head over to Cloudflare and create a API key by going [here](https://dash.cloudflare.com/profile/api-tokens).
-
-2. Under the `API Keys` section, create a global API Key.
-
-3. Use the API Key in the configuration section below.
-
-### :page_facing_up:&nbsp; Configuration
-
-:round_pushpin: The `.config.env` file contains necessary configuration files that are needed by Ansible, Terraform and Flux.
-
-1. Copy the `.config.sample.env` to `.config.env` and start filling out all the environment variables. **All are required** and read the comments they will explain further what is required.
-
-2. Once that is done, verify the configuration is correct by running `./configure.sh --verify`
-
-3. If you do not encounter any errors run `./configure.sh` to start having the script wire up the templated files and place them where they need to be.
 
 ### :zap:&nbsp; Preparing Ubuntu with Ansible
 
@@ -279,17 +260,6 @@ kubectl --kubeconfig=./provision/kubeconfig get pods -n flux-system
 
 :tada: **Congratulations** you have a Kubernetes cluster managed by Flux, your Git repository is driving the state of your cluster.
 
-### :cloud:&nbsp; Configure Cloudflare DNS with Terraform
-
-:round_pushpin: Review the Terraform scripts under `./terraform/cloudflare/` and make sure you understand what it's doing (no really review it). If your domain already has existing DNS records be sure to export those DNS settings before you continue. Ideally you can update the terraform script to manage DNS for all records if you so choose to.
-
-1. Pull in the Terraform deps by running `task terraform:init:cloudflare`
-
-2. Review the changes Terraform will make to your Cloudflare domain by running `task terraform:plan:cloudflare`
-
-3. Finally have Terraform execute the task by running `task terraform:apply:cloudflare`
-
-If Terraform was ran successfully head over to your browser and you _should_ be able to access `https://hajimari.${BOOTSTRAP_CLOUDFLARE_DOMAIN}`
 
 ## :mega:&nbsp; Post installation
 
@@ -305,7 +275,6 @@ Our Check out our [wiki](https://github.com/k8s-at-home/template-cluster-k3s/wik
 
 The world is your cluster, try installing another application or if you have a NAS and want storage back by that check out the helm charts for [democratic-csi](https://github.com/democratic-csi/democratic-csi), [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs) or [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner).
 
-If you plan on exposing your ingress to the world from your home. Checkout [our rough guide](https://docs.k8s-at-home.com/guides/dyndns/) to run a k8s `CronJob` to update DDNS.
 
 ## :handshake:&nbsp; Thanks
 
