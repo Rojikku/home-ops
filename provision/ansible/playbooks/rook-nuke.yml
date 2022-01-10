@@ -17,6 +17,7 @@
     - name: Reset disks
       block:
         - name: Remove lvm partitions
+          ignore_errors: yes
           ansible.builtin.shell: "{{ item }}"
           loop:
             - ls /dev/mapper/ceph--* | xargs -I% -- fuser --kill %
@@ -24,11 +25,13 @@
             - ls /dev/mapper/ceph--* | xargs -I% -- dmsetup remove -f %
             - ls /dev/mapper/ceph--* | xargs -I% -- rm -rf %
         - name: Zap the drives
+          ignore_errors: yes
           ansible.builtin.shell: >
             sgdisk --zap-all {{ item }} || true
           loop:
             - "{{ rook_devices }}"
         - name: Wipe the block device
+          ignore_errors: yes
           ansible.builtin.command: "wipefs -af {{ item }}"
           with_items:
             - "{{ rook_devices }}"
@@ -39,6 +42,7 @@
     - name: Reset partitions
       block:
         - name: Remove lvm partitions
+          ignore_errors: yes
           ansible.builtin.shell: "{{ item }}"
           loop:
             - ls /dev/mapper/ceph--* | xargs -I% -- fuser --kill %
@@ -46,6 +50,7 @@
             - ls /dev/mapper/ceph--* | xargs -I% -- dmsetup remove -f %
             - ls /dev/mapper/ceph--* | xargs -I% -- rm -rf %
         - name: Wipe the block device
+          ignore_errors: yes
           ansible.builtin.command: "wipefs -af {{ item }}"
           with_items:
             - "{{ rook_partitions }}"
