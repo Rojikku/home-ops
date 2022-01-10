@@ -20,7 +20,7 @@ spec:
     console:
       env:
         - name: MINIO_IDENTITY_OPENID_CONFIG_URL
-          value: "https://auth.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration" 
+          value: "https://auth.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
         - name: MINIO_IDENTITY_OPENID_CLIENT_ID
           value: "${SECRET_s3_oauth_clientid}"
         - name: MINIO_IDENTITY_OPENID_SCOPES
