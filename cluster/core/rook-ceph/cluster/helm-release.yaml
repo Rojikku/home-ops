@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
   dependsOn:
     - name: rook-ceph
+    - name: traefik
+      namespace: networking
   values:
     monitoring:
       enabled: true
