@@ -15,11 +15,11 @@
     - name: Uninstall k3s
       ansible.builtin.command:
         cmd: /usr/local/bin/k3s-uninstall.sh
-        removes: /usr/local/bin/k3s-uninstall.sh
+        # removes: /usr/local/bin/k3s-uninstall.sh
     - name: Uninstall k3s agent
       ansible.builtin.command:
         cmd: /usr/local/bin/k3s-agent-uninstall.sh
-        removes: /usr/local/bin/k3s-agent-uninstall.sh
+        # removes: /usr/local/bin/k3s-agent-uninstall.sh
     - name: Gather list of CNI files to delete
       find:
         paths: /etc/cni/net.d
