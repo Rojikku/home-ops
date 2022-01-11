@@ -53,6 +53,20 @@ spec:
           tolerations:
             - effect: NoSchedule
               operator: Exists
+        mgr:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: feature.node.kubernetes.io/custom-zwave
+                      operator: Exists
+        mon:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: feature.node.kubernetes.io/custom-zwave
+                      operator: Exists
       crashCollector:
         disable: false
       mgr:
