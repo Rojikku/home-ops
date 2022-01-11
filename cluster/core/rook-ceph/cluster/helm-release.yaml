@@ -60,6 +60,7 @@ spec:
                   matchExpressions:
                     - key: feature.node.kubernetes.io/custom-zwave
                       operator: Exists
+                topologyKey: kubernetes.io/hostname
         mon:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
@@ -67,6 +68,7 @@ spec:
                   matchExpressions:
                     - key: feature.node.kubernetes.io/custom-zwave
                       operator: Exists
+                topologyKey: kubernetes.io/hostname
       crashCollector:
         disable: false
       mgr:
