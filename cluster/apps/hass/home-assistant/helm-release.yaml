@@ -91,6 +91,7 @@ spec:
             hajimari.io/enable: "true"
             hajimari.io/appName: "HASS Code"
             hajimari.io/icon: "vs-code"
+            hajimari.io/instance: "hajimari"
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           hosts:
             - host: "hass-config.${SECRET_DOMAIN}"
