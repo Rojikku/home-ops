@@ -41,3 +41,4 @@ spec:
           secretKey: "${SECRET_MINIO_SECRETKEY}"
         metrics:
           enabled: true
+        prometheusOperator: true
