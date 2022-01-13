@@ -25,13 +25,15 @@ spec:
       - name: minio1
         namespace: minio
         pools:
-          - servers: 4
+          - servers: 2
             volumesPerServer: 3
             size: 10Gi
             storageClassName: ceph-block
             tolerations:
               - effect: NoSchedule
                 operator: Exists
+            nodeSelector:
+              kubernetes.io/arch: arm64
         secrets:
           enabled: true
           name: minio1-secret
