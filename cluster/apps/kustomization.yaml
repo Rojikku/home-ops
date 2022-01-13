@@ -8,8 +8,9 @@ resources:
   - rook-ceph
   - minio
   - monitoring
+  - cert-manager
+  - calico-system
+  - flux-system
   # - zalando
   - hass
   - sonarr
-  - calico-system
-  - flux-system
