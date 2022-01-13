@@ -38,6 +38,8 @@ spec:
           links:
             - name: Cluster Github
               url: "https://github.com/Rojikku/k3s"
+            - name: Custom Charts Repo
+              url: "https://github.com/Rojikku/charts"
             - name: Renovate Logs
               url: "https://app.renovatebot.com/dashboard#github/Rojikku/k3s"
             - name: Prometheus Troubleshooting
