@@ -49,7 +49,7 @@ spec:
         enabled: true
         allow_sign_up: true
         name: Authentik
-        scopes: openid profile email
+        scopes: "openid profile email"
         auth_url: https://auth.${SECRET_DOMAIN}/application/o/authorize/
         token_url: https://auth.${SECRET_DOMAIN}/application/o/token/
         api_url: https://auth.${SECRET_DOMAIN}/application/o/userinfo/
