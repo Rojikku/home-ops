@@ -25,8 +25,8 @@ spec:
       - name: minio1
         namespace: minio
         pools:
-          - servers: 1
-            volumesPerServer: 4
+          - servers: 4
+            volumesPerServer: 3
             size: 10Gi
             storageClassName: ceph-block
             tolerations:
