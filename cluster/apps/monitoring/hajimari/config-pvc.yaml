@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: monitoring-haji-pvc
-  namespace: networking
+  namespace: monitoring
 spec:
   accessModes:
     - ReadWriteOnce
