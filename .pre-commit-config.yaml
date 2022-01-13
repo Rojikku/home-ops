@@ -29,7 +29,7 @@ repos:
     hooks:
       - id: forbid-secrets
   - repo: https://github.com/hmrc/security-git-hooks
-    rev: release/1.7.0
+    rev: 1.7.0
     hooks:
       - id: secrets_filecontent
         name: Checking staged files for sensitive content
