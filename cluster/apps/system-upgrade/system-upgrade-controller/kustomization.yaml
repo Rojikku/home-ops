@@ -4,5 +4,3 @@ kind: Kustomization
 resources:
   - server-plan.yaml
   - agent-plan.yaml
-  - secrets.sops.yaml
-  - focal-plan.yaml
