@@ -5,7 +5,20 @@ metadata:
   name: grafana-postgres
   namespace: monitoring
 spec:
-  replicas: 1
+  scheduler:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - postgres-name
+              topologyKey: "kubernetes.io/hostname"
+  replicas: 3
   image: docker.io/library/postgres:14.1
   database:
     size: 5Gi
