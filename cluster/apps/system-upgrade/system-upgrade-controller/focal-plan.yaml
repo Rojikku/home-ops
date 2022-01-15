@@ -1,19 +1,27 @@
----
-parameters:
-  system_upgrade_controller:
-    plans:
-      - name: system-upgrade
-        concurrency: 1
-        image: docker.io/projectsyn/suc-ubuntu-focal
-        command: /scripts/run.sh pushgateway.monitoring:9091
-        hour: 02
-        day: 6
-        label_selectors:
-          - {key: plan.upgrade.cattle.io/focal, operator: Exists}
-        tolerations:
-          - key: node-role.kubernetes.io/controlplane
-            operator: Exists
-          - key: node-role.kubernetes.io/etcd
-            operator: Exists
-          - key: node-role.kubernetes.io/master
-            operator: Exists
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: system-upgrade-focal
+spec:
+  channel: https://floodgate.syn.vshn.net/window/6/02
+  concurrency: 1
+  drain:
+    force: true
+  nodeSelector:
+    matchExpressions:
+      - key: plan.upgrade.cattle.io/system-upgrade-focal
+        operator: Exists
+  serviceAccountName: system-upgrade
+  tolerations:
+    - key: node-role.kubernetes.io/controlplane
+      operator: Exists
+    - key: node-role.kubernetes.io/etcd
+      operator: Exists
+    - key: node-role.kubernetes.io/master
+      operator: Exists
+  upgrade:
+    args:
+      - pushgateway.monitoring:9091
+    command:
+      - /scripts/run.sh
+    image: docker.io/projectsyn/suc-ubuntu-focal
