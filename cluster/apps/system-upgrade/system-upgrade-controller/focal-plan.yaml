@@ -2,6 +2,7 @@ apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
   name: system-upgrade-focal
+  namespace: system-upgrade
 spec:
   channel: https://floodgate.syn.vshn.net/window/6/02
   concurrency: 1
