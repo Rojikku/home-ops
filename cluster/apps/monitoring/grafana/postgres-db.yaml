@@ -18,7 +18,7 @@ spec:
                     values:
                       - postgres-name
               topologyKey: "kubernetes.io/hostname"
-  replicas: 3
+  replicas: 2
   image: docker.io/library/postgres:14.1
   database:
     size: 5Gi
