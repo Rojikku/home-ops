@@ -1,7 +1,7 @@
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: system-upgrade-focal
+  name: focal
   namespace: system-upgrade
 spec:
   channel: https://floodgate.syn.vshn.net/window/6/02
@@ -10,9 +10,13 @@ spec:
     force: true
   nodeSelector:
     matchExpressions:
-      - key: plan.upgrade.cattle.io/system-upgrade-focal
+      - key: plan.upgrade.cattle.io/focal
         operator: Exists
   serviceAccountName: system-upgrade
+  secrets:
+    - name: focal
+      path: /host/run/system-upgrade/secrets/focal
+  version: focal
   tolerations:
     - key: node-role.kubernetes.io/controlplane
       operator: Exists
@@ -21,8 +25,6 @@ spec:
     - key: node-role.kubernetes.io/master
       operator: Exists
   upgrade:
-    args:
-      - pushgateway.monitoring:9091
-    command:
-      - /scripts/run.sh
-    image: docker.io/projectsyn/suc-ubuntu-focal
+    image: ubuntu
+    command: ["chroot", "/host"]
+    args: ["sh", "/run/system-upgrade/secrets/focal/upgrade.sh"]
