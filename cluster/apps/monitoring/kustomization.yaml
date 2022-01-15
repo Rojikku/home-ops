@@ -6,3 +6,4 @@ resources:
   - loki
   - grafana
   - speedtest-exporter
+  - pushgateway
