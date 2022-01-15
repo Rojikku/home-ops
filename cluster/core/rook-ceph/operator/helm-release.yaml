@@ -22,8 +22,8 @@ spec:
     crds:
       enabled: false
     csi:
-      enableCephfsDriver: false
-      enableCephfsSnapshotter: false
+      enableCephfsDriver: true
+      enableCephfsSnapshotter: true
       provisionerTolerations:
         - effect: NoSchedule
           operator: Exists
