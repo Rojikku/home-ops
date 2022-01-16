@@ -18,9 +18,9 @@
     # SSH Hardening
     sftp_enabled: true
     sftp_chroot: false
-    network_ipv6_enable: false
+    network_ipv6_enable: true
     # OS Hardening
-    ufw_enable_ipv6: false
+    ufw_enable_ipv6: true
     # Irrelevant stuff
     os_selinux_enabled: false
     os_yum_enabled: false
