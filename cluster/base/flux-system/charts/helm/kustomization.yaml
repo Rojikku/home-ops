@@ -25,5 +25,5 @@ resources:
   - stakater-charts.yaml
   - traefik-charts.yaml
   - weaveworks-kured-charts.yaml
-  - zalando-postgres.operator.yaml
-  - zalando-postgres.operator-ui.yaml
+  # - zalando-postgres.operator.yaml
+  # - zalando-postgres.operator-ui.yaml
