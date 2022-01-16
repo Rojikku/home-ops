@@ -33,6 +33,7 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/appName: "Authentik"
         hajimari.io/icon: "shield-lock"
+        hajimari.io/instance: "hajimari"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - host: "auth.${SECRET_DOMAIN}"
