@@ -29,10 +29,10 @@ spec:
       config:
         enabled: true
         existingClaim: qbittorrent-pvc
-      # downloads:
-      #   enabled: true
-      #   existingClaim: dlcache-pvc
-      #   mountPath: /downloads
+      downloads:
+        enabled: true
+        existingClaim: dlcache-pvc
+        mountPath: /downloads
 
     ingress:
       main:
