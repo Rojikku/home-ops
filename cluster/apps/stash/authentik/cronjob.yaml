@@ -1,0 +1,42 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: authentik-dump
+spec:
+  schedule: "0 21 * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          containers:
+            - name: dump
+              image: postgres:14.1-alpine
+              volumeMounts:
+                - name: data
+                  mountPath: /backup
+              args:
+                - pg_dump
+                - "-Fc"
+                - "-f"
+                - "/backup/authentik-postgres.pgdump"
+                - "-Z"
+                - "7"
+                - "-v"
+                - "-h"
+                - "authentik-postgres.networking.svc:5432"
+                - "-U"
+                - "postgres"
+                - "-d"
+                - "postgres"
+              env:
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: authentik
+                      key: postgresPassword
+          volumes:
+            - name: data
+              persistentVolumeClaim:
+                claimName: backup-pvc
