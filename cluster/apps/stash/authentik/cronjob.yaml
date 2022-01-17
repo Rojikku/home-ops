@@ -12,6 +12,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          automountServiceAccountToken: false
           containers:
             - name: dump
               image: postgres:14.1-alpine
