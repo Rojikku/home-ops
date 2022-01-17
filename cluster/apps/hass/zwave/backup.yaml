@@ -2,25 +2,25 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
-  name: hass-backup
+  name: zwavejs-backup
   namespace: hass
 spec:
   repository:
     name: b2-repo
   schedule: "00 22 * * *"
   target:
-    alias: hass
+    alias: zwavejs
     ref:
       apiVersion: apps/v1
       kind: Deployment
-      name: home-assistant
+      name: zwavejs-zwavejs2mqtt
     volumeMounts:
       - name: config
-        mountPath: /config
+        mountPath: /usr/src/app/store
     paths:
-      - /config
+      - /usr/src/app/store
     exclude:
-      - /config/lost+found
+      - /usr/src/app/store/lost+found
   retentionPolicy:
     name: 'keep-last-7'
     keepLast: 7
