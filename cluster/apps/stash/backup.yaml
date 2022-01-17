@@ -12,15 +12,10 @@ spec:
     alias: databases
     ref:
       apiVersion: apps/v1
-      kind: Deployment
-      name: node-red
-    volumeMounts:
-      - name: config
-        mountPath: /data
-    paths:
-      - /data
+      kind: PersistentVolumeClaim
+      name: backup-pvc
     exclude:
-      - /data/lost+found
+      - /lost+found
   retentionPolicy:
     name: 'keep-last-7'
     keepLast: 7

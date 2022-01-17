@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - backup-pvc.yaml
   - authentik
+  - backup.yaml
