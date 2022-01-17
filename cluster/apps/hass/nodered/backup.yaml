@@ -7,7 +7,6 @@ metadata:
 spec:
   repository:
     name: b2-repo
-    namespace: stash
   schedule: "30 21 * * *"
   target:
     ref:
