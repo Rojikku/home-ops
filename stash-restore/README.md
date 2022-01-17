@@ -16,3 +16,5 @@ Any stash BackupConfiguration can be paused with this syntax, but you may need t
 ```
 kubectl patch backupconfiguration -n demo deployment-backup --type="merge" --patch='{"spec": {"paused": true}}'
 ```
+
+Figure out crons with [Cronhub](https://crontab.cronhub.io/)
