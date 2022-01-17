@@ -30,7 +30,7 @@ spec:
         resources:
           requests:
             cpu: "100m"
-      # Installing a second, unnecessary pushgateway because chart maintainers didn't make it optional.
+      # Installing a second, unnecessary pushgateway because chart maintainers didn't make it optional. Fix projected for v0.19.0!
       pushgateway:
         registry: prom
         repository: pushgateway
