@@ -38,6 +38,10 @@ spec:
                 operator: Exists
             nodeSelector:
               kubernetes.io/arch: arm64
+        ## Mount path where PV will be mounted inside container(s).
+        mountPath: /export
+        ## Sub path inside Mount path where MinIO stores data.
+        subPath: /data
         secrets:
           enabled: true
           name: minio1-secret
