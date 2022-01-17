@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: backup-pvc
-  namespace: sonarr
+  namespace: stash
 spec:
   accessModes:
     - ReadWriteMany
