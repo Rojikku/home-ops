@@ -7,7 +7,7 @@ metadata:
 spec:
   repository:
     name: b2-repo
-  schedule: "30 21 * * *"
+  schedule: "05 22 * * *"
   target:
     ref:
       apiVersion: apps/v1
