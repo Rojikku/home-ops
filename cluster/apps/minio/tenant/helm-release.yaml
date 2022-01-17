@@ -24,6 +24,10 @@ spec:
     tenants:
       - name: minio1
         namespace: minio
+        image:
+          repository: quay.io/minio/minio
+          tag: RELEASE.2022-01-08T03-11-54Z
+          pullPolicy: IfNotPresent
         pools:
           - servers: 2
             volumesPerServer: 3
