@@ -21,35 +21,36 @@ spec:
   values:
     features:
       community: true
-    license: from secret
-    operator:
-      registry: appscode
-      repository: stash
-      tag: v0.17.0
-      resources:
-        requests:
-          cpu: "100m"
-    # Installing a second, unnecessary pushgateway because chart maintainers didn't make it optional.
-    pushgateway:
-      registry: prom
-      repository: pushgateway
-      tag: v0.5.2
-    cleaner:
-      registry: appscode
-      repository: kubectl
-      tag: v1.16
-      skip: false
-    # Node labels for pod assignment
-    nodeSelector: # +doc-gen:break
-      beta.kubernetes.io/os: linux
-      beta.kubernetes.io/arch: amd64
-    monitoring:
-      agent: "prometheus.io/operator"
-      backup: true
-      operator: true
+    stash-community:
+      # license: from secret
+      operator:
+        registry: appscode
+        repository: stash
+        tag: v0.17.0
+        resources:
+          requests:
+            cpu: "100m"
+      # Installing a second, unnecessary pushgateway because chart maintainers didn't make it optional.
+      pushgateway:
+        registry: prom
+        repository: pushgateway
+        tag: v0.5.2
+      cleaner:
+        registry: appscode
+        repository: kubectl
+        tag: v1.16
+        skip: false
+      # Node labels for pod assignment
+      nodeSelector: # +doc-gen:break
+        beta.kubernetes.io/os: linux
+        beta.kubernetes.io/arch: amd64
+      monitoring:
+        agent: "prometheus.io/operator"
+        backup: true
+        operator: true
   valuesFrom:
     - kind: Secret
       name: "stash"
       optional: false
       valuesKey: license.txt
-      targetPath: license
+      targetPath: global.license
