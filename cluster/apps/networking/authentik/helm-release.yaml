@@ -20,8 +20,15 @@ spec:
     - name: traefik
       namespace: networking
   values:
-    nodeSelector:
-      kubernetes.io/arch: amd64
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                    - amd64
     image:
       repository: ghcr.io/goauthentik/server
       tag: 2021.12.5
