@@ -6,6 +6,9 @@ Each workloads needs its own deployment, so just base off of that.
 
 There is a script to enable you to easily comment out certain deployments, but you could also deploy the entire folder without the script.
 
+1. Run Deployments for every service you want to install
+2. Wait for them all to come up
+3. Run restores and data will start flowing in
 
 
 ## Tips and Tricks
