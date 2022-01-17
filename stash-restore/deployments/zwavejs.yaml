@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://rojikku.github.io/charts/
       chart: restore
-      version: v0.1.0
+      version: v0.1.1
       sourceRef:
         kind: HelmRepository
         name: rojikku-charts
