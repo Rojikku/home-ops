@@ -1,0 +1,21 @@
+---
+apiVersion: stash.appscode.com/v1beta1
+kind: RestoreSession
+metadata:
+  name: zwavejs-backup
+  namespace: hass
+spec:
+  repository:
+    name: b2-repo
+  target:
+    alias: zwavejs
+    ref:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: restore-zwavejs
+    volumeMounts:
+      - name: config
+        mountPath: /usr/src/app/store
+    rules:
+      - paths:
+          - /usr/src/app/store
