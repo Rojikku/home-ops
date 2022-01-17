@@ -5,6 +5,11 @@ Fix Two Default Storage Classes  (I no longer install local-path)
 kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
 ```
 
+## Manually run cronjob
+```
+kubectl create job --from=cronjob/<name of cronjob> <name of job>
+```
+
 ## How to add a node back to cluster
 Use the normal k3s-install, but specify `k3s_control_token:` in `kubernetes/k3s.yml`
 
