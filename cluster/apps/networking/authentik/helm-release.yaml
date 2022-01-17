@@ -59,6 +59,9 @@ spec:
         host: "authentik-postgres"
         name: "postgres"
         user: "postgres"
+        s3_backup:
+          region: us-west-002
+          host: "https://s3.us-west-002.backblazeb2.com"
     redis:
       enabled: true
       image:
@@ -72,3 +75,19 @@ spec:
         memory: 128Mi
       limits:
         memory: 256Mi
+  valuesFrom:
+    - kind: Secret
+      name: "authentik"
+      optional: false
+      valuesKey: bucket
+      targetPath: authentik.postgresql.s3_backup.bucket
+    - kind: Secret
+      name: "authentik"
+      optional: false
+      valuesKey: b2accessKey
+      targetPath: authentik.postgresql.s3_backup.access_key
+    - kind: Secret
+      name: "authentik"
+      optional: false
+      valuesKey: b2secretKey
+      targetPath: authentik.postgresql.s3_backup.secret_key
