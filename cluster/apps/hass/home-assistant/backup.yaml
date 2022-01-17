@@ -1,0 +1,27 @@
+---
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: hass-backup
+  namespace: hass
+spec:
+  repository:
+    name: b2-repo
+  schedule: "00 10 * * *"
+  target:
+    alias: hass
+    ref:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: home-assistant
+    volumeMounts:
+      - name: config
+        mountPath: /config
+    paths:
+      - /config
+    exclude:
+      - /config/lost+found
+  retentionPolicy:
+    name: 'keep-last-7'
+    keepLast: 7
+    prune: true
