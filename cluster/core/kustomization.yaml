@@ -11,5 +11,4 @@ resources:
   - rook-ceph
   - device-manager
   - networking
-  - stash
-  # - zalando
+  # - stash
