@@ -1,17 +1,10 @@
-# Template for deploying k3s backed by Flux
+# How Rojikku re-builds his cluster.
+<details>
+    <summary>Cluster Details/Original Text</summary>
 
 Highly opinionated template for deploying a single [k3s](https://k3s.io) cluster with [Ansible](https://www.ansible.com) and [Terraform](https://www.terraform.io) backed by [Flux](https://toolkit.fluxcd.io/) and [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/).
 
 The purpose here is to showcase how you can deploy an entire Kubernetes cluster and show it off to the world using the [GitOps](https://www.weave.works/blog/what-is-gitops-really) tool [Flux](https://toolkit.fluxcd.io/). When completed, your Git repository will be driving the state of your Kubernetes cluster. In addition with the help of the [Ansible](https://github.com/ansible-collections/community.sops), [Terraform](https://github.com/carlpett/terraform-provider-sops) and [Flux](https://toolkit.fluxcd.io/guides/mozilla-sops/) SOPS integrations you'll be able to commit Age encrypted secrets to your public repo.
-
-## Overview
-
-- [Introduction](https://github.com/k8s-at-home/template-cluster-k3s#wave-introduction)
-- [Prerequisites](https://github.com/k8s-at-home/template-cluster-k3s#memo-prerequisites)
-- [Repository structure](https://github.com/k8s-at-home/template-cluster-k3s#open_file_folder-repository-structure)
-- [Lets go!](https://github.com/k8s-at-home/template-cluster-k3s#rocket-lets-go)
-- [Post installation](https://github.com/k8s-at-home/template-cluster-k3s#mega-post-installation)
-- [Thanks](https://github.com/k8s-at-home/template-cluster-k3s#handshake-thanks)
 
 ## :wave:&nbsp; Introduction
 
@@ -142,8 +135,9 @@ source ~/.bashrc
 ```
 
 4. Fill out the Age public key in the `.config.env` under `BOOTSTRAP_AGE_PUBLIC_KEY`, **note** the public key should start with `age`...
-
-
+</details>
+<details>
+    <summary>Setting up Ubuntu</summary>
 ### :zap:&nbsp; Preparing Ubuntu with Ansible
 
 :round_pushpin: Here we will be running a Ansible Playbook to prepare Ubuntu for running a Kubernetes cluster.
@@ -161,6 +155,8 @@ source ~/.bashrc
 5. Finally, run the Ubuntu Prepare playbook by running `task ansible:playbook:ubuntu-prepare`
 
 6. If everything goes as planned you should see Ansible running the Ubuntu Prepare Playbook against your nodes.
+
+</details>
 
 ### :sailboat:&nbsp; Installing k3s with Ansible
 
@@ -211,31 +207,28 @@ cat ~/.config/sops/age/keys.txt |
     -n flux-system create secret generic sops-age \
     --from-file=age.agekey=/dev/stdin
 ```
-`ssh-keyscan github.com > ./known_hosts`
+4. If needed, generate a known hosts file for use with private keys.
 ```
-kubectl --kubeconfig=./provision/kubeconfig -n flux-system create secret generic ssh-credentials --from-file=identity=/home/rojikku/.ssh/id_ed25519_flux --from-file=identity.pub=/home/rojikku/.ssh/id_ed25519_flux.pub --from-file=./known_hosts
+ssh-keyscan github.com > ./known_hosts
 ```
+5. Add private keys even though my cluster is public.
+```
+kubectl --kubeconfig=./provision/kubeconfig -n flux-system create secret generic ssh-credentials --from-file=identity=/home/rojikku/.ssh/flux/id_ed25519_flux --from-file=identity.pub=/home/rojikku/.ssh/flux/id_ed25519_flux.pub --from-file=./known_hosts
+```
+The above are in a sub directory of .ssh so they don't get caught up with ssh-copy-id
 
 :round_pushpin: Variables defined in `./cluster/base/cluster-secrets.sops.yaml` and `./cluster/base/cluster-settings.sops.yaml` will be usable anywhere in your YAML manifests under `./cluster`
 
-4. **Verify** all the above files are **encrypted** with SOPS
 
-5. If you verified all the secrets are encrypted, you can delete the `tmpl` directory now
-
-6. Push you changes to git
-
-```sh
-git add -A
-git commit -m "initial commit"
-git push
-```
-
-7. Install Flux
+6. Install Flux
 
 :round_pushpin: Due to race conditions with the Flux CRDs you will have to run the below command twice. There should be no errors on this second run.
 
 ```sh
 kubectl --kubeconfig=./provision/kubeconfig apply --kustomize=./cluster/base/flux-system
+```
+Output:
+```
 # namespace/flux-system configured
 # customresourcedefinition.apiextensions.k8s.io/alerts.notification.toolkit.fluxcd.io created
 # ...
@@ -251,31 +244,38 @@ kubectl --kubeconfig=./provision/kubeconfig apply --kustomize=./cluster/base/flu
 
 ```sh
 kubectl --kubeconfig=./provision/kubeconfig get pods -n flux-system
+```
+Output:
+```
 # NAME                                       READY   STATUS    RESTARTS   AGE
 # helm-controller-5bbd94c75-89sb4            1/1     Running   0          1h
 # kustomize-controller-7b67b6b77d-nqc67      1/1     Running   0          1h
 # notification-controller-7c46575844-k4bvr   1/1     Running   0          1h
 # source-controller-7d6875bcb4-zqw9f         1/1     Running   0          1h
 ```
-
-:tada: **Congratulations** you have a Kubernetes cluster managed by Flux, your Git repository is driving the state of your cluster.
-
-
-## :mega:&nbsp; Post installation
-
-### :point_right:&nbsp; Troubleshooting
-
-Our [wiki](https://github.com/k8s-at-home/template-cluster-k3s/wiki) is a good place to start troubleshooting issues. If that doesn't cover your issue, start a new thread in the #support channel on our [Discord](https://discord.gg/k8s-at-home).
-
-### :robot:&nbsp; Integrations
-
-Our Check out our [wiki](https://github.com/k8s-at-home/template-cluster-k3s/wiki) for more integrations!
-
-## :grey_question:&nbsp; What's next
-
-The world is your cluster, try installing another application or if you have a NAS and want storage back by that check out the helm charts for [democratic-csi](https://github.com/democratic-csi/democratic-csi), [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs) or [nfs-subdir-external-provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner).
-
-
-## :handshake:&nbsp; Thanks
-
-Big shout out to all the authors and contributors to the projects that we are using in this repository.
+9. Prevent Apps from being deployed, because the cluster isn't ready for that yet.
+```
+flux suspend kustomization apps
+```
+10. Wait for rook to figure its life out for a bit. Usually within about 10 minutes it'll get everything needed setup, and the WebUI will come up.
+```
+watch kubectl -n rook-ceph get pods
+```
+If desired, login to the web UI with the password from:
+```
+kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
+```
+11. Taint the master so it's dedicated. We didn't do this earlier because the OSD job is stupid.
+```
+kubectl taint node k8s-0 node-role.kubernetes.io/master=true:NoSchedule
+```
+12. Remove pods that shouldn't be on master based on output from the following. (Device-manager!)
+```
+kubectl get pods -A --field-selector spec.nodeName=k8s-0
+```
+13. Setup labels for my pods so that things will deploy correctly later.
+```
+kubectl label node k8s-4 feature.node.kubernetes.io/custom-zwave=true
+kubectl label node k8s-3 rclone=enabled
+```
+14. Restore from backup with method of choice [Stash](./stash-restore)
