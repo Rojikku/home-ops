@@ -7,8 +7,9 @@ metadata:
 spec:
   repository:
     name: b2-repo
-  schedule: "25 09 * * *"
+  schedule: "45 09 * * *"
   target:
+    alias: nodered
     ref:
       apiVersion: apps/v1
       kind: Deployment
