@@ -1,0 +1,24 @@
+---
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: nodered-backup
+  namespace: hass
+spec:
+  repository:
+    name: b2-repo
+  schedule: "30 21 * * *"
+  target:
+    ref:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: node-red
+    volumeMounts:
+      - name: nodered-pvc
+        mountPath: /data
+    paths:
+      - /data
+  retentionPolicy:
+    name: 'keep-last-7'
+    keepLast: 7
+    prune: true
