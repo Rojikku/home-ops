@@ -1,15 +1,9 @@
 # Log of Run Commands to get to cluster state
-Set k8s master to no schedule  
-`kubectl taint node k8s-0 node-role.kubernetes.io/master=true:NoSchedule`
 
-Specify node with zwave controller  
-`kubectl label node k8s-4 feature.node.kubernetes.io/custom-zwave=true`
-
-Specify rclone boxes with labels
-`kubectl label node k8s-3 rclone=enabled`
-
-Fix Two Default Storage Classes  
-`kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'`
+Fix Two Default Storage Classes  (I no longer install local-path)
+```
+kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+```
 
 ## How to add a node back to cluster
 Use the normal k3s-install, but specify `k3s_control_token:` in `kubernetes/k3s.yml`
