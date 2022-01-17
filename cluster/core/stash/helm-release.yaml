@@ -21,7 +21,7 @@ spec:
   values:
     features:
       community: true
-    # license: from secret
+    license: from secret
     operator:
       registry: appscode
       repository: stash
