@@ -14,7 +14,7 @@ spec:
       kind: Deployment
       name: node-red
     volumeMounts:
-      - name: nodered-pvc
+      - name: config
         mountPath: /data
     paths:
       - /data
