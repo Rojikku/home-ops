@@ -11,6 +11,7 @@ spec:
       backoffLimit: 0
       template:
         spec:
+          restartPolicy: Never
           containers:
             - name: dump
               image: postgres:14.1-alpine
