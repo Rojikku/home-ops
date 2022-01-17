@@ -7,6 +7,6 @@ metadata:
 spec:
   backend:
     b2:
-      bucket: rojikku-stash
+      bucket: ${B2_BUCKET}
       prefix: /stashhome
     storageSecretName: b2-secrets
