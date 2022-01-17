@@ -3,6 +3,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: authentik-dump
+  namespace: stash
 spec:
   schedule: "0 21 * * *"
   jobTemplate:
