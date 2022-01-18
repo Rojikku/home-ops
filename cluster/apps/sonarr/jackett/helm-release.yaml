@@ -25,6 +25,7 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: America/New_York
+    hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     persistence:
       config:
