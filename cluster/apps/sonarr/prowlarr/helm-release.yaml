@@ -49,8 +49,3 @@ spec:
           - hosts:
               - "prowlarr.r.${SECRET_DOMAIN}"
             secretName: "prowlarr-tls"
-    addons:
-      vpn:
-        enabled: true
-        type: openvpn
-        configFileSecret: prowlarr
