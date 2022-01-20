@@ -5,9 +5,10 @@ metadata:
   name: hass-backup
   namespace: hass
 spec:
+  driver: VolumeSnapshotter
   repository:
     name: b2-repo
-  schedule: "00 22 * * *"
+  schedule: "45 21 * * *"
   target:
     alias: hass
     ref:
