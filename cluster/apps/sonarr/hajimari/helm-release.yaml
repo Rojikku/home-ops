@@ -45,7 +45,7 @@ spec:
           hajimari.io/icon: ""
           hajimari.io/instance: "hajimari"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - host: "r.${SECRET_DOMAIN}"
             paths:
