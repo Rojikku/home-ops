@@ -6,4 +6,3 @@ resources:
   - b2-secrets.sops.yaml
   - helm-release.yaml
   - b2-repository.yaml
-  - hass

@@ -4,6 +4,9 @@ kind: Repository
 metadata:
   name: b2-repo
   namespace: stash
+  annotations:
+    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
 spec:
   backend:
     b2:
