@@ -5,7 +5,7 @@
 #
 
 # (string) Use a specific control token, for use with adding to an existing cluster.
-# k3s_control_token:
+k3s_control_token: K10f5b49dc1c52a644ef2a4e49b359f0beb7c42f0dcef241fac27482d19c499ef48::server:a0f01d05639d9bfe0b0487eca69d98ad
 
 # (string) Use a specific version of k3s
 k3s_release_version: false
@@ -32,10 +32,11 @@ k3s_registration_address: "{{ kubevip_address }}"
 k3s_server_manifests_urls:
   - url: https://docs.projectcalico.org/archive/v3.21/manifests/tigera-operator.yaml
     filename: tigera-operator.yaml
+  - url: https://kube-vip.io/manifests/rbac.yaml
+    filename: kube-vip-rbac.yaml
 
 # (list) A flat list of templates to deploy on the primary control plane
 # /var/lib/rancher/k3s/server/manifests
 k3s_server_manifests_templates:
   - "calico-installation.yaml.j2"
-  - "kube-vip-rbac.yaml.j2"
   - "kube-vip-daemonset.yaml.j2"
