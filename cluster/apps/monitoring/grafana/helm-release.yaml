@@ -162,10 +162,10 @@ spec:
         hajimari.io/instance: "monitor"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-        - "grafana.${SECRET_DOMAIN}"
+        - &host "grafana.${SECRET_DOMAIN}"
       tls:
         - hosts:
-            - "grafana.${SECRET_DOMAIN}"
+            - *host
           secretName: "grafana-tls"
     serviceAccount:
       create: true

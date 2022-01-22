@@ -47,13 +47,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
-          - host: "qbittorrent.r.${SECRET_DOMAIN}"
+          - host: &host "qbittorrent.r.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "qbittorrent.r.${SECRET_DOMAIN}"
+              - *host
             secretName: "qbittorrent-tls"
     addons:
       vpn:

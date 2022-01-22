@@ -87,10 +87,10 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
-          - "alertman.mon.${SECRET_DOMAIN}"
+          - &host "alertman.mon.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "alertman.mon.${SECRET_DOMAIN}"
+              - *host
             secretName: "alertman-tls"
       alertmanagerSpec:
         storage:
@@ -206,10 +206,10 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
-          - "prometheus.mon.${SECRET_DOMAIN}"
+          - &host "prometheus.mon.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "prometheus.mon.${SECRET_DOMAIN}"
+              - *host
             secretName: "prometheus-tls"
       thanosService:
         enabled: true

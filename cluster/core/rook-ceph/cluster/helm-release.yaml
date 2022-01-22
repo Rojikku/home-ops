@@ -37,11 +37,11 @@ spec:
           hajimari.io/instance: "hajimari"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         host:
-          name: "rook.${SECRET_DOMAIN}"
+          name: &host "rook.${SECRET_DOMAIN}"
           path: "/"
         tls:
           - hosts:
-              - "rook.${SECRET_DOMAIN}"
+              - *host
             secretName: "rook-tls"
     cephClusterSpec:
       # The path on the host where configuration files will be persisted. Must be specified.

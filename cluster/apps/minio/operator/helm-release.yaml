@@ -28,8 +28,8 @@ spec:
           hajimari.io/icon: "cloud"
           hajimari.io/instance: "hajimari"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        host: "s3.${SECRET_DOMAIN}"
+        host: &host "s3.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "s3.${SECRET_DOMAIN}"
+              - *host
             secretName: "s3-tls"

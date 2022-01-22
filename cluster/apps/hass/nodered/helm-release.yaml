@@ -37,13 +37,13 @@ spec:
           hajimari.io/instance: "hajimari"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - host: "nodered.${SECRET_DOMAIN}"
+          - host: &host "nodered.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "nodered.${SECRET_DOMAIN}"
+              - *host
             secretName: "nodered-tls"
     persistence:
       config:

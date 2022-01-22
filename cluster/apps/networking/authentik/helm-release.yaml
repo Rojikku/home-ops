@@ -37,13 +37,13 @@ spec:
         hajimari.io/instance: "hajimari"
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-        - host: "auth.${SECRET_DOMAIN}"
+        - host: &host "auth.${SECRET_DOMAIN}"
           paths:
             - path: /
               pathType: Prefix
       tls:
         - hosts:
-            - "auth.${SECRET_DOMAIN}"
+            - *host
           secretName: "authentik-tls"
     envValueFrom:
       AUTHENTIK_POSTGRESQL__PASSWORD:

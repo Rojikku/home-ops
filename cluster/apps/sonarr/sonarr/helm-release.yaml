@@ -41,11 +41,11 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
-          - host: "sonarr.r.${SECRET_DOMAIN}"
+          - host: &host "sonarr.r.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "sonarr.r.${SECRET_DOMAIN}"
+              - *host
             secretName: "sonarr-tls"
