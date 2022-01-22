@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/home-assistant/home-assistant
       tag: 2021.12.10
     env:
-      TZ: "America/New_York"
+      TZ: "${TIMEZONE}"
     envFrom:
       - secretRef:
           name: home-assistant

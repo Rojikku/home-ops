@@ -23,7 +23,7 @@ spec:
       pullPolicy: IfNotPresent
 
     env:
-      TZ: America/New_York
+      TZ: "${TIMEZONE}"
     persistence:
       config:
         enabled: true

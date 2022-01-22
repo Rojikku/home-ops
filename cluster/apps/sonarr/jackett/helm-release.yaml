@@ -24,7 +24,7 @@ spec:
       tag: v0.20.417
       pullPolicy: IfNotPresent
     env:
-      TZ: America/New_York
+      TZ: "${TIMEZONE}"
     dnsPolicy: ClusterFirst
     persistence:
       config:

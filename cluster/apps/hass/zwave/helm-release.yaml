@@ -21,7 +21,7 @@ spec:
       repository: ghcr.io/zwave-js/zwavejs2mqtt
       tag: 6.4.1
     env:
-      TZ: "America/New_York"
+      TZ: "${TIMEZONE}"
     service:
       main:
         ports:

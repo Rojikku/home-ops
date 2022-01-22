@@ -24,7 +24,7 @@ spec:
     securityContext:
       runAsUser: 1000
     env:
-      TZ: America/New_York
+      TZ: "${TIMEZONE}"
     persistence:
       config:
         enabled: true
