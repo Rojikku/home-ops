@@ -46,7 +46,7 @@ spec:
       attacher:
         image: k8s.gcr.io/sig-storage/csi-attacher:v3.4.0
       resizer:
-        image: k8s.gcr.io/sig-storage/csi-resizer:v1.3.0
+        image: k8s.gcr.io/sig-storage/csi-resizer:v1.4.0
     agent:
       tolerations:
         - effect: NoSchedule
