@@ -1,0 +1,7 @@
+---
+# Install file to: $HOME/.cluster-api/clusterctl.yaml
+# See: https://cluster-api.sigs.k8s.io/clusterctl/configuration.html#clusterctl-configuration-file
+
+# ENV variables for clusterctl to pass
+SIDERO_CONTROLLER_MANAGER_HOST_NETWORK: true
+SIDERO_CONTROLLER_MANAGER_API_ENDPOINT: 192.168.0.95

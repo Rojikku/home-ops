@@ -1,0 +1,16 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: controlplane-serverclass
+spec:
+  qualifiers:
+    cpu:
+      - manufacturer: "Intel(R) Corporation"
+        version: "Intel(R) Celeron(R) N5105 @ 2.00GHz"
+    systemInformation:
+      - manufacturer: Shenzhen Wangang Technology Co., Ltd
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
