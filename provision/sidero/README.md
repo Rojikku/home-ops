@@ -14,9 +14,7 @@ set -gx SIDERO_ENDPOINT 192.168.42.179
 Generate Talos machine configuration for a single-node cluster:
 
 ```sh
-talosctl gen config \
-    --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"}]' \
-    sidero https://$SIDERO_ENDPOINT:6443/
+talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"},{"op": "replace", "path": "/machine/kubelet/image", "value": "ghcr.io/talos-systems/kubelet:v1.23.3"}]' sidero https://$SIDERO_ENDPOINT:6443/
 ```
 
 In `controlplane.yaml` uncomment and change all Kubernetes images to use `v1.22.0` and talos image to `v0.13.0`
@@ -82,7 +80,49 @@ clusterctl init -b talos -c talos -i sidero
 kubectl patch deploy -n sidero-system sidero-controller-manager --type='json' -p='[{"op": "add", "path": "/spec/template/spec/hostNetwork", "value": true}]'
 ```
 
-# Control with Talosctl
+## Setup for the cluster
+
+Apply the ServerClass for control planes.
+
+Then patch any remaining nodes as needed.
+
+```sh
+kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/machine/install", "value": {"disk": "/dev/sda"} }]'
+```
+
+```sh
+kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/spec/accepted", "value": true}]'
+```
+
+## Generate cluster configs
+
+Generate cluster configuration:
+```sh
+CONTROL_PLANE_SERVERCLASS=controlplane \
+WORKER_SERVERCLASS=any \
+TALOS_VERSION=v0.14.1 \
+KUBERNETES_VERSION=v1.23.3 \
+CONTROL_PLANE_PORT=6443 \
+CONTROL_PLANE_ENDPOINT=192.168.0.90 \
+clusterctl generate cluster cluster-0 -i sidero > cluster-0.yaml
+```
+
+Setup talos VIP as directed [here](https://www.sidero.dev/docs/v0.4/resource-configuration/metadata/#talos-machine-configuration).
+
+Edit the cluster-0.yaml for the appropriate replica counts.
+
+## Deploy
+
+```sh
+kubectl apply -f cluster-0.yaml
+```
+
+```sh
+watch kubectl get servers,machines,clusters
+```
+
+
+## Control with Talosctl
 
 Get the talosconfig:
 ```sh
