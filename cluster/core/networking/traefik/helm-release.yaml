@@ -27,6 +27,10 @@ spec:
     deployment:
       kind: Deployment
       replicas: 3
+    tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+        operator: Exists
     service:
       enabled: true
       type: LoadBalancer
