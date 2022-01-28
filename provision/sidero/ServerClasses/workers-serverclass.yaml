@@ -1,0 +1,16 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: workers
+spec:
+  qualifiers:
+    cpu:
+      - manufacturer: "Intel(R) Corporation"
+        version: "CPU 1"
+    systemInformation:
+      - family: Unknown
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda

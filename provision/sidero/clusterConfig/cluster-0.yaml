@@ -1,0 +1,194 @@
+---
+apiVersion: cluster.x-k8s.io/v1alpha4
+kind: Cluster
+metadata:
+  name: cluster-0
+  namespace: default
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 10.244.0.0/16
+    services:
+      cidrBlocks:
+        - 10.96.0.0/12
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
+    kind: TalosControlPlane
+    name: cluster-0-cp
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+    kind: MetalCluster
+    name: cluster-0
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalCluster
+metadata:
+  name: cluster-0
+  namespace: default
+spec:
+  controlPlaneEndpoint:
+    host: 192.168.0.90
+    port: 6443
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalMachineTemplate
+metadata:
+  name: cluster-0-cp
+  namespace: default
+spec:
+  template:
+    spec:
+      serverClassRef:
+        apiVersion: metal.sidero.dev/v1alpha1
+        kind: ServerClass
+        name: controlplane
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
+kind: TalosControlPlane
+metadata:
+  name: cluster-0-cp
+  namespace: default
+spec:
+  controlPlaneConfig:
+    controlplane:
+      configPatches:
+        - op: add
+          path: /machine/network
+          value:
+            interfaces:
+              - interface: eth0
+                dhcp: true
+                vip:
+                  ip: 192.168.0.90
+      generateType: controlplane
+      talosVersion: v0.14.1
+    init:
+      configPatches:
+        - op: add
+          path: /machine/network
+          value:
+            interfaces:
+              - interface: eth0
+                dhcp: true
+                vip:
+                  ip: 192.168.0.90
+      generateType: init
+      talosVersion: v0.14.1
+  infrastructureTemplate:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+    kind: MetalMachineTemplate
+    name: cluster-0-cp
+  replicas: 3
+  version: v1.23.3
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+kind: TalosConfigTemplate
+metadata:
+  name: cluster-0-workers
+  namespace: default
+spec:
+  template:
+    spec:
+      generateType: join
+      talosVersion: v0.14.1
+      configPatches:
+        - op: replace
+          path: /machine/install/disk
+          value: /dev/sda
+        - op: add
+          path: /machine/systemDiskEncryption
+          value:
+            ephemeral:
+              provider: luks2
+              keys:
+                - nodeID: {}
+                  slot: 0
+            state:
+              provider: luks2
+              keys:
+                - nodeID: {}
+                  slot: 0
+        - op: add
+          path: /machine/kubelet/extraArgs
+          value:
+            rotate-server-certificates: true
+        - op: replace
+          path: /machine/install/image
+          value: ghcr.io/talos-systems/installer:v0.14.1
+
+---
+apiVersion: cluster.x-k8s.io/v1alpha4
+kind: MachineDeployment
+metadata:
+  name: cluster-0-workers
+  namespace: default
+spec:
+  clusterName: cluster-0
+  replicas: 1
+  selector:
+    matchLabels: null
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+          kind: TalosConfigTemplate
+          name: cluster-0-workers
+      clusterName: cluster-0
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+        kind: MetalMachineTemplate
+        name: cluster-0-workers
+      version: v1.23.3
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalMachineTemplate
+metadata:
+  name: cluster-0-workers
+  namespace: default
+spec:
+  template:
+    spec:
+      serverClassRef:
+        apiVersion: metal.sidero.dev/v1alpha1
+        kind: ServerClass
+        name: workers
+# K8s-3
+---
+apiVersion: cluster.x-k8s.io/v1alpha4
+kind: MachineDeployment
+metadata:
+  name: cluster-0-worker-k8s-3
+  namespace: default
+spec:
+  clusterName: cluster-0
+  replicas: 1
+  selector:
+    matchLabels: null
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+          kind: TalosConfigTemplate
+          name: cluster-0-workers
+      clusterName: cluster-0
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+        kind: MetalMachineTemplate
+        name: cluster-0-worker-k8s-3
+      version: v1.23.3
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalMachineTemplate
+metadata:
+  name: cluster-0-worker-k8s-3
+  namespace: default
+spec:
+  template:
+    spec:
+      serverClassRef:
+        apiVersion: metal.sidero.dev/v1alpha1
+        kind: ServerClass
+        name: k8s-3
