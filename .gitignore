@@ -18,3 +18,6 @@ terraform.tfstate*
 # Assorted
 repository.yaml
 known_hosts
+# Ignore sidero configs that contain passwords
+talosconfig
+k8s-*-serverclass.yaml
