@@ -11,7 +11,6 @@ resources:
   - cert-manager
   - calico-system
   - flux-system
-  # - zalando
   - hass
   - sonarr
   - stash
