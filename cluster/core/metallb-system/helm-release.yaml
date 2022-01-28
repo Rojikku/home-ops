@@ -16,9 +16,50 @@ spec:
         name: metallb-charts
         namespace: flux-system
   values:
+    prometheus:
+      podMonitor:
+        enabled: true
+      prometheusRule:
+        enabled: true
     configInline:
       address-pools:
         - name: default
           protocol: layer2
           addresses:
             - "${METALLB_LB_RANGE}"
+    # controller contains configuration specific to the MetalLB cluster
+    # controller.
+    controller:
+      enabled: true
+      # -- Controller log level. Must be one of: `all`, `debug`, `info`, `warn`, `error` or `none`
+      logLevel: info
+      image:
+        repository: quay.io/metallb/controller
+        tag: v0.11
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+          operator: Exists
+
+    # speaker contains configuration specific to the MetalLB speaker
+    # daemonset.
+    speaker:
+      enabled: true
+      # -- Speaker log level. Must be one of: `all`, `debug`, `info`, `warn`, `error` or `none`
+      logLevel: info
+      tolerateMaster: true
+      image:
+        repository: quay.io/metallb/speaker
+        tag: v0.11
+
+      # frr contains configuration specific to the MetalLB FRR container,
+      # for speaker running alongside FRR.
+      frr:
+        enabled: true
+        # FRR_LOGGING_LEVEL used to set logging level for all running frr processes.
+        # Possible settings are :-
+        #  informational, warning, errors and debugging.
+        logLevel: informational
+        image:
+          repository: quay.io/frrouting/frr
+          tag: stable_8.0
