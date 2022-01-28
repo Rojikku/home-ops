@@ -23,10 +23,12 @@ spec:
       path: /machine/systemDiskEncryption
       value:
         ephemeral:
+          provider: luks2
           keys:
             - nodeID: {}
               slot: 0
         state:
+          provider: luks2
           keys:
             - nodeID: {}
               slot: 0
@@ -34,3 +36,6 @@ spec:
       path: /machine/kubelet/extraArgs
       value:
         rotate-server-certificates: true
+    - op: replace
+      path: /machine/install/image
+      value: ghcr.io/talos-systems/installer:v0.14.1
