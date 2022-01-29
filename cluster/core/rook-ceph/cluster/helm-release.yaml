@@ -92,10 +92,10 @@ spec:
           #     - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_DD56419883893-part3"
           - name: "k8s-3"
             devices:
-              - name: "/dev/disk/by-id/scsi-0ATA_Samsung_SSD_850_S33CNB0J803846K"
+              - name: sdb
           - name: "k8s-4"
             devices:
-              - name: "/dev/disk/by-id/scsi-SSeagate_Portable_NACA75JN"
+              - name: sdb
           # - name: "k8s-5"
           #   devices:
           #     - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_0123456789ABCDEF-part3"
