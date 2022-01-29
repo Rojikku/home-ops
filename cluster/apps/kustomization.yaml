@@ -11,5 +11,5 @@ resources:
   # - calico-system
   - flux-system
   - hass
-  - sonarr
+  # - sonarr
   - stash
