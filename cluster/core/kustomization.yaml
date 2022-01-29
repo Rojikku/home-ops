@@ -7,7 +7,7 @@ resources:
   - kube-system
   - kubegres
   - metallb-system
-  - system-upgrade
+  # - system-upgrade
   - rook-ceph
   - device-manager
   - networking
