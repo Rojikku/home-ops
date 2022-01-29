@@ -48,6 +48,9 @@ spec:
         agent: "prometheus.io/operator"
         backup: true
         operator: true
+      security:
+        createPSPs:
+          privileged: false
   valuesFrom:
     - kind: Secret
       name: "stash"
