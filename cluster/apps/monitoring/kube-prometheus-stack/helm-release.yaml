@@ -167,15 +167,15 @@ spec:
         - 192.168.0.101
         - 192.168.0.102
     kubeEtcd:
-      enabled: true
-      endpoints:
-        - 192.168.0.100
-        - 192.168.0.101
-        - 192.168.0.102
-      service:
-        enabled: true
-        port: 2381
-        targetPort: 2381
+      enabled: false
+      # endpoints:
+      #   - 192.168.0.100
+      #   - 192.168.0.101
+      #   - 192.168.0.102
+      # service:
+      #   enabled: true
+      #   port: 2381
+      #   targetPort: 2381
     prometheusOperator:
       image:
         repository: quay.io/prometheus-operator/prometheus-operator
