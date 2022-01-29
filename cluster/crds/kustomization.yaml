@@ -4,7 +4,6 @@ resources:
   - cert-manager
   - traefik
   - rook-ceph
-  # - zalando
   - git-repos
   - stash-crds
   - kube-prometheus-stack
