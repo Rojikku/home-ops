@@ -4,7 +4,6 @@ resources:
   - cert-manager.yaml
   - database.yaml
   - metallb-system.yaml
-  - minio.yaml
   - networking.yaml
   - rook-ceph.yaml
   - hass.yaml
@@ -13,4 +12,3 @@ resources:
   - device-manager.yaml
   - monitoring.yaml
   - stash.yaml
-  - zalando.yaml
