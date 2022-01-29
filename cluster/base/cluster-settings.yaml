@@ -11,7 +11,3 @@ data:
   SVC_MOSQUITTO_ADDR: 192.168.0.161
   # Environmental Data
   TIMEZONE: "America/New_York"
-  # Database stuffs
-  CLUSTER_DB_NODE_0: k8s-1
-  CLUSTER_DB_NODE_1: k8s-2
-  CLUSTER_DB_NODE_2: k8s-3
