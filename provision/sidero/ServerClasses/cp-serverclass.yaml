@@ -38,3 +38,8 @@ spec:
     - op: replace
       path: /machine/install/image
       value: ghcr.io/talos-systems/installer:v0.14.1
+    - op: add
+      path: /machine/sysctls
+      value:
+        fs.inotify.max_user_watches: 524288
+        fs.inotify.max_user_instances: 512
