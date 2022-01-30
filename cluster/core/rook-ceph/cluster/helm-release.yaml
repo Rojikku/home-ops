@@ -96,15 +96,15 @@ spec:
           - name: "k8s-4"
             devices:
               - name: sdb
-          # - name: "k8s-5"
-          #   devices:
-          #     - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_0123456789ABCDEF-part3"
+          - name: "k8s-5"
+            devices:
+              - name: sdb
     cephBlockPools:
       - name: ceph-blockpool
         spec:
           failureDomain: host
           replicated:
-            size: 2
+            size: 3
         storageClass:
           enabled: true
           name: ceph-block
@@ -127,11 +127,11 @@ spec:
         spec:
           metadataPool:
             replicated:
-              size: 2
+              size: 3
           dataPools:
             - failureDomain: host
               replicated:
-                size: 2
+                size: 3
           metadataServer:
             activeCount: 1
             activeStandby: true
@@ -162,7 +162,7 @@ spec:
           metadataPool:
             failureDomain: host
             replicated:
-              size: 2
+              size: 3
           dataPool:
             failureDomain: host
             erasureCoded:
