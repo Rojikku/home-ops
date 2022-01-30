@@ -134,14 +134,12 @@ spec:
       enabled: true
     kubeControllerManager:
       enabled: true
-      endpoints:
-        - 192.168.0.100
-        - 192.168.0.101
-        - 192.168.0.102
       service:
         enabled: true
         port: 10257
         targetPort: 10257
+        selector:
+          k8s-app: kube-controller-manager
       serviceMonitor:
         enabled: true
         https: true
