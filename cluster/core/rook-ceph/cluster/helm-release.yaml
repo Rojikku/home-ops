@@ -98,7 +98,7 @@ spec:
               - name: sdb
           - name: "k8s-5"
             devices:
-              - name: sdb
+              - name: nvme0n1
     cephBlockPools:
       - name: ceph-blockpool
         spec:
