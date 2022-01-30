@@ -29,3 +29,9 @@ To login to minio-operator with JWT
 
 To login to rook-ceph  
 `kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo`
+
+# Talos
+I had to adjust watchers once. Now in cluster configs.
+```
+talosctl patch mc -p '[{ "op": "add", "path": "/machine/sysctls", "value": { "fs.inotify.max_user_watches": 524288, "fs.inotify.max_user_instances": 512 } }]' --immediate
+```
