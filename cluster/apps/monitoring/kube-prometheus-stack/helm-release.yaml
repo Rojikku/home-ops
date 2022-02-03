@@ -141,7 +141,7 @@ spec:
         selector:
           k8s-app: kube-controller-manager
       serviceMonitor:
-        enabled: true
+        enabled: false
         https: true
         insecureSkipVerify: true
     kubeScheduler:
@@ -155,11 +155,11 @@ spec:
         port: 10259
         targetPort: 10259
       serviceMonitor:
-        enabled: true
+        enabled: false
         https: true
         insecureSkipVerify: true
     kubeProxy:
-      enabled: true
+      enabled: false
       endpoints:
         - 192.168.0.100
         - 192.168.0.101
@@ -171,7 +171,7 @@ spec:
         - 192.168.0.101
         - 192.168.0.102
       service:
-        enabled: true
+        enabled: false
         port: 2379
         targetPort: 2379
         selector:
