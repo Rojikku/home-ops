@@ -241,17 +241,17 @@ spec:
         #   objectStorageConfig:
         #     name: thanos-objstore
         #     key: objstore.yml
-        additionalScrapeConfigs:
+        # additionalScrapeConfigs:
           #   - job_name: cadvisor
           #     honor_timestamps: true
           #     static_configs:
           #       - targets:
           #           - "expanse:8005"
-          - job_name: coredns
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - "kube-dns.kube-system.svc.cluster.local:9153"
+          # - job_name: coredns
+          #   honor_timestamps: true
+          #   static_configs:
+          #     - targets:
+          #         - "kube-dns.kube-system.svc.cluster.local:9153"
         #   - job_name: minio
         #     honor_timestamps: true
         #     metrics_path: /minio/v2/metrics/cluster
