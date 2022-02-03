@@ -257,11 +257,6 @@ spec:
             static_configs:
               - targets:
                   - "192.168.0.1:9100"
-          - job_name: kubegres
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - "kubegres-controller-manager-metrics-service.database:8443"
         #   - job_name: vault
         #     metrics_path: /v1/sys/metrics
         #     params:
