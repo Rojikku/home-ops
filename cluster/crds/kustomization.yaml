@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - traefik
+  - external-snapshotter
   - rook-ceph
   - git-repos
   - stash-crds
