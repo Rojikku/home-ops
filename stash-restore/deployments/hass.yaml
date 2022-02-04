@@ -7,15 +7,13 @@ metadata:
 spec:
   interval: 5m
   chart:
-    spec:
-      # renovate: registryUrl=https://rojikku.github.io/charts/
-      chart: restore
-      version: v0.1.1
-      sourceRef:
-        kind: HelmRepository
-        name: rojikku-charts
-        namespace: flux-system
-      interval: 5m
+    chart: restore
+    version: v0.1.1
+    sourceRef:
+      kind: HelmRepository
+      name: rojikku-charts
+      namespace: flux-system
+    interval: 5m
   values:
     volumeMounts:
       - name: config

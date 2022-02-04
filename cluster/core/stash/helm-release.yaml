@@ -8,7 +8,6 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.appscode.com/stable/
       chart: stash
       version: v2021.11.24
       sourceRef:

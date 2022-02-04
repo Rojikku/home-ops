@@ -8,7 +8,6 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://rojikku.github.io/charts/
       chart: restore
       version: v0.1.1
       sourceRef:
