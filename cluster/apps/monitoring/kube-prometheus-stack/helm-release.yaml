@@ -130,6 +130,8 @@ spec:
             sourceLabels:
               - node
             targetLabel: instance
+    coreDns:
+      enabled: true
     kubeApiServer:
       enabled: true
     kubeControllerManager:
@@ -236,11 +238,6 @@ spec:
                 requests:
                   storage: 10Gi
         additionalScrapeConfigs:
-          # - job_name: coredns
-          #   honor_timestamps: true
-          #   static_configs:
-          #     - targets:
-          #         - "kube-dns.kube-system.svc.cluster.local:9153"
           - job_name: node-exporter
             honor_timestamps: true
             static_configs:
