@@ -212,9 +212,9 @@ spec:
               - *host
             secretName: "prometheus-tls"
       thanosService:
-        enabled: true
+        enabled: false
       thanosServiceMonitor:
-        enabled: true
+        enabled: false
       prometheusSpec:
         image:
           repository: quay.io/prometheus/prometheus
