@@ -24,6 +24,8 @@ metadata:
   name: rook-ceph-crds
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: external-snapshotter-crds
   interval: 15m
   prune: false
   wait: true
