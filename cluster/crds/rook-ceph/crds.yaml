@@ -16,9 +16,7 @@ spec:
     # path to crds
     !/deploy/examples/crds.yaml
     !/deploy/examples/csi/rbd/snapshotclass.yaml
-    !/deploy/examples/csi/rbd/snapshot.yaml
     !/deploy/examples/csi/cephfs/snapshotclass.yaml
-    !/deploy/examples/csi/cephfs/snapshot.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
