@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - kube-prometheus-stack
   - hajimari
-  # - loki
+  - loki
   - grafana
   - speedtest-exporter
   - pushgateway
