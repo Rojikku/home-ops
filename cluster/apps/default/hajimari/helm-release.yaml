@@ -87,6 +87,8 @@ spec:
               url: "172.16.0.202"
             - name: Printer
               url: "http://172.16.0.30/"
+            - name: PiKVM
+              url: "http://192.168.0.99/"
     ingress:
       main:
         enabled: true
