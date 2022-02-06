@@ -2,15 +2,15 @@
 apiVersion: metal.sidero.dev/v1alpha1
 kind: ServerClass
 metadata:
-  name: workers
+  name: nvme-workers
 spec:
   qualifiers:
     cpu:
       - manufacturer: "Intel(R) Corporation"
-        version: "CPU 1"
+        version: "Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz"
     systemInformation:
-      - family: Unknown
+      - manufacturer: AZW
   configPatches:
     - op: replace
       path: /machine/install/disk
-      value: /dev/sda
+      value: /dev/nvme0n1
