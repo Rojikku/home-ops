@@ -6,7 +6,7 @@ metadata:
   namespace: monitoring
 spec:
   bucketName: loki
-  storageClassName: rook-ceph-bucket
+  storageClassName: ceph-bucket
   additionalConfig:
     maxObjects: "100000"
     maxSize: "10G"
