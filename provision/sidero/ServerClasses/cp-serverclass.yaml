@@ -40,6 +40,7 @@ spec:
       value:
         disabled: false
         servers:
+          - 192.168.0.1
           - time.cloudflare.com
     - op: replace
       path: /machine/install/image

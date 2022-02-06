@@ -126,6 +126,7 @@ spec:
           value:
             disabled: true
             servers:
+              - 192.168.0.1
               - time.cloudflare.com
         - op: add
           path: /machine/sysctls
