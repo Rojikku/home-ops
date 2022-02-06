@@ -95,9 +95,9 @@ spec:
           - name: "k8s-4"
             devices:
               - name: sdb
-          # - name: "k8s-5"
-          #   devices:
-          #     - name: sda
+          - name: "k8s-5"
+            devices:
+              - name: sda
     cephBlockPools:
       - name: ceph-blockpool
         spec:
