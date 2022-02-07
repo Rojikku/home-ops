@@ -92,9 +92,9 @@ spec:
           - name: "k8s-3"
             devices:
               - name: sdb
-          # - name: "k8s-4"
-          #   devices:
-          #     - name: sdb
+          - name: "k8s-4"
+            devices:
+              - name: sdb
           - name: "k8s-5"
             devices:
               - name: sda
