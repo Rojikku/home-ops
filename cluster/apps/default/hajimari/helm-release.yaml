@@ -84,7 +84,9 @@ spec:
             - name: UltraSwitch
               url: "http://172.16.0.201/"
             - name: Ugly
-              url: "172.16.0.202"
+              url: "http://172.16.0.202/"
+            - name: RackSwitch
+              url: "http://172.16.0.203/"
             - name: Printer
               url: "http://172.16.0.30/"
             - name: PiKVM
