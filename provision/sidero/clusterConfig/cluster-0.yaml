@@ -142,7 +142,7 @@ metadata:
   namespace: default
 spec:
   clusterName: cluster-0
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels: null
   template:
@@ -171,44 +171,6 @@ spec:
         apiVersion: metal.sidero.dev/v1alpha1
         kind: ServerClass
         name: workers
-# NVMes
----
-apiVersion: cluster.x-k8s.io/v1alpha4
-kind: MachineDeployment
-metadata:
-  name: cluster-0-nvme-workers
-  namespace: default
-spec:
-  clusterName: cluster-0
-  replicas: 1
-  selector:
-    matchLabels: null
-  template:
-    spec:
-      bootstrap:
-        configRef:
-          apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
-          kind: TalosConfigTemplate
-          name: cluster-0-workers
-      clusterName: cluster-0
-      infrastructureRef:
-        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
-        kind: MetalMachineTemplate
-        name: cluster-0-nvme-workers
-      version: v1.23.3
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
-kind: MetalMachineTemplate
-metadata:
-  name: cluster-0-nvme-workers
-  namespace: default
-spec:
-  template:
-    spec:
-      serverClassRef:
-        apiVersion: metal.sidero.dev/v1alpha1
-        kind: ServerClass
-        name: nvme-workers
 # K8s-3
 ---
 apiVersion: cluster.x-k8s.io/v1alpha4
