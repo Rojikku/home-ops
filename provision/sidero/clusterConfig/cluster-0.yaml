@@ -124,7 +124,7 @@ spec:
         - op: add
           path: /machine/time
           value:
-            disabled: true
+            disabled: false
             servers:
               - 192.168.0.1
               - time.cloudflare.com
