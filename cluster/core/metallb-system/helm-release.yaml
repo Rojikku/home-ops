@@ -34,7 +34,7 @@ spec:
       logLevel: info
       image:
         repository: quay.io/metallb/controller
-        tag: v0.11
+        tag: v0.12
       tolerations:
         - key: node-role.kubernetes.io/master
           effect: NoSchedule
