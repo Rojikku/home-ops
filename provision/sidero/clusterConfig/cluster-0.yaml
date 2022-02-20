@@ -61,6 +61,11 @@ spec:
                 dhcp: true
                 vip:
                   ip: 192.168.0.90
+        - op: add
+          path: /machine/kubelet/nodeIP
+          value:
+            validSubnets:
+              - 192.168.0.0/24
       generateType: controlplane
       talosVersion: v0.14.1
     init:
@@ -73,6 +78,11 @@ spec:
                 dhcp: true
                 vip:
                   ip: 192.168.0.90
+        - op: add
+          path: /machine/kubelet/nodeIP
+          value:
+            validSubnets:
+              - 192.168.0.0/24
       generateType: init
       talosVersion: v0.14.1
   infrastructureTemplate:
