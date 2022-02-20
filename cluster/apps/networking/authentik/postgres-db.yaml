@@ -12,7 +12,7 @@ spec:
     storageClassName: ceph-block
   backup:
     schedule: "00 21 * * *"
-    pvcName: backup-pvc
+    pvcName: auth-backup-pvc
     volumeMount: /db/authentik
   env:
     - name: POSTGRES_PASSWORD
