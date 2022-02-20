@@ -16,8 +16,8 @@ spec:
         namespace: flux-system
   values:
     prometheus:
-      serviceAccount: "metallb"
-      podMonitor:
+      scrapeAnnotations: true
+      serviceMonitor:
         enabled: true
       prometheusRule:
         enabled: true
