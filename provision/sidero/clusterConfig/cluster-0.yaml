@@ -80,7 +80,7 @@ spec:
     kind: MetalMachineTemplate
     name: cluster-0-cp
   replicas: 3
-  version: v1.23.3
+  version: v1.23.4
 ---
 apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
 kind: TalosConfigTemplate
@@ -116,11 +116,11 @@ spec:
         - op: replace
           path: /machine/install/image
           # renovate: docker-image
-          value: ghcr.io/talos-systems/installer:v0.14.1
+          value: ghcr.io/talos-systems/installer:v0.14.2
         - op: replace
           path: /machine/kubelet/image
           # renovate: docker-image
-          value: ghcr.io/talos-systems/kubelet:v1.23.3
+          value: ghcr.io/talos-systems/kubelet:v1.23.4
         - op: add
           path: /machine/time
           value:
@@ -157,7 +157,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
         kind: MetalMachineTemplate
         name: cluster-0-workers
-      version: v1.23.3
+      version: v1.23.4
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalMachineTemplate
@@ -195,7 +195,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
         kind: MetalMachineTemplate
         name: cluster-0-worker-k8s-3
-      version: v1.23.3
+      version: v1.23.4
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalMachineTemplate
