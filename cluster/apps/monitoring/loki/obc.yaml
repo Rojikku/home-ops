@@ -8,5 +8,4 @@ spec:
   bucketName: loki
   storageClassName: ceph-bucket
   additionalConfig:
-    maxObjects: "100000"
     maxSize: "10G"
