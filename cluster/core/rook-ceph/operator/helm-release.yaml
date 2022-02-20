@@ -58,7 +58,7 @@ spec:
       tolerations:
         - effect: NoSchedule
           operator: Exists
-    enableOBCWatchOperatorNamespace: false
+    enableOBCWatchOperatorNamespace: true
     monitoring:
       enabled: true
     resources:
