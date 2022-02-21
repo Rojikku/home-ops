@@ -67,7 +67,7 @@ spec:
             validSubnets:
               - 192.168.0.0/24
       generateType: controlplane
-      talosVersion: v0.14.1
+      talosVersion: v0.14.2
     init:
       configPatches:
         - op: add
@@ -84,7 +84,7 @@ spec:
             validSubnets:
               - 192.168.0.0/24
       generateType: init
-      talosVersion: v0.14.1
+      talosVersion: v0.14.2
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
@@ -101,7 +101,7 @@ spec:
   template:
     spec:
       generateType: join
-      talosVersion: v0.14.1
+      talosVersion: v0.14.2
       configPatches:
         - op: replace
           path: /machine/install/disk
