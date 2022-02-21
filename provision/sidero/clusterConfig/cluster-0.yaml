@@ -66,7 +66,7 @@ spec:
           value:
             validSubnets:
               - 192.168.0.0/24
-              - !192.168.0.90
+              - '!192.168.0.90/32'
       generateType: controlplane
       talosVersion: v0.14.2
     init:
@@ -84,7 +84,7 @@ spec:
           value:
             validSubnets:
               - 192.168.0.0/24
-              - !192.168.0.90
+              - '!192.168.0.90/32'
       generateType: init
       talosVersion: v0.14.2
   infrastructureTemplate:
