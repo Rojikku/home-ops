@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - rclone
   - hajimari
-  - qbittorrent
-  - sonarr
+  # - qbittorrent
+  # - sonarr

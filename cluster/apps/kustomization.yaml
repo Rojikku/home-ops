@@ -10,4 +10,4 @@ resources:
   - cert-manager
   - flux-system
   - hass
-  # - sonarr
+  - sonarr
