@@ -89,11 +89,11 @@ spec:
         # You might also want to set VPN_BLOCK_OTHER_TRAFFIC to true
         # for extra safeness in case the VPN does connect
         enabled: true
-        type: openvpn
-        openvpn:
+        type: wireguard
+        wireguard:
           image:
-            repository: docker.io/avpnusr/docker-openvpn
-            tag: 20-02-2022
+            repository: ghcr.io/k8s-at-home/wireguard
+            tag: v1.0.20210914
             pullPolicy: IfNotPresent
         configFileSecret: vpn-creds
         env:
