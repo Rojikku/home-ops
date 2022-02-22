@@ -12,3 +12,4 @@ resources:
   - device-manager.yaml
   - monitoring.yaml
   - stash.yaml
+  - vpn.yaml
