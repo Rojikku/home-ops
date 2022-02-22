@@ -34,7 +34,7 @@ spec:
       pullPolicy: IfNotPresent
     rclone:
       remote: "drive:/Emby"
-      path: /mnt/rclone
+      path: /tmp/rclone
       impersonate: true
       # additional arguments for customising rclone
       # mount options can be found here - https://rclone.org/commands/rclone_mount/#options
