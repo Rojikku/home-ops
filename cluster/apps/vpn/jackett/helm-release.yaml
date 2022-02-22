@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: jackett
-  namespace: sonarr
+  namespace: vpn
 spec:
   interval: 5m
   chart:
@@ -16,8 +16,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    podAnnotations:
-      secret.reloader.stakater.com/reload: "vpn"
     image:
       repository: ghcr.io/k8s-at-home/jackett
       tag: v0.20.567
@@ -50,11 +48,3 @@ spec:
           - hosts:
               - *host
             secretName: "jackett-tls"
-    addons:
-      vpn:
-        enabled: true
-        type: openvpn
-        configFileSecret: vpn
-        # env:
-        #   FIREWALL: 'on'
-        #   ROUTE: '10.0.0.0/8'

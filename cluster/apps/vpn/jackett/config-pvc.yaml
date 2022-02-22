@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jackett-pvc
-  namespace: sonarr
+  namespace: vpn
 spec:
   accessModes:
     - ReadWriteOnce
