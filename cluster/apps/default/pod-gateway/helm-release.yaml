@@ -96,6 +96,10 @@ spec:
             tag: 20-02-2022
             pullPolicy: IfNotPresent
         configFileSecret: vpn-creds
+        env:
+          TZ: "${TIMEZONE}"
+          IPTABLES_BACKEND: nft
+          KILLSWITCH: "false"
         securityContext:
           capabilities:
             drop:
