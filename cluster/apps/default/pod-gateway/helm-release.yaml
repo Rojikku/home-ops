@@ -87,6 +87,10 @@ spec:
         # for extra safeness in case the VPN does connect
         enabled: true
         type: openvpn
+        openvpn:
+          repository: docker.io/avpnusr/docker-openvpn
+          tag: 20-02-2022
+          pullPolicy: IfNotPresent
         configFileSecret: vpn-creds
         securityContext:
           capabilities:
