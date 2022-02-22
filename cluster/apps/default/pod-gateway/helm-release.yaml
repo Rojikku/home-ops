@@ -103,7 +103,11 @@ spec:
             - to:
                 - ipBlock:
                     # Cluster IPs (default k3s)
-                    cidr: 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
+                    cidr: 10.0.0.0/8
+                - ipBlock:
+                    cidr: 172.16.0.0/12
+                - ipBlock:
+                    cidr: 192.168.0.0/16
 
     # -- The webhook is used to mutate the PODs matching the given
     # namespace labels. It inserts an init and sidecard helper containers
