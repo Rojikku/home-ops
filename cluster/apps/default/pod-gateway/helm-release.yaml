@@ -81,6 +81,9 @@ spec:
     #     port: 18289
 
     addons:
+      netshoot:
+        enabled: true
+
       vpn:
         # -- Enable the VPN if you want to route through a VPN.
         # You might also want to set VPN_BLOCK_OTHER_TRAFFIC to true
