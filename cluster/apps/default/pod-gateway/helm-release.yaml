@@ -88,9 +88,10 @@ spec:
         enabled: true
         type: openvpn
         openvpn:
-          repository: docker.io/avpnusr/docker-openvpn
-          tag: 20-02-2022
-          pullPolicy: IfNotPresent
+          image:
+            repository: docker.io/avpnusr/docker-openvpn
+            tag: 20-02-2022
+            pullPolicy: IfNotPresent
         configFileSecret: vpn-creds
         securityContext:
           capabilities:
