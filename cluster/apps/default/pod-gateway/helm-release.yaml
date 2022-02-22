@@ -47,7 +47,7 @@ spec:
       #
       # This is needed, for example, in case your CNI does
       # not add a non-default rule for the K8S addresses (Flannel does).
-      NOT_ROUTED_TO_GATEWAY_CIDRS: ""
+      NOT_ROUTED_TO_GATEWAY_CIDRS: "10.0.0.0/8"
 
       # -- Vxlan ID to use
       VXLAN_ID: 42
