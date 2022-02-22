@@ -8,7 +8,6 @@ resources:
   - rook-ceph
   - monitoring
   - cert-manager
-  # - calico-system
   - flux-system
   - hass
   # - sonarr
