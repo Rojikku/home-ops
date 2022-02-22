@@ -3,7 +3,7 @@ apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
   name: database-backup
-  namespace: stash
+  namespace: networking
 spec:
   repository:
     name: b2-repo
@@ -13,7 +13,7 @@ spec:
     ref:
       apiVersion: apps/v1
       kind: PersistentVolumeClaim
-      name: backup-pvc
+      name: auth-backup-pvc
     exclude:
       - /lost+found
   retentionPolicy:
