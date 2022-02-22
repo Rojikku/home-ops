@@ -7,4 +7,4 @@ kubectl apply -f cluster/apps/sonarr/jackett/config-pvc.yaml
 kubectl apply -f cluster/apps/sonarr/prowlarr/config-pvc.yaml
 kubectl apply -f cluster/apps/sonarr/qbittorrent/config-pvc.yaml
 kubectl apply -f cluster/apps/sonarr/sonarr/config-pvc.yaml
-kubectl apply -f cluster/apps/stash/backup-pvc.yaml
+kubectl apply -f cluster/apps/networking/authentik/backup-pvc.yaml
