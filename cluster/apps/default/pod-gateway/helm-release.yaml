@@ -88,6 +88,10 @@ spec:
         enabled: true
         type: openvpn
         configFileSecret: vpn-creds
+        securityContext:
+          capabilities:
+            drop:
+              - SYS_MODULE
         networkPolicy:
           enabled: true
           egress:
