@@ -55,7 +55,7 @@ spec:
               - *host
             secretName: "qbittorrent-tls"
     metrics:
-      enabled: false
+      enabled: true
       prometheusRule:
         enabled: true
       exporter:
