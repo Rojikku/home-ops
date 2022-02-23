@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: qbittorrent-pvc
-  namespace: sonarr
+  namespace: vpn
 spec:
   accessModes:
     - ReadWriteOnce
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: dlcache-pvc
-  namespace: sonarr
+  namespace: vpn
 spec:
   accessModes:
     - ReadWriteMany
