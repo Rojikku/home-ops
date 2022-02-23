@@ -29,6 +29,10 @@ spec:
       config:
         enabled: true
         existingClaim: sonarr-pvc
+      media:
+        enabled: true
+        mountPath: /tmp/rclone
+
     ingress:
       main:
         enabled: true
