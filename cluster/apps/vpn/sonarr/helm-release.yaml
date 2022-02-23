@@ -37,6 +37,10 @@ spec:
         type: hostPath
         hostPath: /tmp/rclone
         mountPath: /mnt/drive
+      downloads:
+        enabled: true
+        existingClaim: dlcache-pvc
+        mountPath: /downloads
 
     ingress:
       main:
