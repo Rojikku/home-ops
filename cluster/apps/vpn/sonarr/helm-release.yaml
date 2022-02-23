@@ -36,6 +36,7 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /tmp/rclone
+        mountPath: /mnt/drive
 
     ingress:
       main:
