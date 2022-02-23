@@ -4,4 +4,4 @@ resources:
   - jackett
   - prowlarr
   - qbittorrent
-  # - sonarr
+  - sonarr
