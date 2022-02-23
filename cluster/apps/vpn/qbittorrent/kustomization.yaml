@@ -4,3 +4,4 @@ resources:
   - config-pvc.yaml
   - secrets.sops.yaml
   - helm-release.yaml
+  - dashboard
