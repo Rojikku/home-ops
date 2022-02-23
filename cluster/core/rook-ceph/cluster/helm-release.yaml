@@ -83,18 +83,12 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          # - name: "k8s-0"
-          #   devices:
-          #     - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_0123456789ABCDEF-part3"
-          # - name: "k8s-2"
-          #   devices:
-          #     - name: "/dev/disk/by-id/scsi-SSamsung_SSD_980_1TB_DD56419883893-part3"
           - name: "k8s-3"
             devices:
               - name: sdb
-          - name: "k8s-4"
-            devices:
-              - name: sdb
+          # - name: "k8s-4"
+          #   devices:
+          #     - name: sdb
           - name: "k8s-5"
             devices:
               - name: nvme0n1
