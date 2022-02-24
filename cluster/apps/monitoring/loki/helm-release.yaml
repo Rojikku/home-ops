@@ -44,7 +44,7 @@ spec:
         ingestion_burst_size_mb: 24
       storage_config:
         aws:
-          bucketnames: loki
+          bucketnames: loki-obc
           s3forcepathstyle: true
           insecure: true
           endpoint: rook-ceph-rgw-ceph-objectstore
