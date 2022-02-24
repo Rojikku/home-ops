@@ -1,0 +1,28 @@
+---
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: prowlarr-backup
+  namespace: vpn
+spec:
+  driver: VolumeSnapshotter
+  repository:
+    name: b2-repo
+  schedule: "00 23 * * *"
+  target:
+    alias: prowlarr
+    ref:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: prowlarr
+    volumeMounts:
+      - name: config
+        mountPath: /config
+    paths:
+      - /config
+    exclude:
+      - /config/lost+found
+  retentionPolicy:
+    name: 'keep-last-7'
+    keepLast: 7
+    prune: true

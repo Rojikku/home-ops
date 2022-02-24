@@ -5,3 +5,4 @@ resources:
   - secrets.sops.yaml
   - helm-release.yaml
   - dashboard
+  - backup.yaml
