@@ -146,12 +146,12 @@ spec:
     #           summary: "Node-Red is unable to connect to Home Assistant"
   valuesFrom:
     - kind: Secret
-      name: "loki"
+      name: "loki-obc"
       valuesKey: AWS_ACCESS_KEY_ID
       optional: false
       targetPath: config.storage_config.aws.access_key_id
     - kind: Secret
-      name: "loki"
+      name: "loki-obc"
       valuesKey: AWS_SECRET_ACCESS_KEY
       optional: false
       targetPath: config.storage_config.aws.secret_access_key
