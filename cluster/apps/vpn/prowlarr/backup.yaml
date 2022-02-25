@@ -19,9 +19,7 @@ spec:
       - name: config
         mountPath: /config
     paths:
-      - /config
-    exclude:
-      - /config/lost+found
+      - /config/Backups
   retentionPolicy:
     name: 'keep-last-7'
     keepLast: 7
