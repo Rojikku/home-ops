@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - secret.sops.yaml
   - cron-job.yaml
-namespace: media
+namespace: vpn
 configMapGenerator:
   - name: trash-updater-config
     files:
