@@ -1,0 +1,26 @@
+---
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: ombi-backup
+  namespace: sonarr
+spec:
+  driver: VolumeSnapshotter
+  repository:
+    name: b2-repo
+  schedule: "00 23 * * *"
+  target:
+    alias: ombi
+    ref:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: ombi
+    volumeMounts:
+      - name: config
+        mountPath: /config
+    paths:
+      - /config/Backups
+  retentionPolicy:
+    name: 'keep-last-7'
+    keepLast: 7
+    prune: true
