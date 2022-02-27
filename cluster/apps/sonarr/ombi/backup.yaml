@@ -5,7 +5,6 @@ metadata:
   name: ombi-backup
   namespace: sonarr
 spec:
-  driver: VolumeSnapshotter
   repository:
     name: b2-repo
   schedule: "00 23 * * *"
@@ -19,7 +18,9 @@ spec:
       - name: config
         mountPath: /config
     paths:
-      - /config/Backups
+      - /config
+    exclude:
+      - /config/lost+found
   retentionPolicy:
     name: 'keep-last-7'
     keepLast: 7
