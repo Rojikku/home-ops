@@ -7,7 +7,6 @@ metadata:
   labels:
     setGateway: false
 spec:
-  driver: VolumeSnapshotter
   repository:
     name: b2-repo
   schedule: "15 02 * * *"
