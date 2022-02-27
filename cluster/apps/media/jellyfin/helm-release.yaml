@@ -1,0 +1,97 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: jellyfin
+      version: 9.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: jellyfin/jellyfin
+      tag: 10.8.0-alpha5
+      pullPolicy: IfNotPresent
+
+    # -- environment variables. See [image docs](https://jellyfin.org/docs/general/administration/configuration.html) for more details.
+    # @default -- See below
+    env:
+      # -- Set the container timezone
+      TZ: "${TIMEZONE}"
+    securityContext:
+      runAsUser: 1000
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "jellyfin"
+          # hajimari.io/icon: ""
+          hajimari.io/instance: "sonarr"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+        hosts:
+          - host: &host "jellyfin.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: "jellyfin-tls"
+
+    # -- Configure persistence settings for the chart under this key.
+    # @default -- See values.yaml
+    persistence:
+      config:
+        enabled: true
+        existingClaim: jellyfin-pvc
+
+      # Cache does NOT contain temporary transcoding data.
+      cache:
+        enabled: true
+        mountPath: /cache
+        existingClaim: jellyfin-cache-pvc
+
+      media:
+        enabled: false
+        mountPath: /media
+
+    # -- Configure the Security Context for the Pod
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+    #   # Hardware acceleration using an Intel iGPU w/ QuickSync
+    #   # These IDs below should be matched to your `video` and `render` group on the host
+    #   # To obtain those IDs run the following grep statement on the host:
+    #   # $ cat /etc/group | grep "video\|render"
+    #   # video:x:44:
+    #   # render:x:109:
+    #   supplementalGroups:
+    #   - 44
+    #   - 109
+
+    resources:
+      requests:
+        # Hardware acceleration using an Intel iGPU w/ QuickSync and
+        # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
+        # gpu.intel.com/i915: 1
+        cpu: 200m
+        memory: 256Mi
+    #   limits:
+    #     # Hardware acceleration using an Intel iGPU w/ QuickSync and
+    #     # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
+    #     gpu.intel.com/i915: 1
+    #     memory: 4096Mi

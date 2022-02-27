@@ -12,3 +12,4 @@ resources:
   - hass
   - vpn
   - sonarr
+  - media
