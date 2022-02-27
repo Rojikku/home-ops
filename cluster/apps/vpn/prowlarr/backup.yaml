@@ -4,6 +4,8 @@ kind: BackupConfiguration
 metadata:
   name: prowlarr-backup
   namespace: vpn
+  labels:
+    setGateway: false
 spec:
   driver: VolumeSnapshotter
   repository:
