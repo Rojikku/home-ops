@@ -10,7 +10,7 @@ spec:
   driver: VolumeSnapshotter
   repository:
     name: b2-repo
-  schedule: "30 23 * * *"
+  schedule: "30 02 * * *"
   target:
     alias: sonarr
     ref:

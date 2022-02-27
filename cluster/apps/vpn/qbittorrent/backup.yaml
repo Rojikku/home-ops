@@ -10,7 +10,7 @@ spec:
   driver: VolumeSnapshotter
   repository:
     name: b2-repo
-  schedule: "15 23 * * *"
+  schedule: "15 02 * * *"
   target:
     alias: qbittorrent
     ref:
