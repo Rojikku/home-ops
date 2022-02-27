@@ -4,6 +4,8 @@ kind: CronJob
 metadata:
   name: trash-updater
   namespace: vpn
+  labels:
+    setGateway: false
 spec:
   schedule: "0 0 * * *"
   concurrencyPolicy: "Forbid"
