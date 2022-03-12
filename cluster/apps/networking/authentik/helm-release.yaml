@@ -23,7 +23,7 @@ spec:
       kubernetes.io/arch: amd64
     image:
       repository: ghcr.io/goauthentik/server
-      tag: 2022.2.1
+      tag: 2022.3.1
       # tag: 2021.12.5
     ingress:
       enabled: true
