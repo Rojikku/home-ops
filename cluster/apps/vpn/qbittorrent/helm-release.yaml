@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: qbittorrent
   namespace: vpn
+  labels:
+    setGateway: true
 spec:
   interval: 5m
   chart:

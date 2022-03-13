@@ -167,7 +167,7 @@ spec:
           #   values: ["1"]
 
       # -- default behviour for new PODs in the evaluated namespace
-      gatewayDefault: true
+      gatewayDefault: false
 
       # -- label name to check when evaluating POD. If true the POD
       # will get the gateway. If not set setGatewayDefault will apply.
