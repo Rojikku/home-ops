@@ -4,8 +4,6 @@ kind: HelmRelease
 metadata:
   name: sonarr
   namespace: vpn
-  labels:
-    setGateway: false
 spec:
   interval: 5m
   chart:
@@ -18,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    podLabels:
+      setGateway: false
     image:
       repository: ghcr.io/k8s-at-home/sonarr
       tag: v3.0.7.1477
