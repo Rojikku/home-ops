@@ -19,7 +19,7 @@ spec:
       interval: 5m
   values:
     podLabels:
-      setGateway: true
+      setGateway: "true"
     image:
       repository: ghcr.io/k8s-at-home/qbittorrent
       tag: v4.4.1
