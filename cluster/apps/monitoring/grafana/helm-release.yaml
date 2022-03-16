@@ -75,6 +75,8 @@ spec:
         mode: console
       grafana_net:
         url: https://grafana.net
+      security:
+        allow_embedding: true
       auth.basic:
         disable_login_form: false
     dashboardProviders:
