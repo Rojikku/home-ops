@@ -20,7 +20,7 @@ spec:
       setGateway: "true"
     image:
       repository: ghcr.io/k8s-at-home/prowlarr
-      tag: v0.2.0.1600
+      tag: v0.2.0.1617
       pullPolicy: IfNotPresent
 
     env:
