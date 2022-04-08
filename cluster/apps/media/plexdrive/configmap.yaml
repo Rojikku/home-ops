@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: plexdrive-config
+  namespace: media
 data:
   config.json: |
     {"ClientID":"994410205901-nrcq1cs90cagsluai8mirvncbllvpvqd.apps.googleusercontent.com","ClientSecret":"UW7TTQ9wq0G_pjDS__86jsaT"}
