@@ -41,10 +41,12 @@ spec:
       - -v2
 
     volumes:
-    # Media is hardcoded to host mount path above
+      - name: media
+        hostPath:
+          path: /tmp/plexdrive
       - name: cache
         hostPath:
-          path: /cache
+          path: /tmp/plexcache
           type: DirectoryOrCreate
       - name: config
         configMap:
@@ -57,7 +59,9 @@ spec:
 
 
     volumeMounts:
-    # media is hardcoded to /plexdrive and Bidirectional
+      - name: media
+        mountPath: /plexdrive
+        mountPropagation: Bidirectional
       - name: config
         mountPath: /config
         readOnly: true
@@ -72,16 +76,6 @@ spec:
         smarter-devices/fuse: 1
         cpu: 10m
         memory: 100Mi
-      # We usually recommend not to specify default resources and to leave this as a conscious
-      # choice for the user. This also increases chances charts run on environments with little
-      # resources, such as Minikube. If you do want to specify resources, uncomment the following
-      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-      # requests:
-      #   cpu: 100m
-      #   memory: 100Mi
-      # limits:
-      #   cpu: 1000m
-      #   memory: 2Gi
 
     nodeSelector:
       plexdrive: enabled
