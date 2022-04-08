@@ -85,9 +85,3 @@ spec:
 
     nodeSelector:
       plexdrive: enabled
-
-  valuesFrom:
-    - kind: Secret
-      name: "plexdrive"
-      valuesKey: args
-      optional: false
