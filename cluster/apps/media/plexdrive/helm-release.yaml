@@ -26,7 +26,7 @@ spec:
 
     plexdrive:
       # mount path for  remote
-      path: /mnt/plexdrive
+      path: /tmp/plexdrive
       # read only file system for remote (to protect from deletion of files)
 
     # Args hardcoded to start with mount and end with /plexdrive (VM mount point)
