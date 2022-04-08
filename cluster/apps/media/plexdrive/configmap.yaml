@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: plexdrive-config
+data:
+  config.json: |
+    {"ClientID":"994410205901-nrcq1cs90cagsluai8mirvncbllvpvqd.apps.googleusercontent.com","ClientSecret":"UW7TTQ9wq0G_pjDS__86jsaT"}
+  token.json: |
+    {"access_token":"ya29.a0AfH6SMDMkVADpf6AwBGNeu5HOR3czNoEuGGN9YZdnJjKF523F-tYFyqVvF19mTwnD2sDaD2J3-HkHjSWJs6xEZOYEDCIQlEcT-xI8uWjc6kK4iNEPaU8IpHTR0aUKjwmXQe3gq-t3DOEJtkBCwoTcc0bQD6TShJd_A8","token_type":"Bearer","refresh_token":"1//05asNMclDZTgFCgYIARAAGAUSNwF-L9Ir3x8O74e7tkF_wWvnErMNaSJRR5yPGVEBemFgMuaFoNoardgFNMvkcMKuhAKgS14E_Oc","expiry":"2020-07-08T10:57:05.162225317-04:00"}
