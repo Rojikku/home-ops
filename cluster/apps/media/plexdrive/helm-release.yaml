@@ -46,9 +46,8 @@ spec:
         hostPath:
           path: /tmp/plexdrive
       - name: cache
-        hostPath:
-          path: /tmp/plexcache
-          type: DirectoryOrCreate
+        persistentVolumeClaim:
+          claimName: plexcache-pvc
       - name: config
         configMap:
           name: plexdrive-config
