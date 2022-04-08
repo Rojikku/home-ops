@@ -30,15 +30,15 @@ spec:
       # read only file system for remote (to protect from deletion of files)
 
     # Args hardcoded to start with mount and end with /plexdrive (VM mount point)
-    # args:
-    #   - --config=/config/
-    #   - --cache-file=/cache/cache.bolt
-    #   - --uid=1000
-    #   - --gid=1000
-    #   - -o
-    #   - allow_other
-    #   - --root-node-id=
-    #   - -v2
+    args:
+      - --config=/config/
+      - --cache-file=/cache/cache.bolt
+      - --uid=1000
+      - --gid=1000
+      - -o
+      - allow_other
+      - --root-node-id=${PLEXDRIVE_ID}
+      - -v2
 
     volumes:
     # Media is hardcoded to host mount path above
