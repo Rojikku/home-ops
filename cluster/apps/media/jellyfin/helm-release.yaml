@@ -65,7 +65,9 @@ spec:
         existingClaim: jellyfin-cache-pvc
 
       media:
-        enabled: false
+        enabled: true
+        type: hostPath
+        hostPath: /tmp/plexdrive
         mountPath: /media
 
     # -- Configure the Security Context for the Pod
