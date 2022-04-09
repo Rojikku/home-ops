@@ -59,6 +59,9 @@ spec:
             - receiver: "null"
               match:
                 alertname: Watchdog
+            - receiver: "null"
+              match:
+                service: sonarr-metrics
             - receiver: "discord"
               match_re:
                 severity: critical
