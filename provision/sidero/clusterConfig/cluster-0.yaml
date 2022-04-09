@@ -68,7 +68,7 @@ spec:
               - 192.168.0.0/24
               - '!192.168.0.90/32'
       generateType: controlplane
-      talosVersion: v0.14.2
+      talosVersion: v1.0.1
     init:
       configPatches:
         - op: add
@@ -86,7 +86,7 @@ spec:
               - 192.168.0.0/24
               - '!192.168.0.90/32'
       generateType: init
-      talosVersion: v0.14.2
+      talosVersion: v1.0.1
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
@@ -128,11 +128,11 @@ spec:
         - op: replace
           path: /machine/install/image
           # renovate: docker-image
-          value: ghcr.io/talos-systems/installer:v0.14.2
+          value: ghcr.io/siderolabs/installer:v1.0.1
         - op: replace
           path: /machine/kubelet/image
           # renovate: docker-image
-          value: ghcr.io/talos-systems/kubelet:v1.23.4
+          value: ghcr.io/siderolabs/kubelet:v1.23.5
         - op: add
           path: /machine/time
           value:
