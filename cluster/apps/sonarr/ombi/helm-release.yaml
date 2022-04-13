@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: linuxserver/ombi
-      tag: 4.16.8-development
+      tag: 4.16.10-development
       pullPolicy: IfNotPresent
 
     env:
