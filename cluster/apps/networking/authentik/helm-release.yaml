@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: authentik
-      version: 2022.3.1
+      version: 2022.4.1
       sourceRef:
         kind: HelmRepository
         name: authentik-charts
@@ -23,7 +23,7 @@ spec:
       kubernetes.io/arch: amd64
     image:
       repository: ghcr.io/goauthentik/server
-      tag: 2022.3.1
+      tag: 2022.4.1
     ingress:
       enabled: true
       ingressClassName: "traefik"
