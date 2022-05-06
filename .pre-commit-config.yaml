@@ -9,14 +9,14 @@ repos:
           - .github/lint/.yamllint.yaml
         id: yamllint
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.2.0
     hooks:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
       - id: end-of-file-fixer
       - id: mixed-line-ending
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.10
+    rev: v1.1.13
     hooks:
       - id: remove-crlf
       - id: remove-tabs
@@ -29,11 +29,11 @@ repos:
     hooks:
       - id: forbid-secrets
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.2.7
+    rev: v8.8.4
     hooks:
       - id: gitleaks
   - repo: https://github.com/hmrc/security-git-hooks
-    rev: 1.7.0
+    rev: release/1.9.0
     hooks:
       - id: secrets_filecontent
         name: Checking staged files for sensitive content
