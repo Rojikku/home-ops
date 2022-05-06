@@ -87,7 +87,7 @@ spec:
           hajimari.io/icon: "alarm-bell"
           hajimari.io/instance: "monitor"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - &host "alertman.mon.${SECRET_DOMAIN}"
         tls:
