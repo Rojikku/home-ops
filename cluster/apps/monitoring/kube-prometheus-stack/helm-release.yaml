@@ -222,7 +222,7 @@ spec:
       prometheusSpec:
         image:
           repository: quay.io/prometheus/prometheus
-          tag: v2.35.0
+          tag: v2.36.0
         replicas: 2
         replicaExternalLabelName: "replica"
         ruleSelectorNilUsesHelmValues: false
