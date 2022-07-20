@@ -183,7 +183,7 @@ spec:
     prometheusOperator:
       image:
         repository: quay.io/prometheus-operator/prometheus-operator
-        tag: v0.57.0
+        tag: v0.58.0
       prometheusConfigReloader:
         # image to use for config and rule reloading
         image:
