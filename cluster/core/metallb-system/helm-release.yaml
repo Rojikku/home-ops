@@ -50,7 +50,7 @@ spec:
       tolerateMaster: true
       image:
         repository: quay.io/metallb/speaker
-        tag: v0.12
+        tag: v0.13
 
       # frr contains configuration specific to the MetalLB FRR container,
       # for speaker running alongside FRR.
