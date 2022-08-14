@@ -27,7 +27,7 @@ spec:
       # -- image pull policy of the gateway and inserted helper cotainers
       pullPolicy: IfNotPresent
       # -- image tag of the gateway and inserted helper containers
-      tag: v1.6.1
+      tag: v1.7.0
     # -- Namespaces that might contain routed PODs and therefore
     # require a copy of the gneerated settings configmap.
     routed_namespaces:
