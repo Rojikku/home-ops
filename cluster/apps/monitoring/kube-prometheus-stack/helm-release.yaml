@@ -188,7 +188,7 @@ spec:
         # image to use for config and rule reloading
         image:
           repository: quay.io/prometheus-operator/prometheus-config-reloader
-          tag: v0.59.1
+          tag: v0.59.2
         resources:
           requests:
             cpu: 100m
