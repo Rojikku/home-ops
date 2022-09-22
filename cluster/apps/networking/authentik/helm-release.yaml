@@ -62,7 +62,7 @@ spec:
       enabled: true
       image:
         repository: library/redis
-        tag: "7.0.4"
+        tag: "7.0.5"
     podAnnotations:
       secret.reloader.stakater.com/reload: "authentik"
     resources:
