@@ -4,6 +4,7 @@ resources:
   - appscode-charts.yaml
   - authentik-charts.yaml
   - bitnami-charts.yaml
+  - bjw-s-charts.yaml
   - dandydev-charts.yaml
   - deliveryhero-charts.yaml
   - descheduler-charts.yaml
