@@ -8,3 +8,4 @@ resources:
   - git-repos
   - stash-crds
   - kube-prometheus-stack
+  - metallb

@@ -5,8 +5,6 @@ metadata:
   name: metallb
   namespace: metallb-system
 spec:
-  install:
-    crds: CreateReplace
   interval: 5m
   chart:
     spec:
