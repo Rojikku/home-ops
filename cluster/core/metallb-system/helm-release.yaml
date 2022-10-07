@@ -65,5 +65,3 @@ spec:
         image:
           repository: quay.io/frrouting/frr
           tag: stable_8.0
-      crds:
-        enabled: true
