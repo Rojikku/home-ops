@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: metallb
-      version: 0.12.1
+      version: 0.13.5
       sourceRef:
         kind: HelmRepository
         name: metallb-charts
@@ -21,12 +21,12 @@ spec:
         enabled: true
       prometheusRule:
         enabled: true
-    configInline:
-      address-pools:
-        - name: default
-          protocol: layer2
-          addresses:
-            - "${METALLB_LB_RANGE}"
+    # configInline:
+    #   address-pools:
+    #     - name: default
+    #       protocol: layer2
+    #       addresses:
+    #         - "${METALLB_LB_RANGE}"
     # controller contains configuration specific to the MetalLB cluster
     # controller.
     controller:
@@ -35,7 +35,7 @@ spec:
       logLevel: info
       image:
         repository: quay.io/metallb/controller
-        tag: v0.12
+        tag: v0.13
       tolerations:
         - key: node-role.kubernetes.io/master
           effect: NoSchedule
@@ -50,7 +50,7 @@ spec:
       tolerateMaster: true
       image:
         repository: quay.io/metallb/speaker
-        tag: v0.12
+        tag: v0.13
 
       # frr contains configuration specific to the MetalLB FRR container,
       # for speaker running alongside FRR.
