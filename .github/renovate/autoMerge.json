@@ -1,16 +1,27 @@
 {
   "packageRules": [
     {
+      "description": "Auto merge containers",
       "matchDatasources": ["docker"],
       "automerge": true,
       "automergeType": "branch",
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "ghcr.io/k8s-at-home/jackett",
         "ghcr.io/k8s-at-home/prowlarr"
+      ]
+    },
+    {
+      "description": "Auto merge GitHub Actions",
+      "matchDatasources": ["github-tags"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "lycheeverse/lychee-action",
+        "renovatebot/github-action"
       ]
     }
   ]
