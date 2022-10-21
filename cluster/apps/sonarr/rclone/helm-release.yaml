@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: rclone
-      version: v0.1.7
+      version: v0.1.9
       sourceRef:
         kind: HelmRepository
         name: rojikku-charts
@@ -30,7 +30,7 @@ spec:
     images:
       container:
         repository: rclone/rclone
-        tag: 1.59.1
+        # tag: 1.59.1
       pullPolicy: IfNotPresent
     rclone:
       remote: "drive:/Emby"
