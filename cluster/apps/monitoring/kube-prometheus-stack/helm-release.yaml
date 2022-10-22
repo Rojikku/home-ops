@@ -62,6 +62,9 @@ spec:
             - receiver: "null"
               match:
                 service: sonarr-metrics
+            - receiver: "null"
+              match:
+                alertname: InfoInhibitor
             - receiver: "discord"
               match_re:
                 severity: critical
