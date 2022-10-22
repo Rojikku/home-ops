@@ -22,6 +22,8 @@ spec:
         grafanaAgent:
           installOperator: false
     gateway:
+      enabled: true
+      replicas: 3
       ingress:
         enabled: true
         ingressClassName: "traefik"
