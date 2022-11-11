@@ -59,7 +59,7 @@ spec:
       # -- If using a VPN, interface name created by it
       VPN_INTERFACE: wg0
       # -- Prevent non VPN traffic to leave the gateway
-      VPN_BLOCK_OTHER_TRAFFIC: trie
+      VPN_BLOCK_OTHER_TRAFFIC: true
       # -- If VPN_BLOCK_OTHER_TRAFFIC is true, allow VPN traffic over this port
       VPN_TRAFFIC_PORT: "${VPN_PORT}"
       # -- Traffic to these IPs will be send through the K8S gateway
