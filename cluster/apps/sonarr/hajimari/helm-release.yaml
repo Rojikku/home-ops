@@ -28,8 +28,8 @@ spec:
           - sonarr
           - vpn
       name: "admin"
-      groups:
-        - name: Anime
+      globalBookmarks:
+        - group: Anime
           links:
             - name: Anilist
               url: "https://anilist.co/home"

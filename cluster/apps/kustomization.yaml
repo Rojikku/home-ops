@@ -4,7 +4,6 @@ resources:
   - default
   - kube-system
   - networking
-  # - system-upgrade
   - rook-ceph
   - monitoring
   - cert-manager

@@ -8,14 +8,16 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: home-assistant
-      version: 13.4.2
+      chart: app-template
+      version: 1.0.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   values:
+    controller:
+      type: statefulset
     image:
       repository: ghcr.io/home-assistant/home-assistant
       tag: 2022.11.2
@@ -31,6 +33,9 @@ spec:
         type: LoadBalancer
         loadBalancerIP: "${SVC_HASS_ADDR}"
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 8123
     ingress:
       main:
         enabled: true
@@ -64,8 +69,6 @@ spec:
         existingClaim: hass-pvc
     podAnnotations:
       secret.reloader.stakater.com/reload: "home-assistant"
-    mariadb:
-      enabled: false
     addons:
       codeserver:
         enabled: true
@@ -82,6 +85,11 @@ spec:
           - "/config/.vscode"
           - --config
           - "/config/.vscode/config.yaml"
+        service:
+          main:
+            ports:
+              http:
+                port: 12321
         ingress:
           enabled: true
           ingressClassName: "traefik"
