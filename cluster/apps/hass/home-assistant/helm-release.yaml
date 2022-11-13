@@ -83,11 +83,6 @@ spec:
           - "/config/.vscode"
           - --config
           - "/config/.vscode/config.yaml"
-        service:
-          main:
-            ports:
-              http:
-                port: 12321
         ingress:
           enabled: true
           ingressClassName: "traefik"
