@@ -33,6 +33,9 @@ spec:
         type: LoadBalancer
         loadBalancerIP: "${SVC_HASS_ADDR}"
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 8123
     ingress:
       main:
         enabled: true
@@ -82,6 +85,11 @@ spec:
           - "/config/.vscode"
           - --config
           - "/config/.vscode/config.yaml"
+        service:
+          main:
+            ports:
+              http:
+                port: 12321
         ingress:
           enabled: true
           ingressClassName: "traefik"

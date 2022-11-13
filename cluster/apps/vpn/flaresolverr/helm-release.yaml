@@ -22,6 +22,10 @@ spec:
       repository: ghcr.io/flaresolverr/flaresolverr
       tag: v2.2.10
       pullPolicy: IfNotPresent
-
+    service:
+      main:
+        ports:
+          http:
+            port: 8191
     env:
       TZ: "${TIMEZONE}"

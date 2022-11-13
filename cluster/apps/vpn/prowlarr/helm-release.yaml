@@ -32,6 +32,13 @@ spec:
       config:
         enabled: true
         existingClaim: prowlarr-pvc
+
+    service:
+      main:
+        ports:
+          http:
+            port: 9696
+
     ingress:
       main:
         enabled: true

@@ -37,6 +37,12 @@ spec:
         existingClaim: dlcache-pvc
         mountPath: /downloads
 
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+
     ingress:
       main:
         enabled: true

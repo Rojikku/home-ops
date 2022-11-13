@@ -26,6 +26,12 @@ spec:
     securityContext:
       runAsUser: 1000
 
+    service:
+      main:
+        ports:
+          http:
+            port: 8989
+
     persistence:
       config:
         enabled: true

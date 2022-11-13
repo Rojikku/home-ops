@@ -29,6 +29,12 @@ spec:
     securityContext:
       runAsUser: 1000
 
+    service:
+      main:
+        ports:
+          http:
+            port: 8096
+
     ingress:
       main:
         enabled: true
