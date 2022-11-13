@@ -12,6 +12,7 @@ sonarr:
   - base_url: http://sonarr:8989
     api_key: ${SONARR_APIKEY}
     quality_definition: anime
+    delete_old_custom_formats: true
     release_profiles:
       - type: anime
 
