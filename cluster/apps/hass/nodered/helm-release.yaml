@@ -24,6 +24,11 @@ spec:
       tag: v3.0.2
     env:
       TZ: "${TIMEZONE}"
+    service:
+      main:
+        ports:
+          http:
+            port: 1880
     ingress:
       main:
         enabled: true
