@@ -21,7 +21,7 @@ spec:
               image: ghcr.io/onedr0p/recyclarr:2.5.0@sha256:bd4dc562a12c31857c2e198de154d4ffa734d5e7f6fe817283c6fdf5807c5fb1
               envFrom:
                 - secretRef:
-                    name: *app
+                    name: arr-apikeys
               command:
                 - "/bin/bash"
                 - -c
