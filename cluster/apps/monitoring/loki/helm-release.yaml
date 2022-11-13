@@ -92,7 +92,7 @@ spec:
           installOperator: true
     gateway:
       enabled: true
-      replicas: 3
+      replicas: 2
       ingress:
         enabled: true
         ingressClassName: "traefik"
