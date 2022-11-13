@@ -32,19 +32,17 @@ spec:
       #   - name: Some External Cluster Service
       #     url: http://192.168.1.100:5000
       #     icon: test-tube
-      groups:
-        - name: Admin
-          links:
+      globalBookmarks:
+        - group: Admin
+          bookmarks:
             - name: Cluster Github
               url: "https://github.com/Rojikku/k3s"
-            - name: Custom Charts Repo
-              url: "https://github.com/Rojikku/charts"
             - name: Renovate Logs
               url: "https://app.renovatebot.com/dashboard#github/Rojikku/k3s"
             - name: Prometheus Troubleshooting
               url: "https://runbooks.prometheus-operator.dev/"
-        - name: Tech
-          links:
+        - group: Tech
+          bookmarks:
             - name: Hacker News
               url: "https://news.ycombinator.com/"
             - name: The Verge
