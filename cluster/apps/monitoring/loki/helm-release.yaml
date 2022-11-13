@@ -87,7 +87,7 @@ spec:
           reporting_enabled: false
     monitoring:
       selfMonitoring:
-        enabled: false
+        enabled: true
         grafanaAgent:
           installOperator: false
     gateway:
