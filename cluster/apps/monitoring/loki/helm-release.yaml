@@ -89,7 +89,7 @@ spec:
       selfMonitoring:
         enabled: true
         grafanaAgent:
-          installOperator: false
+          installOperator: true
     gateway:
       enabled: true
       replicas: 3
