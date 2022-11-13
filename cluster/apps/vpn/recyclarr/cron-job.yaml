@@ -8,6 +8,7 @@ metadata:
     setGateway: "false"
 spec:
   schedule: "@daily"
+  concurrencyPolicy: "Forbid"
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 86400
