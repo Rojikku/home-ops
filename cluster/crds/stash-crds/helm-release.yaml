@@ -8,9 +8,9 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.appscode.com/stable/
       chart: stash-crds
-      version: v2021.11.24
+      # renovate: registryUrl=https://charts.appscode.com/stable/ chart=stash-crds
+      version: v2022.09.29
       sourceRef:
         kind: HelmRepository
         name: appscode-charts
