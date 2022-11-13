@@ -67,6 +67,6 @@ spec:
           volumes:
             - name: config
               configMap:
-                name: trash-updater-config
+                name: recyclarr
             - name: shared
               emptyDir: {}
