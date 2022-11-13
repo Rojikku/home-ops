@@ -15,8 +15,8 @@
     "github>Rojikku/k3s//.github/renovate/semanticCommits.json"
   ],
   "platform": "github",
-  "username": "Rin The Good Bot[bot]",
-  // "gitAuthor": "Rin The Good Bot <[bot]@users.noreply.gothub.com>",
+  "username": "rin-the-good-bot[bot]",
+  "gitAuthor": "rin-the-good-bot <118127249+rin-the-good-bot[bot]@users.noreply.gothub.com>",
   "timezone": "America/New_York",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
