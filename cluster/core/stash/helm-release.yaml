@@ -26,7 +26,7 @@ spec:
       crdInstaller:
         enabled: false
       operator:
-        registry: appscode
+        registry: stashed
         repository: stash
         # renovate: registryUrl=https://charts.appscode.com/stable/ chart=stash-community
         tag: v0.23.0
