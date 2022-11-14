@@ -2,7 +2,7 @@
 apiVersion: stash.appscode.com/v1alpha1
 kind: Repository
 metadata:
-  name: &repo b2-repo-nodered
+  name: b2-repo-nodered
   namespace: hass
 spec:
   backend:
@@ -18,7 +18,7 @@ metadata:
   namespace: hass
 spec:
   repository:
-    name: *repo
+    name: b2-repo-nodered
   schedule: "00 22 * * *"
   target:
     alias: nodered
