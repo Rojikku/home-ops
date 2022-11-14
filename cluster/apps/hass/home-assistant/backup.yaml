@@ -3,7 +3,7 @@ apiVersion: stash.appscode.com/v1alpha1
 kind: Repository
 metadata:
   name: &repo b2-repo-hass
-  namespace: stash
+  namespace: hass
 spec:
   backend:
     b2:
