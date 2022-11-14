@@ -1,4 +1,16 @@
 ---
+apiVersion: stash.appscode.com/v1alpha1
+kind: Repository
+metadata:
+  name: &repo b2-repo-hass
+  namespace: stash
+spec:
+  backend:
+    b2:
+      bucket: ${B2_BUCKET}
+      prefix: /stash/hass
+    storageSecretName: b2-secrets
+---
 apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
@@ -7,7 +19,7 @@ metadata:
 spec:
   driver: VolumeSnapshotter
   repository:
-    name: b2-repo
+    name: *repo
   schedule: "45 21 * * *"
   target:
     alias: hass
