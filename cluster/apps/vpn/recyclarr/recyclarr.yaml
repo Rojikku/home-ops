@@ -13,7 +13,7 @@ sonarr:
           - ed7f1e315e000aef424a58517fa48727 # Anime BD Tier 02 (SeaDex Muxers)
           - 096e406c92baa713da4a72d88030b815 # Anime BD Tier 03 (SeaDex Muxers)
         quality_profiles:
-          - name: Anime Subs
+          - name: HD
 
 # radarr:
 #   - base_url: http://radarr:7878
