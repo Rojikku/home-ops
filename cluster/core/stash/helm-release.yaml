@@ -28,8 +28,8 @@ spec:
       operator:
         registry: stashed
         repository: stash
-        # renovate: registryUrl=https://charts.appscode.com/stable/ chart=stash-community
-        tag: v0.23.0
+        # renovate: datasource=https://docker.io/ image=stashed/stash
+        tag: v0.23.1
         resources:
           requests:
             cpu: "100m"
