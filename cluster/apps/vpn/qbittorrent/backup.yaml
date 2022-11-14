@@ -1,4 +1,16 @@
 ---
+apiVersion: stash.appscode.com/v1alpha1
+kind: Repository
+metadata:
+  name: b2-repo-qbt
+  namespace: sonarr
+spec:
+  backend:
+    b2:
+      bucket: ${B2_BUCKET}
+      prefix: /stash/qbt
+    storageSecretName: b2-secrets
+---
 apiVersion: stash.appscode.com/v1beta1
 kind: BackupConfiguration
 metadata:
@@ -8,7 +20,7 @@ metadata:
     setGateway: false
 spec:
   repository:
-    name: b2-repo
+    name: b2-repo-qbt
   schedule: "15 02 * * *"
   target:
     alias: qbittorrent
