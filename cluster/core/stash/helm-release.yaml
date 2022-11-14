@@ -23,6 +23,8 @@ spec:
       community: true
     stash-community:
       # license: from secret
+      crdInstaller:
+        enabled: false
       operator:
         registry: appscode
         repository: stash
