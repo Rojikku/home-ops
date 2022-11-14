@@ -6,28 +6,14 @@ sonarr:
   - base_url: http://sonarr:8989
     api_key: ${SONARR_APIKEY}
     delete_old_custom_formats: true
-    # Quality Definition Settings
-    quality_definition: hybrid
-
-    # Release Profile Settings
-    release_profiles:
+    quality_definition: anime
+    custom_formats:
       - trash_ids:
-          - d428eda85af1df8904b4bbe4fc2f537c # Anime - First release profile
-          - 6cd9e10bb5bb4c63d2d7cd3279924c7b # Anime - Second release profile
-        strict_negative_scores: true
-        tags: [anime]
-      - trash_ids:
-          - EBC725268D687D588A20CBC5F97E538B # Low Quality Groups
-          - 1B018E0C53EC825085DD911102E2CA36 # Release Sources (Streaming Service)
-          - 71899E6C303A07AF0E4746EFF9873532 # P2P Groups + Repack/Proper
-        strict_negative_scores: false
-        tags: [tv]
-      - trash_ids: [76e060895c5b8a765c310933da0a5357] # Optionals
-        filter:
-          include:
-            - 436f5a7d08fbf02ba25cb5e5dfe98e55 # Ignore Dolby Vision without HDR10 fallback
-            - f3f0f3691c6a1988d4a02963e69d11f2 # Ignore The Group -SCENE
-        tags: [tv]
+          - 949c16fe0a8147f50ba82cc2df9411c9 # Anime BD Tier 01 (Top SeaDex Muxers)
+          - ed7f1e315e000aef424a58517fa48727 # Anime BD Tier 02 (SeaDex Muxers)
+          - 096e406c92baa713da4a72d88030b815 # Anime BD Tier 03 (SeaDex Muxers)
+        quality_profiles:
+          - name: Anime Subs
 
 # radarr:
 #   - base_url: http://radarr:7878
