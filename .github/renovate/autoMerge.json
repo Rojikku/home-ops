@@ -8,7 +8,8 @@
       "requiredStatusChecks": null,
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
-        "ghcr.io/onedr0p/prowlarr-nightly"
+        "ghcr.io/onedr0p/prowlarr-nightly",
+        "ghcr.io/onedr0p/sonarr-nightly"
       ]
     },
     {
