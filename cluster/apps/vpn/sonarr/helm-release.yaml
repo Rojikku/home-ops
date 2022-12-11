@@ -38,8 +38,9 @@ spec:
         existingClaim: sonarr-pvc
       media:
         enabled: true
-        type: hostPath
-        hostPath: /tmp/rclone
+        type: nfs
+        server: "172.16.0.54"
+        hostPath: /volume1/Media
         mountPath: /mnt/drive
       downloads:
         enabled: true
