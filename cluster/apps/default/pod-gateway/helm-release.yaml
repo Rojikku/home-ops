@@ -21,6 +21,8 @@ spec:
 
   # See https://github.com/k8s-at-home/charts/blob/master/charts/pod-gateway/values.yaml
   values:
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "vpn-creds"
     image:
       # -- image repository of the gateway and inserted helper containers
       repository: ghcr.io/angelnu/pod-gateway
