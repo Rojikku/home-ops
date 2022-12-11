@@ -72,8 +72,9 @@ spec:
 
       media:
         enabled: true
-        type: hostPath
-        hostPath: /tmp/plexdrive
+        type: nfs
+        server: "172.16.0.54"
+        path: /volume1/Media
         mountPath: /media
 
     # -- Configure the Security Context for the Pod
