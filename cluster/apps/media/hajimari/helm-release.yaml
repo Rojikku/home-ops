@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: r-haji
-  namespace: sonarr
+  namespace: media
 spec:
   interval: 5m
   chart:
@@ -25,8 +25,7 @@ spec:
       title: "Sonarr"
       namespaceSelector:
         matchNames:
-          - sonarr
-          - vpn
+          - media
       name: "admin"
       globalBookmarks:
         - group: Anime

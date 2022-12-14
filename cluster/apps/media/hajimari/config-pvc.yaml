@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: r-haji-pvc
-  namespace: sonarr
+  namespace: media
 spec:
   accessModes:
     - ReadWriteOnce
