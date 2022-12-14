@@ -33,7 +33,7 @@ spec:
     # -- Namespaces that might contain routed PODs and therefore
     # require a copy of the gneerated settings configmap.
     routed_namespaces:
-      - vpn
+      - media
     # -- IP address of the DNS server within the vxlan tunnel.
     # All mutated PODs will get this as their DNS server.
     # It must match VXLAN_GATEWAY_IP in settings.sh

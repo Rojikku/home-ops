@@ -9,6 +9,4 @@ resources:
   - cert-manager
   - flux-system
   - hass
-  - vpn
-  - sonarr
   - media
