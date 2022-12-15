@@ -139,6 +139,10 @@ kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/machine
 kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/spec/accepted", "value": true}]'
 ```
 
+## Setup the nodes
+
+I like to use theila to view my Servers, and then I PXE boot every node one by one, accept the server in theila, and sidero will wipe them all. Once I have all of them wiped, then I will proceed to the next step.
+
 ## Deploy
 
 ```sh
