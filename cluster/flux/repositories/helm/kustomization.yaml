@@ -30,3 +30,4 @@ resources:
   - ./tf-controller.yaml
   - ./traefik.yaml
   - ./weave-gitops.yaml
+  - ./k8s-at-home-charts.yaml
