@@ -28,4 +28,5 @@ resources:
   - ./rojikku.yaml
   - ./stakater.yaml
   - ./tf-controller.yaml
+  - ./traefik.yaml
   - ./weave-gitops.yaml
