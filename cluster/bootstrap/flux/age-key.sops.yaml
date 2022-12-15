@@ -1,0 +1,28 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: sops-age
+    namespace: flux-system
+stringData:
+    age.agekey: ENC[AES256_GCM,data:3qd6ruDtlMVYVhKp3IaVlFoBpydz3wW8N6vdRLtAvl7QeyAvXHiKFDSeNde4rxbBXWBsG6TC3MuNdDJguPl+o8EYllTYdXF+4DvG1Bc138gOPSEOKyIEOtXchtFbHj+rl3T5X5rL7WeDXbuMs36fUHJaH5zAqhbD5cNoPK5aAC23XPRw0k2ZwCf5WxWxGs0bWV+7JgYp9mJ/6PKhgzHoEfcRWHFI0alHCHSIS7eTjRU7qnxyC1bYQyXbnhgc,iv:PeWPOV+Cs3oijcMEM7GU6tjY8vVteSy/0X/mqDbaQ2A=,tag:XbmeRybIPC17daB3xrvG0A==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmV0VzRXhiMTE4bENjaG5x
+            UmRjWis1NUtjalNKazBnVC8zb0JGNnNGY0VjCnQvUFkvVVBTK1RvNUhoMzhXMVRB
+            aHp2dHJkS0ZoUWpHazBVeEV5bnQ0SUkKLS0tIGx6enZXOFFRTi8vb0pFb05PekRj
+            clFIcDN6UnRxdTdZZXc5Z1BQQUo0V1UKBcvSWntZAO7AhENT90qDx/TZjELNe0Oc
+            VlOiG15rNt4oMLKgH9bJn99qK9GAzs8HfLZ3CiUhCRjhEWhLHFlJNw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-12-14T19:44:18Z"
+    mac: ENC[AES256_GCM,data:RrrlTpfeAFxRYVzoDOqgnACXq9S5S4vCntRyoc8uguVQ+k4u3yiW4PP+BfxwE0Gh2KLSWatAjhnzvYw83AkjSVcOS7rbsSqfdHOU8UKxm5Ecg4BNnAdDVGV9lw2tNCvbVqYQMsIOl/CW6w35IUF4TVMhkDUVAjm8CtggAqmdXB0=,iv:DyTWYq5CSc+QQfbF0Z9Vm1zdoC82zkizczieHGsqvDg=,tag:G1ZN9uBp8tAvA4uExh+eQQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
