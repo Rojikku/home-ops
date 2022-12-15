@@ -27,6 +27,7 @@ Alternatively, install a different cluster, like my sidero
 ```sh
 sops -d sidero/flux/vars/cluster-secrets.sops.yaml | kubectl apply -f -
 kubectl apply -f sidero/flux/vars/cluster-settings.yaml
+kubectl apply --server-side --kustomize ./sidero/flux/config
 ```
 
 ### Kick off Flux applying this repository
