@@ -5,4 +5,3 @@ resources:
   - home-assistant.sops.yaml
   - postgres-db.yaml
   - helm-release.yaml
-  - backup.yaml
