@@ -6,6 +6,5 @@ resources:
   - cert-manager
   - kubegres
   - metallb-system
-  - rook-ceph
   - device-manager
   - networking

@@ -29,7 +29,11 @@
     "prettier.configPath": ".github/linters/.prettierrc.yaml",
     "prettier.ignorePath": ".github/linters/.prettierignore",
     "yaml.schemas": {
-        "Kubernetes": "cluster/*.yaml"
+        "Kubernetes": "cluster/*.yaml",
+        "https://json.schemastore.org/kustomization.json": [
+            "file:///home/rojikku/GITS/k3s/cluster/core/rook-ceph/rook-ceph/app/kustomization.yaml",
+            "file:///home/rojikku/GITS/k3s/cluster/core/rook-ceph/rook-ceph/cluster/kustomization.yaml"
+        ]
     },
     "editor.fontFamily": "FiraCode Nerd Font",
     "editor.fontLigatures": true,
