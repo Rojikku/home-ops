@@ -89,6 +89,8 @@ kubectl get nodes
 # Setup flux
 It's nice to use flux/github/renovate to keep my cluster configs up to date.
 
+Might want to disable the sidero/clusterConfig/kustomization.yaml for cluster-0 so it doesn't start doing things on its own, though.
+
 [Apply the bootstrap](/cluster/bootstrap/readme.md)
 
 # Sidero Install via ClusterCTL
@@ -103,21 +105,10 @@ clusterctl --config clusterctl.yaml init -b talos -c talos -i sidero
 kubectl patch deploy -n sidero-system sidero-controller-manager --type='json' -p='[{"op": "add", "path": "/spec/template/spec/hostNetwork", "value": true}]'
 ```
 
-## Setup for the cluster
-
-Apply the ServerClass for control planes.
-
-Then patch any remaining nodes as needed.
-
-```sh
-kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/machine/install", "value": {"disk": "/dev/sda"} }]'
-```
-
-```sh
-kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/spec/accepted", "value": true}]'
-```
 
 ## Generate cluster configs
+
+If needed, otherwise use existing configs synced with flux
 
 Generate cluster configuration:
 ```sh
@@ -134,11 +125,26 @@ Setup talos VIP as directed [here](https://www.sidero.dev/docs/v0.4/resource-con
 
 Edit the cluster-0.yaml for the appropriate replica counts.
 
+## Setup for the cluster
+
+Apply the ServerClass for control planes.
+
+Then patch any remaining nodes as needed.
+
+```sh
+kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/machine/install", "value": {"disk": "/dev/sda"} }]'
+```
+
+```sh
+kubectl patch server $UID --type='json' -p='[{"op": "replace", "path": "/spec/accepted", "value": true}]'
+```
+
 ## Deploy
 
 ```sh
 kubectl apply -f cluster-0.yaml
 ```
+Or enable it again in flux
 
 ```sh
 watch kubectl get servers,machines,clusters
