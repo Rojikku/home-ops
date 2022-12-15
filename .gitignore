@@ -19,6 +19,6 @@ terraform.tfstate*
 repository.yaml
 known_hosts
 # Ignore sidero configs that contain passwords
-talosconfig
+sideroTalosConfig
 k8s-*-serverclass.yaml
 *.code-workspace
