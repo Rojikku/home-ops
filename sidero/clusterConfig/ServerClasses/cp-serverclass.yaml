@@ -1,0 +1,68 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: controlplane
+spec:
+  qualifiers:
+    cpu:
+      - manufacturer: "Intel(R) Corporation"
+        version: "Intel(R) Celeron(R) N5105 @ 2.00GHz"
+    systemInformation:
+      - manufacturer: Shenzhen Wangang Technology Co., Ltd
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
+    - op: add
+      path: /cluster/extraManifests
+      value:
+        - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/main/deploy/standalone-install.yaml
+    - op: add
+      path: /machine/systemDiskEncryption
+      value:
+        ephemeral:
+          provider: luks2
+          keys:
+            - nodeID: {}
+              slot: 0
+        state:
+          provider: luks2
+          keys:
+            - nodeID: {}
+              slot: 0
+    - op: add
+      path: /machine/kubelet/extraArgs
+      value:
+        rotate-server-certificates: true
+    - op: add
+      path: /machine/time
+      value:
+        disabled: false
+        servers:
+          - 192.168.0.1
+          - time.cloudflare.com
+    - op: replace
+      path: /machine/install/image
+      value: ${TALOS_IMAGE}
+    - op: add
+      path: /machine/sysctls
+      value:
+        fs.inotify.max_user_watches: 1048576
+        fs.inotify.max_user_instances: 8192
+    - op: replace
+      path: /cluster/apiServer/image
+      value: k8s.gcr.io/kube-apiserver:${K8S_VERSION}
+    - op: replace
+      path: /cluster/controllerManager/image
+      value: k8s.gcr.io/kube-controller-manager:${K8S_VERSION}
+    - op: replace
+      path: /cluster/scheduler/image
+      value: k8s.gcr.io/kube-scheduler:${K8S_VERSION}
+    - op: replace
+      path: /machine/kubelet/image
+      value: ${KUBELET_IMAGE}
+    - op: add
+      path: /cluster/coreDNS
+      value:
+        image: docker.io/coredns/coredns:1.10.0

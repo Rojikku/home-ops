@@ -28,7 +28,7 @@ metadata:
   namespace: default
 spec:
   controlPlaneEndpoint:
-    host: 192.168.0.90
+    host: ${CP_ENDPOINT}
     port: 6443
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
@@ -60,15 +60,15 @@ spec:
               - interface: eth0
                 dhcp: true
                 vip:
-                  ip: 192.168.0.90
+                  ip: ${CP_ENDPOINT}
         - op: add
           path: /machine/kubelet/nodeIP
           value:
             validSubnets:
               - 192.168.0.0/24
-              - '!192.168.0.90/32'
+              - '!${CP_ENDPOINT}/32'
       generateType: controlplane
-      talosVersion: v1.0.1
+      talosVersion: ${TALOS_VERSION}
     init:
       configPatches:
         - op: add
@@ -78,21 +78,21 @@ spec:
               - interface: eth0
                 dhcp: true
                 vip:
-                  ip: 192.168.0.90
+                  ip: ${CP_ENDPOINT}
         - op: add
           path: /machine/kubelet/nodeIP
           value:
             validSubnets:
               - 192.168.0.0/24
-              - '!192.168.0.90/32'
+              - '!${CP_ENDPOINT}/32'
       generateType: init
-      talosVersion: v1.0.1
+      talosVersion: ${TALOS_VERSION}
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
     name: cluster-0-cp
   replicas: 3
-  version: v1.23.4
+  version: ${K8S_VERSION}
 ---
 apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
 kind: TalosConfigTemplate
@@ -103,7 +103,7 @@ spec:
   template:
     spec:
       generateType: join
-      talosVersion: v0.14.2
+      talosVersion: ${TALOS_VERSION}
       configPatches:
         - op: replace
           path: /machine/install/disk
@@ -127,12 +127,10 @@ spec:
             rotate-server-certificates: true
         - op: replace
           path: /machine/install/image
-          # renovate: docker-image
-          value: ghcr.io/siderolabs/installer:v1.0.1
+          value: ${TALOS_IMAGE}
         - op: replace
           path: /machine/kubelet/image
-          # renovate: docker-image
-          value: ghcr.io/siderolabs/kubelet:v1.23.5
+          value: ${KUBELET_IMAGE}
         - op: add
           path: /machine/time
           value:
@@ -169,7 +167,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
         kind: MetalMachineTemplate
         name: cluster-0-workers
-      version: v1.23.4
+      version: ${K8S_VERSION}
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalMachineTemplate
@@ -207,7 +205,7 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
         kind: MetalMachineTemplate
         name: cluster-0-worker-k8s-3
-      version: v1.23.4
+      version: ${K8S_VERSION}
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalMachineTemplate

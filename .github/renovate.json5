@@ -25,18 +25,18 @@
   "ignorePaths": ["archive/**"],
   // set up renovate managers
     "flux": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+    "fileMatch": ["cluster/.+\\.ya?ml$","sidero/.+\\.ya?ml$"]
   },
   "helm-values": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+    "fileMatch": ["cluster/.+\\.ya?ml$","sidero/.+\\.ya?ml$"]
   },
   "kubernetes": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+    "fileMatch": ["cluster/.+\\.ya?ml$","sidero/.+\\.ya?ml$"]
   },
   "regexManagers": [
     {
       "description": "Process CRD dependencies",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "fileMatch": ["cluster/.+\\.ya?ml$","sidero/.+\\.ya?ml$"],
       "matchStrings": [
         // GitRepository where 'Git release/tag' matches 'Helm' version
         "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
@@ -50,6 +50,7 @@
       "fileMatch": [
         "ansible/.+\\.ya?ml$",
         "cluster/.+\\.ya?ml$"
+        "sidero/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
@@ -59,7 +60,7 @@
     },
     {
       "description": "Process raw GitHub URLs",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "fileMatch": ["cluster/.+\\.ya?ml$","sidero/.+\\.ya?ml$"],
       "matchStrings": [
         "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
       ],

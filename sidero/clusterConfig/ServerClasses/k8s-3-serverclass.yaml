@@ -1,0 +1,31 @@
+---
+apiVersion: metal.sidero.dev/v1alpha1
+kind: ServerClass
+metadata:
+  name: k8s-3
+spec:
+  qualifiers:
+    cpu:
+      - manufacturer: "Intel(R) Corporation"
+        version: "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz"
+    systemInformation:
+      - manufacturer: Unknown
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
+    - op: add
+      path: /machine/systemDiskEncryption
+      value:
+        ephemeral:
+          provider: luks2
+          keys:
+            - static:
+                passphrase: ${K8S3_PASSPHRASE}
+              slot: 0
+        state:
+          provider: luks2
+          keys:
+            - static:
+                passphrase: ${K8S3_PASSPHRASE}
+              slot: 0

@@ -86,10 +86,15 @@ Once Talos prints `[talos] boot sequence: done`, Kubernetes should be up:
 kubectl get nodes
 ```
 
+# Setup flux
+It's nice to use flux/github/renovate to keep my cluster configs up to date.
+
+[Apply the bootstrap](/cluster/bootstrap/readme.md)
+
 # Sidero Install via ClusterCTL
 Install the configuration file `clusterctl.yaml` with configuration options, or specify --config, and run:
 ```sh
-clusterctl init -b talos -c talos -i sidero
+clusterctl --config clusterctl.yaml init -b talos -c talos -i sidero
 ```
 
 (If needed) Patch the deployment to enable host networking:
