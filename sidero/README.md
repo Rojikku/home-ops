@@ -1,20 +1,30 @@
 # Sidero
 
-My installation notes based off of [official docs](https://www.sidero.dev/docs/v0.3/guides/sidero-on-rpi4/) (Totally not mostly stolen from onedr0p...really).
+My installation notes based off of [official docs](https://www.sidero.dev/v0.5/guides/sidero-on-rpi4/) (Totally not mostly stolen from onedr0p...really).
 
 ## Installing Talos
 
-Prepare the SD card with the Talos RPi4 image, and boot the RPi4. Talos should drop into maintenance mode printing the acquired IP address. Record the IP address as the environment variable `SIDERO_ENDPOINT`:
-
+Download the latest Talos RPi4 image and install it on the SD card
 ```sh
-set -gx SIDERO_ENDPOINT 192.168.42.179
+curl -LO https://github.com/siderolabs/talos/releases/download/latest/metal-rpi_4-arm64.img.xz
+xz -d metal-rpi_4-arm64.img.xz
+sudo dd if=metal-rpi_4-arm64.img of=/dev/sdc bs=4M conv=fsync status=progress
+sudo sync
 ```
 
+Boot the RPi4. Talos should drop into maintenance mode printing the acquired IP address.
 > Note: it makes sense to transform DHCP lease for RPi4 into a static reservation so that RPi4 always has the same IP address.
+Mine is a static reservation, already, so I don't have to look it up.
+Record the IP address as the environment variable `SIDERO_ENDPOINT`:
+
+```sh
+set -gx SIDERO_ENDPOINT 192.168.0.95
+```
+
 Generate Talos machine configuration for a single-node cluster:
 
 ```sh
-talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"},{"op": "replace", "path": "/machine/kubelet/image", "value": "ghcr.io/talos-systems/kubelet:v1.23.3"}]' sidero https://$SIDERO_ENDPOINT:6443/
+talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"},{"op": "replace", "path": "/machine/kubelet/image", "value": "ghcr.io/siderolabs/kubelet:v1.26.0"}]' sidero https://$SIDERO_ENDPOINT:6443/
 ```
 
 In `controlplane.yaml` uncomment and change all Kubernetes images to use `v1.22.0` and talos image to `v0.13.0`
