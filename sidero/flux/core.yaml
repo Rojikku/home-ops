@@ -10,7 +10,7 @@ spec:
   prune: false
   sourceRef:
     kind: GitRepository
-    name: home-ops-flux
+    name: home-ops-sidero-flux
   decryption:
     provider: sops
     secretRef:
