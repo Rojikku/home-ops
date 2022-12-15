@@ -20,5 +20,5 @@ repository.yaml
 known_hosts
 # Ignore sidero configs that contain passwords
 sideroTalosConfig
-k8s-*-serverclass.yaml
+talosconfig
 *.code-workspace
