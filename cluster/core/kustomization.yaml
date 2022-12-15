@@ -6,8 +6,6 @@ resources:
   - cert-manager
   - kubegres
   - metallb-system
-  # - system-upgrade
   - rook-ceph
   - device-manager
   - networking
-  - stash
