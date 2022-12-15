@@ -7,11 +7,8 @@ spec:
   qualifiers:
     cpu:
       - manufacturer: "Intel(R) Corporation"
-        version: "CPU 1"
-      - manufacturer: "Intel(R) Corporation"
         version: "Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz"
     systemInformation:
-      - family: Unknown
       - manufacturer: AZW
   configPatches:
     - op: replace
