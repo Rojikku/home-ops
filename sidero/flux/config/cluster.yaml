@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: ssh://git@github.com/Rojikku/k3s
+  url: ssh://git@github.com/Rojikku/home-ops
   ref:
     branch: main
   secretRef:

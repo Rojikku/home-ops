@@ -26,8 +26,11 @@ Generate Talos machine configuration for a single-node cluster:
 ```sh
 talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"},{"op": "replace", "path": "/machine/kubelet/image", "value": "ghcr.io/siderolabs/kubelet:v1.26.0"}]' sidero https://$SIDERO_ENDPOINT:6443/
 ```
+Optionally, if talosctl recently updated, you can not set the latest kubelet version and it'll autocomplete.
+Talosctl must be up to date to generate with the latest version of talos images.
 
-In `controlplane.yaml` uncomment and change all Kubernetes images to use `v1.22.0` and talos image to `v0.13.0`
+I recommend going into `controlplane.yaml` and uncommenting the time subsection.
+The configs can have significant updates and improvements, so if you're reinstalling the system anyway, it makes sense to generate a new config.
 
 Submit the generated configuration to Talos:
 
@@ -54,16 +57,21 @@ You can verify that Talos has booted by running:
 talosctl version
 ```
 
-<!-- Bootstrap the etcd cluster:
+Bootstrap the etcd cluster:
 
 ```sh
 talosctl bootstrap
-``` -->
+```
 
 Fetch the `kubeconfig` from the cluster with:
 
 ```sh
 talosctl kubeconfig
+```
+
+Since I have multiple clusters, I use kubie. Change to the appropriate context if needed.
+```sh
+kubie ctx
 ```
 
 You can watch the bootstrap progress by running:
