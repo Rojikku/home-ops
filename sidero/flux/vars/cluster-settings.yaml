@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-settings
+  namespace: flux-system
+data:
+  # Environmental Data
+  TIMEZONE: "America/New_York"
+  # IP Ranges
+  METALLB_LB_RANGE: 192.168.0.150-192.168.0.200
+  METALLB_TRAEFIK_ADDR: 192.168.0.150
+  SVC_HASS_ADDR: 192.168.0.160
+  SVC_MOSQUITTO_ADDR: 192.168.0.161
+  NAS_ADDR: 172.16.0.54
