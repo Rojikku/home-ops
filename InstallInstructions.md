@@ -1,4 +1,4 @@
-# How Rojikku re-builds his cluster.
+# How I re-build once my cluster is up
 <details>
     <summary>Cluster Details/Original Text</summary>
 
@@ -137,44 +137,13 @@ source ~/.bashrc
 
 4. Fill out the Age public key in the `.config.env` under `BOOTSTRAP_AGE_PUBLIC_KEY`, **note** the public key should start with `age`...
 </details>
-<details>
-    <summary>Setting up Ubuntu</summary>
-### :zap:&nbsp; Preparing Ubuntu with Ansible
 
-:round_pushpin: Here we will be running a Ansible Playbook to prepare Ubuntu for running a Kubernetes cluster.
+## Verify cluster
 
-:round_pushpin: Nodes are not security hardened by default, you can do this with [dev-sec/ansible-collection-hardening](https://github.com/dev-sec/ansible-collection-hardening) or something similar.
-
-1. Ensure you are able to SSH into you nodes from your workstation with using your private ssh key. This is how Ansible is able to connect to your remote nodes.
-
-2. Install the deps by running `task ansible:deps`
-
-3. Verify Ansible can view your config by running `task ansible:list`
-
-4. Verify Ansible can ping your nodes by running `task ansible:adhoc:ping`
-
-5. Finally, run the Ubuntu Prepare playbook by running `task ansible:playbook:ubuntu-prepare`
-
-6. If everything goes as planned you should see Ansible running the Ubuntu Prepare Playbook against your nodes.
-
-</details>
-
-### :sailboat:&nbsp; Installing k3s with Ansible
-
-:round_pushpin: Here we will be running a Ansible Playbook to install [k3s](https://k3s.io/) with [this](https://galaxy.ansible.com/xanmanning/k3s) wonderful k3s Ansible galaxy role. After completion, Ansible will drop a `kubeconfig` in `./provision/kubeconfig` for use with interacting with your cluster with `kubectl`.
-
-1. Verify Ansible can view your config by running `task ansible:list`
-
-2. Verify Ansible can ping your nodes by running `task ansible:adhoc:ping`
-
-3. Run the k3s install playbook by running `task ansible:playbook:k3s-install`
-
-4. If everything goes as planned you should see Ansible running the k3s install Playbook against your nodes.
-
-5. Verify the nodes are online
+1. Verify the nodes are online, after deploying the cluster with Sidero.
 
 ```sh
-kubectl --kubeconfig=./provision/kubeconfig get nodes
+kubectl get nodes
 # NAME           STATUS   ROLES                       AGE     VERSION
 # k8s-0          Ready    control-plane,master      4d20h   v1.21.5+k3s1
 # k8s-1          Ready    worker                    4d20h   v1.21.5+k3s1
@@ -182,78 +151,8 @@ kubectl --kubeconfig=./provision/kubeconfig get nodes
 
 ### :small_blue_diamond:&nbsp; GitOps with Flux
 
-:round_pushpin: Here we will be installing [flux](https://toolkit.fluxcd.io/) after some quick bootstrap steps.
+1. [Bootstrap flux](/cluster/bootstrap/readme.md)
 
-1. Verify Flux can be installed
-
-```sh
-flux --kubeconfig=./provision/kubeconfig check --pre
-# ► checking prerequisites
-# ✔ kubectl 1.21.5 >=1.18.0-0
-# ✔ Kubernetes 1.21.5+k3s1 >=1.16.0-0
-# ✔ prerequisites checks passed
-```
-
-2. Pre-create the `flux-system` namespace
-
-```sh
-kubectl --kubeconfig=./provision/kubeconfig create namespace flux-system --dry-run=client -o yaml | kubectl --kubeconfig=./provision/kubeconfig apply -f -
-```
-
-3. Add the Age key in-order for Flux to decrypt SOPS secrets
-
-```sh
-cat ~/.config/sops/age/keys.txt |
-    kubectl --kubeconfig=./provision/kubeconfig \
-    -n flux-system create secret generic sops-age \
-    --from-file=age.agekey=/dev/stdin
-```
-4. If needed, generate a known hosts file for use with private keys.
-```
-ssh-keyscan github.com > ./known_hosts
-```
-5. Add private keys even though my cluster is public.
-```
-kubectl --kubeconfig=./provision/kubeconfig -n flux-system create secret generic ssh-credentials --from-file=identity=/home/rojikku/.ssh/flux/id_ed25519_flux --from-file=identity.pub=/home/rojikku/.ssh/flux/id_ed25519_flux.pub --from-file=./known_hosts
-```
-The above are in a sub directory of .ssh so they don't get caught up with ssh-copy-id
-
-:round_pushpin: Variables defined in `./cluster/base/cluster-secrets.sops.yaml` and `./cluster/base/cluster-settings.sops.yaml` will be usable anywhere in your YAML manifests under `./cluster`
-
-
-6. Install Flux
-
-:round_pushpin: Due to race conditions with the Flux CRDs you will have to run the below command twice. There should be no errors on this second run.
-
-```sh
-kubectl --kubeconfig=./provision/kubeconfig apply --kustomize=./cluster/base/flux-system
-```
-Output:
-```
-# namespace/flux-system configured
-# customresourcedefinition.apiextensions.k8s.io/alerts.notification.toolkit.fluxcd.io created
-# ...
-# unable to recognize "./cluster/base/flux-system": no matches for kind "Kustomization" in version "kustomize.toolkit.fluxcd.io/v1beta1"
-# unable to recognize "./cluster/base/flux-system": no matches for kind "GitRepository" in version "source.toolkit.fluxcd.io/v1beta1"
-# unable to recognize "./cluster/base/flux-system": no matches for kind "HelmRepository" in version "source.toolkit.fluxcd.io/v1beta1"
-# unable to recognize "./cluster/base/flux-system": no matches for kind "HelmRepository" in version "source.toolkit.fluxcd.io/v1beta1"
-# unable to recognize "./cluster/base/flux-system": no matches for kind "HelmRepository" in version "source.toolkit.fluxcd.io/v1beta1"
-# unable to recognize "./cluster/base/flux-system": no matches for kind "HelmRepository" in version "source.toolkit.fluxcd.io/v1beta1"
-```
-
-8. Verify Flux components are running in the cluster
-
-```sh
-kubectl --kubeconfig=./provision/kubeconfig get pods -n flux-system
-```
-Output:
-```
-# NAME                                       READY   STATUS    RESTARTS   AGE
-# helm-controller-5bbd94c75-89sb4            1/1     Running   0          1h
-# kustomize-controller-7b67b6b77d-nqc67      1/1     Running   0          1h
-# notification-controller-7c46575844-k4bvr   1/1     Running   0          1h
-# source-controller-7d6875bcb4-zqw9f         1/1     Running   0          1h
-```
 9. Prevent Apps from being deployed, because the cluster isn't ready for that yet.
 ```
 flux suspend kustomization apps
