@@ -7,3 +7,10 @@ metadata:
 data:
   # Environmental Data
   TIMEZONE: "America/New_York"
+  # Sidero Versions
+  # renovate: datasource=github-releases depName=siderolabs/talos
+  TALOS_VERSION: v1.3.0
+  # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
+  TALOS_IMAGE: ghcr.io/siderolabs/installer:v1.3.0
+  # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
+  KUBELET_IMAGE: ghcr.io/siderolabs/installer:v1.3.0
