@@ -159,14 +159,21 @@ watch kubectl get servers,machines,clusters
 
 Get the talosconfig:
 ```sh
-kubectl --context=sidero-demo \
+kubectl \
   get talosconfig \
   -l cluster.x-k8s.io/cluster-name=cluster-0 \
   -o jsonpath='{.items[0].status.talosConfig}' \
   > cluster-0-talosconfig.yaml
+  talosctl config merge cluster-0-talosconfig.yaml
+```
+
+Set the nodes/endpoints
+```sh
+talosctl config endpoints 192.168.0.100 192.168.0.101 192.168.0.102
+talosctl config nodes 192.168.0.100 192.168.0.101 192.168.0.102 192.168.0.103 192.168.0.104 192.168.0.105
 ```
 
 You may then import kubeconfig like so:
 ```sh
-talosctl --talosconfig cluster-0.yaml kubeconfig
+talosctl kubeconfig
 ```
