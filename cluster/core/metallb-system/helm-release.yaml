@@ -23,14 +23,6 @@ spec:
         enabled: true
       prometheusRule:
         enabled: true
-    # configInline:
-    #   address-pools:
-    #     - name: default
-    #       protocol: layer2
-    #       addresses:
-    #         - "${METALLB_LB_RANGE}"
-    # controller contains configuration specific to the MetalLB cluster
-    # controller.
     controller:
       enabled: true
       # -- Controller log level. Must be one of: `all`, `debug`, `info`, `warn`, `error` or `none`
