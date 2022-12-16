@@ -53,6 +53,7 @@ spec:
       [global]
       bdev_enable_discard = true
       bdev_async_discard = true
+      mon clock drift allowed = 1
     cephClusterSpec:
       dataDirHostPath: /var/lib/rook
       placement:

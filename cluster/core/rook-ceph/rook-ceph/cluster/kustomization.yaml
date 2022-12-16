@@ -4,4 +4,3 @@ kind: Kustomization
 namespace: rook-ceph
 resources:
   - ./helmrelease.yaml
-  - ./config-map.yaml
