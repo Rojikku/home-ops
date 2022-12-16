@@ -8,3 +8,4 @@ resources:
   - kubegres
   - device-manager
   - networking
+  - default
