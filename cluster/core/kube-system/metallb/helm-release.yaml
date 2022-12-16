@@ -3,9 +3,9 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
-  namespace: metallb-system
+  namespace: kube-system
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: metallb
@@ -14,7 +14,18 @@ spec:
         kind: HelmRepository
         name: metallb
         namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
+    crds:
+      enabled: true
+    psp:
+      create: false
     prometheus:
       serviceAccount: kube-prometheus-stack-prometheus
       namespace: monitoring
@@ -27,9 +38,6 @@ spec:
       enabled: true
       # -- Controller log level. Must be one of: `all`, `debug`, `info`, `warn`, `error` or `none`
       logLevel: info
-      image:
-        repository: quay.io/metallb/controller
-        tag: v0.13
       tolerations:
         - key: node-role.kubernetes.io/master
           effect: NoSchedule
@@ -42,9 +50,6 @@ spec:
       # -- Speaker log level. Must be one of: `all`, `debug`, `info`, `warn`, `error` or `none`
       logLevel: info
       tolerateMaster: true
-      image:
-        repository: quay.io/metallb/speaker
-        tag: v0.13
 
       # frr contains configuration specific to the MetalLB FRR container,
       # for speaker running alongside FRR.
@@ -54,8 +59,3 @@ spec:
         # Possible settings are :-
         #  informational, warning, errors and debugging.
         logLevel: informational
-        image:
-          repository: quay.io/frrouting/frr
-          tag: stable_8.0
-    crds:
-      enabled: false
