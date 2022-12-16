@@ -24,13 +24,13 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-rook-ceph-cluster
+  name: cluster-core-rook-ceph-cluster
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-rook-ceph-app
+    - name: cluster-core-rook-ceph-app
   path: ./cluster/core/rook-ceph/rook-ceph/cluster
   prune: true
   sourceRef:
