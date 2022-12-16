@@ -75,9 +75,9 @@ spec:
           - name: "k8s-3"
             devices:
               - name: sdb
-          # - name: "k8s-4"
-          #   devices:
-          #     - name: sdb
+          - name: "k8s-4"
+            devices:
+              - name: nvme0n1
           - name: "k8s-5"
             devices:
               - name: nvme0n1
@@ -148,7 +148,7 @@ spec:
           dataPool:
             failureDomain: host
             erasureCoded:
-              dataChunks: 2
+              dataChunks: 3
               codingChunks: 1
           preservePoolsOnDelete: true
           gateway:
