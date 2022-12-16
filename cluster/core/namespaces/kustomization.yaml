@@ -1,15 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - cert-manager.yaml
   - database.yaml
-  - metallb-system.yaml
-  - networking.yaml
-  - rook-ceph.yaml
   - hass.yaml
-  - sonarr.yaml
   - media.yaml
   - device-manager.yaml
   - monitoring.yaml
-  - stash.yaml
-  - vpn.yaml
