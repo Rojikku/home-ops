@@ -151,7 +151,13 @@ kubectl get nodes
 
 ### :small_blue_diamond:&nbsp; GitOps with Flux
 
-1. [Bootstrap flux](/cluster/bootstrap/readme.md)
+1. [Bootstrap flux](/cluster/bootstrap/readme.md) but don't deploy the full flux yet
+
+2. Disable the apps as needed for your cluster
+
+3. Install full flux and wait for everything to deploy
+
+4. Watch rook-ceph and hope it's a good child `watch kubectl get pods -n rook-ceph`
 
 9. Prevent Apps from being deployed, because the cluster isn't ready for that yet.
 ```
