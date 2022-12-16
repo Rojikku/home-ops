@@ -155,7 +155,7 @@ kubectl get nodes
 
 2. Disable the apps as needed for your cluster
 
-3. Install full flux and wait for everything to deploy
+3. Install full flux and wait for everything to deploy `flux get kustomization -A` and after a bit `flux get helmrelease -A`
 
 4. Watch rook-ceph and hope it's a good child `watch kubectl get pods -n rook-ceph`
 
