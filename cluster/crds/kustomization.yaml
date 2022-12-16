@@ -3,9 +3,8 @@ kind: Kustomization
 resources:
   - cert-manager
   - traefik
-  - external-snapshotter
+  # - external-snapshotter
   - rook-ceph
   - git-repos
-  - stash-crds
   - kube-prometheus-stack
   - metallb
