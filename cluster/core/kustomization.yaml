@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   # - namespaces
   - kube-system
+  - flux-system
   - kubegres
   - device-manager
   - networking
