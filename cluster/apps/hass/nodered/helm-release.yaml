@@ -24,6 +24,8 @@ spec:
       tag: 3.0.2
     env:
       TZ: "${TIMEZONE}"
+    securityContext:
+      runAsUser: 1000
     service:
       main:
         ports:
