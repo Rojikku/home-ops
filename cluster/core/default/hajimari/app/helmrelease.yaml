@@ -5,7 +5,7 @@ metadata:
   name: hajimari
   namespace: default
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: hajimari
@@ -14,8 +14,16 @@ spec:
         kind: HelmRepository
         name: hajimari
         namespace: flux-system
-      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
   values:
+    env:
+      TZ: "${TIMEZONE}"
     image:
       repository: ghcr.io/toboshii/hajimari
       tag: v0.3.1
@@ -111,7 +119,7 @@ spec:
     persistence:
       data:
         enabled: true
-        existingClaim: hajimari-config
+        type: emptyDir
     podAnnotations:
       configmap.reloader.stakater.com/reload: "hajimari-settings"
     resources:
