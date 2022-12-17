@@ -5,4 +5,3 @@ resources:
   - backup-pvc.yaml
   - postgres-db.yaml
   - helm-release.yaml
-  - backup.yaml
