@@ -49,7 +49,7 @@
       "description": "Process various dependencies",
       "fileMatch": [
         "ansible/.+\\.ya?ml$",
-        "cluster/.+\\.ya?ml$"
+        "cluster/.+\\.ya?ml$",
         "sidero/.+\\.ya?ml$"
       ],
       "matchStrings": [
