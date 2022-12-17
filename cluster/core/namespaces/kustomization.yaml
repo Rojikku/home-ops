@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - database.yaml
   - hass.yaml
+  - default.yaml
   - media.yaml
   - monitoring.yaml
