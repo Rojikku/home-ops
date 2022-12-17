@@ -157,13 +157,7 @@ kubectl get nodes
 
 3. Install full flux and wait for everything to deploy `flux get kustomization -A` and after a bit `flux get helmrelease -A`
 
-4. Watch rook-ceph and hope it's a good child `watch kubectl get pods -n rook-ceph`
-
-9. Prevent Apps from being deployed, because the cluster isn't ready for that yet.
-```
-flux suspend kustomization apps
-```
-10. Wait for rook to figure its life out for a bit. Usually within about 10 minutes it'll get everything needed setup, and the WebUI will come up.
+4. Wait for rook to figure its life out for a bit. Usually within about 10 minutes it'll get everything needed setup, and the WebUI will come up.
 ```
 watch kubectl -n rook-ceph get pods
 ```
@@ -171,17 +165,9 @@ If desired, login to the web UI with the password from:
 ```
 kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
 ```
-11. Taint the master so it's dedicated. We didn't do this earlier because the OSD job is stupid.
-```
-kubectl taint node k8s-0 node-role.kubernetes.io/master=true:NoSchedule
-```
-12. Remove pods that shouldn't be on master based on output from the following. (Device-manager!)
-```
-kubectl get pods -A --field-selector spec.nodeName=k8s-0
-```
-13. Setup labels for my pods so that things will deploy correctly later.
+
+5. Setup labels for my pods so that things will deploy correctly later.
 ```
 kubectl label node k8s-4 feature.node.kubernetes.io/custom-zwave=true
-kubectl label node k8s-3 rclone=enabled
 ```
-14. Restore from backup with method of choice [Stash](./stash-restore)
+6. Restore from backup with method of choice
