@@ -168,6 +168,6 @@ kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['dat
 
 5. Setup labels for my pods so that things will deploy correctly later.
 ```
-kubectl label node k8s-4 feature.node.kubernetes.io/custom-zwave=true
+kubectl label node k8s-3 feature.node.kubernetes.io/custom-zwave=true
 ```
 6. Restore from backup with method of choice
