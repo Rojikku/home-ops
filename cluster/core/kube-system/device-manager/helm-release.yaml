@@ -20,7 +20,23 @@ spec:
       repository: registry.gitlab.com/arm-research/smarter/smarter-device-manager
       tag: v1.20.11
       pullPolicy: IfNotPresent
-    service: {}
-    ingress: {}
+    service:
+      main:
+        enabled: false
     env:
       TZ: "${TIMEZONE}"
+    persistence:
+      devfs:
+        enabled: true
+        type: hostPath
+        hostPath: /dev
+        readOnly: true
+      sysfs:
+        enabled: true
+        type: hostPath
+        hostPath: /sys
+        readOnly: true
+      kubeletsockets:
+        enabled: true
+        type: hostPath
+        hostPath: "/var/lib/kubelet/device-plugins"
