@@ -8,3 +8,4 @@ resources:
   - flux-system
   - hass
   - media
+  - volsync
