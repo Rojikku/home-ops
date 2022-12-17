@@ -8,3 +8,4 @@ resources:
   - ./metrics-server
   - ./reloader
   - ./device-manager
+  - ./snapshot-controller
