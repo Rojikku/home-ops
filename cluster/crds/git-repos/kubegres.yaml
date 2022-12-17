@@ -8,8 +8,8 @@ spec:
   interval: 9m0s
   ref:
     branch: main
-    # renovate: datasource=github-releases depName=reactive-tech/kubegres versioning=loose
-    tag: v1.15
+    # renovate: datasource=github-releases depName=reactive-tech/kubegres
+    tag: v1.16
   url: https://github.com/reactive-tech/kubegres
   ignore: |
     # exclude all
