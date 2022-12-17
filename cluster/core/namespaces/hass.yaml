@@ -3,3 +3,8 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: hass
+  labels:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+    pod-security.kubernetes.io/enforce: baseline
+    pod-security.kubernetes.io/enforce-version: v1.26
+    pod-security.kubernetes.io/warn: baseline
