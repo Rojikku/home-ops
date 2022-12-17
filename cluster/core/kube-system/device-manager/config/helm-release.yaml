@@ -25,9 +25,9 @@ spec:
     resources:
       - apiVersion: v1
         kind: ConfigMap
-        name: smart-device-manager-smarter-device-manager-config
-        namespace: kube-system
         metadata:
+          name: smart-device-manager-smarter-device-manager-config
+          namespace: kube-system
           annotations:
             meta.helm.sh/release-name: smart-device-manager
             meta.helm.sh/release-namespace: device-manager

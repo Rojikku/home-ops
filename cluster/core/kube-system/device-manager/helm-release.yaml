@@ -18,38 +18,3 @@ spec:
   values:
     env:
       TZ: "${TIMEZONE}"
-    config: |
-      - devicematch: ^snd$
-        nummaxdevices: 20
-      - devicematch: ^gpiomem$
-        nummaxdevices: 40
-      - devicematch: ^gpiochip[0-9]*$
-        nummaxdevices: 20
-      - devicematch: ^hci[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^i2c-[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^rtc0$
-        nummaxdevices: 20
-      - devicematch: ^video[0-9]*$
-        nummaxdevices: 20
-      - devicematch: ^vchiq$
-        nummaxdevices: 20
-      - devicematch: ^vcsm.*$
-        nummaxdevices: 20
-      - devicematch: ^ttyUSB[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^ttyACM[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^ttyTHS[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^ttyS[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^fuse$
-        nummaxdevices: 20
-      - devicematch: ^net/tun$
-        nummaxdevices: 20
-      - devicematch: ^dri/card[0-9]*$
-        nummaxdevices: 1
-      - devicematch: ^dri/renderD128$
-        nummaxdevices: 1
