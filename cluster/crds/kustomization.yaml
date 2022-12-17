@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - traefik
   # - external-snapshotter
-  # - rook-ceph
   - git-repos
   - kube-prometheus-stack
