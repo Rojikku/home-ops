@@ -1,0 +1,69 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: smart-device-manager-config
+  namespace: kube-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: raw
+      version: v0.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: dysnix
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    resources:
+      - apiVersion: v1
+        kind: ConfigMap
+        name: smart-device-manager-smarter-device-manager-config
+        namespace: kube-system
+        metadata:
+          annotations:
+            meta.helm.sh/release-name: smart-device-manager
+            meta.helm.sh/release-namespace: device-manager
+        data:
+          conf.yaml: |
+            - devicematch: ^snd$
+              nummaxdevices: 20
+            - devicematch: ^gpiomem$
+              nummaxdevices: 40
+            - devicematch: ^gpiochip[0-9]*$
+              nummaxdevices: 20
+            - devicematch: ^hci[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^i2c-[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^rtc0$
+              nummaxdevices: 20
+            - devicematch: ^video[0-9]*$
+              nummaxdevices: 20
+            - devicematch: ^vchiq$
+              nummaxdevices: 20
+            - devicematch: ^vcsm.*$
+              nummaxdevices: 20
+            - devicematch: ^ttyUSB[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^ttyACM[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^ttyTHS[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^ttyS[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^fuse$
+              nummaxdevices: 20
+            - devicematch: ^net/tun$
+              nummaxdevices: 20
+            - devicematch: ^dri/card[0-9]*$
+              nummaxdevices: 1
+            - devicematch: ^dri/renderD128$
+              nummaxdevices: 1

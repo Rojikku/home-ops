@@ -7,6 +7,5 @@ resources:
   - flux-system
   - rook-ceph
   - kubegres
-  - device-manager
   - networking
   - default

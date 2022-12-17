@@ -3,16 +3,16 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: smart-device-manager
-  namespace: device-manager
+  namespace: kube-system
 spec:
   interval: 5m
   chart:
     spec:
-      chart: smarter-device-manager
-      version: 6.5.2
+      chart: app-template
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: bjw-s
         namespace: flux-system
       interval: 5m
   values:
