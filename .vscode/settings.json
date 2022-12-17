@@ -31,8 +31,8 @@
     "yaml.schemas": {
         "Kubernetes": "cluster/*.yaml",
         "https://json.schemastore.org/kustomization.json": [
-            "file:///home/rojikku/GITS/k3s/cluster/core/rook-ceph/rook-ceph/app/kustomization.yaml",
-            "file:///home/rojikku/GITS/k3s/cluster/core/rook-ceph/rook-ceph/cluster/kustomization.yaml"
+            "file:///home/rojikku/GITS/home-ops/cluster/core/rook-ceph/rook-ceph/app/kustomization.yaml",
+            "file:///home/rojikku/GITS/home-ops/cluster/core/rook-ceph/rook-ceph/cluster/kustomization.yaml"
         ]
     },
     "editor.fontFamily": "FiraCode Nerd Font",

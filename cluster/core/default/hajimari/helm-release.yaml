@@ -39,9 +39,9 @@ spec:
         - group: Admin
           bookmarks:
             - name: Cluster Github
-              url: "https://github.com/Rojikku/k3s"
+              url: "https://github.com/Rojikku/home-ops"
             - name: Renovate Logs
-              url: "https://app.renovatebot.com/dashboard#github/Rojikku/k3s"
+              url: "https://app.renovatebot.com/dashboard#github/Rojikku/home-ops"
             - name: Prometheus Troubleshooting
               url: "https://runbooks.prometheus-operator.dev/"
         - group: Tech
