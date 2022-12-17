@@ -149,7 +149,7 @@ spec:
           dataPool:
             failureDomain: host
             erasureCoded:
-              dataChunks: 3
+              dataChunks: 2
               codingChunks: 1
           preservePoolsOnDelete: true
           gateway:
