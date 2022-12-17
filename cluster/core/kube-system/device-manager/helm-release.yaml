@@ -23,6 +23,8 @@ spec:
     service:
       main:
         enabled: false
+    controller:
+      type: daemonset
     env:
       TZ: "${TIMEZONE}"
     persistence:
