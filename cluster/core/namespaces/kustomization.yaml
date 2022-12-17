@@ -4,5 +4,4 @@ resources:
   - database.yaml
   - hass.yaml
   - media.yaml
-  - device-manager.yaml
   - monitoring.yaml
