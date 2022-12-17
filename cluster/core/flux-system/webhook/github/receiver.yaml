@@ -12,7 +12,8 @@ spec:
   secretRef:
     name: github-webhook-token
   resources:
-    - kind: GitRepository
+    - apiVersion: source.toolkit.fluxcd.io/v1beta2
+      kind: GitRepository
       name: home-ops-flux
     - kind: Kustomization
       name: cluster
