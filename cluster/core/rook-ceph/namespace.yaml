@@ -5,4 +5,6 @@ metadata:
   name: rook-ceph
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    pod-security.kubernetes.io/privileged-latest: warn
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/enforce-version: v1.26
+    pod-security.kubernetes.io/warn: privileged
