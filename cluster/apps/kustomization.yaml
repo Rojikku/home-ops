@@ -4,9 +4,7 @@ resources:
   - default
   - kube-system
   - networking
-  - rook-ceph
   - monitoring
-  - cert-manager
   - flux-system
   - hass
   - media
