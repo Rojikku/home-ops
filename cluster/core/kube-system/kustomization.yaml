@@ -8,4 +8,4 @@ resources:
   - ./metrics-server
   - ./reloader
   - ./device-manager
-  - ./snapshot-controller
+  - ./snapshot-controller/ks.yaml
