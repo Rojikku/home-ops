@@ -20,7 +20,7 @@ spec:
     alertmanager:
       image:
         repository: quay.io/prometheus/alertmanager
-        tag: v0.24.0
+        tag: v0.25.0
       config:
         global:
           slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
