@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: jellyfin/jellyfin
-      tag: 10.8.8
+      tag: 10.8.9
       pullPolicy: IfNotPresent
 
     # -- environment variables. See [image docs](https://jellyfin.org/docs/general/administration/configuration.html) for more details.
