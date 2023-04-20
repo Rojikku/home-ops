@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-apps-snapshot-controller
+    - name: cluster-core-snapshot-controller
   path: ./cluster/apps/volsync/volsync/app
   prune: true
   sourceRef:
