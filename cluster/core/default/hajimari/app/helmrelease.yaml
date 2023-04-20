@@ -97,7 +97,9 @@ spec:
             - name: Printer
               url: "http://172.16.0.30/"
             - name: PiKVM
-              url: "http://192.168.0.99/"
+              url: "https://192.168.0.99/"
+            - name: NAS
+              url: "https://172.16.0.54:1338/portal/"
     ingress:
       main:
         enabled: true
