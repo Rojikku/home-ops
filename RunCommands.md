@@ -10,6 +10,37 @@ kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storagec
 kubectl create job --from=cronjob/<name of cronjob> <name of job>
 ```
 
+## Fix invalid cert on logs
+```
+kubectl get csr --sort-by=.metadata.creationTimestamp
+
+kubectl certificate approve
+```
+
+## Delete and readd an OSD
+
+https://gist.github.com/cheethoe/49d9c1d0003e44423e54a060e0b3fbf1
+
+## Reformat with sidero
+
+```
+kubie ctx
+
+flux suspend kustomization sidero-configs
+
+kubectl edit cluster cluster-0
+
+spec.paused: true
+
+delete relevant machine
+
+Edit to delete finalization
+
+Delete relevant serverbinding
+
+Restart node to wipe
+```
+
 ## How to add a node back to cluster
 Use the normal k3s-install, but specify `k3s_control_token:` in `kubernetes/k3s.yml`
 
