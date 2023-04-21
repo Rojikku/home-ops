@@ -1,0 +1,25 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: zwave-js-ui
+  namespace: hass
+spec:
+  sourcePVC: zwave-pvc
+  trigger: {}
+  rclone:
+    rcloneConfigSection: "NAS"
+    rcloneDestPath: "{{ .REPOSITORY_TEMPLATE }}/zwave"
+    rcloneConfig: "rclone-conf"
+    copyMethod: Snapshot
+
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 10
+    repository: zwave-js-ui-restic-secret
+    cacheCapacity: 2Gi
+    volumeSnapshotClassName: csi-ceph-blockpool
+    storageClassName: ceph-block
+    retain:
+      daily: 10
+      within: 3d
