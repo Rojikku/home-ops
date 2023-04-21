@@ -11,7 +11,7 @@ spec:
     schedule: "*/5 * * * *"
   rclone:
     rcloneConfigSection: "NAS"
-    rcloneDestPath: "/k8s/zwave"
+    rcloneDestPath: "/k8s/hass/zwave"
     rcloneConfig: "rclone-conf"
     copyMethod: Snapshot
     moverSecurityContext:
