@@ -5,7 +5,7 @@ metadata:
   name: home-assistant
   namespace: hass
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: app-template
@@ -14,7 +14,17 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     image:
       repository: ghcr.io/home-assistant/home-assistant
@@ -61,6 +71,11 @@ spec:
         enabled: false
       startup:
         enabled: false
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
     persistence:
       config:
         enabled: true
@@ -72,4 +87,4 @@ spec:
         cpu: 100m
         memory: 100Mi
       limits:
-        memory: 4000Mi
+        memory: 2000Mi
