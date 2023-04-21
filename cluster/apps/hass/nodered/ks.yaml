@@ -16,7 +16,7 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      name: nodered
+      name: node-red
       namespace: hass
   interval: 15m
   retryInterval: 1m
