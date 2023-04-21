@@ -14,8 +14,20 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
+    controller:
+      type: statefulset
     image:
       repository: ghcr.io/zwave-js/zwave-js-ui
       tag: 8.14.1
@@ -25,10 +37,25 @@ spec:
       main:
         ports:
           http:
-            port: 8091
+            port: &port 8091
           websocket:
             enabled: true
             port: 3000
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /health
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
     ingress:
       main:
         enabled: true
@@ -56,20 +83,13 @@ spec:
         enabled: true
         existingClaim: zwave-pvc
         mountPath: "/usr/src/app/store"
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: feature.node.kubernetes.io/custom-zwave
-                  operator: In
-                  values:
-                    - "true"
+    nodeSelector:
+      feature.node.kubernetes.io/custom-zwave: "true"
     resources:
       requests:
         cpu: 100m
         memory: 100Mi
         smarter-devices/ttyUSB0: 1
       limits:
-        memory: 1000Mi
+        memory: 500Mi
         smarter-devices/ttyUSB0: 1
