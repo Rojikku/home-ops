@@ -7,8 +7,8 @@ metadata:
 spec:
   sourcePVC: zwave-pvc
   trigger:
-    # Synchronize every 5 minutes
-    schedule: "*/5 * * * *"
+    # Synchronize every 30 minutes
+    schedule: "*/30 * * * *"
   rclone:
     rcloneConfigSection: "NAS"
     rcloneDestPath: "/k8s/hass/zwave"
