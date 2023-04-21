@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - secret.sops.yaml
   - helmrelease.yaml
-  # - volsync.yaml
+  - volsync.yaml
 configMapGenerator:
   - name: mosquitto-configmap
     namespace: hass

@@ -1,0 +1,20 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: mosquitto
+  namespace: hass
+spec:
+  sourcePVC: config-mosquitto-0
+  trigger:
+    # Synchronize every 30 minutes
+    schedule: "*/30 * * * *"
+  rclone:
+    rcloneConfigSection: "NAS"
+    rcloneDestPath: "/k8s/hass/mosquitto"
+    rcloneConfig: "rclone-conf"
+    copyMethod: Snapshot
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
