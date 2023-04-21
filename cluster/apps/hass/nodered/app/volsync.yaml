@@ -1,0 +1,20 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: nodered
+  namespace: hass
+spec:
+  sourcePVC: nodered-pvc
+  trigger:
+    # Synchronize every 30 minutes
+    schedule: "*/30 * * * *"
+  rclone:
+    rcloneConfigSection: "NAS"
+    rcloneDestPath: "/k8s/hass/nodered"
+    rcloneConfig: "rclone-conf"
+    copyMethod: Snapshot
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
