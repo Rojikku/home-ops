@@ -12,14 +12,3 @@ spec:
     rcloneDestPath: "{{ .REPOSITORY_TEMPLATE }}/zwave"
     rcloneConfig: "rclone-conf"
     copyMethod: Snapshot
-
-  restic:
-    copyMethod: Snapshot
-    pruneIntervalDays: 10
-    repository: zwave-js-ui-restic-secret
-    cacheCapacity: 2Gi
-    volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
-    retain:
-      daily: 10
-      within: 3d
