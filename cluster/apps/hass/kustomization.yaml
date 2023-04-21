@@ -4,5 +4,5 @@ resources:
   - rclone.sops.yaml
   - home-assistant
   - nodered
-  - mosquitto
+  - mosquitto/ks.yaml
   - zwave/ks.yaml
