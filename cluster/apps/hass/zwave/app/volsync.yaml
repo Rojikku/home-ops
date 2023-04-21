@@ -16,4 +16,3 @@ spec:
     copyMethod: Snapshot
     moverSecurityContext:
       runAsUser: 1000
-      runAsGroup: 1000
