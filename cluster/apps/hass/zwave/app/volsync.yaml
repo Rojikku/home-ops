@@ -15,5 +15,5 @@ spec:
     rcloneConfig: "rclone-conf"
     copyMethod: Snapshot
     moverSecurityContext:
-      runasUser: 1000
+      runAsUser: 1000
       runAsGroup: 1000
