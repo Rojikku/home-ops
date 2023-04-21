@@ -4,4 +4,4 @@ resources:
   - home-assistant
   - nodered
   - mosquitto
-  - zwave
+  - zwave/ks.yaml
