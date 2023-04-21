@@ -9,7 +9,7 @@ spec:
     - name: cluster-core-rook-ceph-cluster
     - name: cluster-apps-volsync
     # - name: cluster-apps-node-feature-discovery
-  path: ./cluster/apps/default/zwave/app
+  path: ./cluster/apps/hass/zwave/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,7 +18,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: zwave-js-ui
-      namespace: default
+      namespace: hass
   interval: 15m
   retryInterval: 1m
   timeout: 3m
