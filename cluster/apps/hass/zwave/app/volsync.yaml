@@ -6,7 +6,9 @@ metadata:
   namespace: hass
 spec:
   sourcePVC: zwave-pvc
-  trigger: {}
+  trigger:
+    # Synchronize every 5 minutes
+    schedule: "*/5 * * * *"
   rclone:
     rcloneConfigSection: "NAS"
     rcloneDestPath: "${REPOSITORY_TEMPLATE}/zwave"
