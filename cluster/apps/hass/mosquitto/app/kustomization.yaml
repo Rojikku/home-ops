@@ -6,6 +6,7 @@ resources:
   # - volsync.yaml
 configMapGenerator:
   - name: mosquitto-configmap
+    namespace: hass
     files:
       - mosquitto.conf=./config/mosquitto.conf
 configurations:
