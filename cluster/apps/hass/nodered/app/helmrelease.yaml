@@ -15,9 +15,6 @@ spec:
         name: bjw-s
         namespace: flux-system
       interval: 5m
-  dependsOn:
-    - name: home-assistant
-      namespace: hass
   values:
     image:
       repository: docker.io/nodered/node-red
