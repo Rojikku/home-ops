@@ -14,5 +14,5 @@ spec:
     rcloneDestPath: "/k8s/zwave"
     rcloneConfig: "rclone-conf"
     copyMethod: Snapshot
-    # moverSecurityContext:
-      # runAsUser: 1000
+    moverSecurityContext:
+      runAsGroup: 1000
