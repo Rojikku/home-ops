@@ -33,7 +33,7 @@ spec:
     repository: zwave-js-ui-restic-secret
     retain:
       daily: 10
-      weeky: 6
+      weekly: 6
       monthly: 4
       within: 3d
     moverSecurityContext:
