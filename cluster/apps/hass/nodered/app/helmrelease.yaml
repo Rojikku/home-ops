@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    controller:
+      type: statefulset
     image:
       repository: docker.io/nodered/node-red
       tag: 3.0.2
