@@ -9,6 +9,6 @@ spec:
   trigger: {}
   rclone:
     rcloneConfigSection: "NAS"
-    rcloneDestPath: "{{ .REPOSITORY_TEMPLATE }}/zwave"
+    rcloneDestPath: "${REPOSITORY_TEMPLATE}/zwave"
     rcloneConfig: "rclone-conf"
     copyMethod: Snapshot
