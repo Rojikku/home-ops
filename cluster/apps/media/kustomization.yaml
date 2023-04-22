@@ -6,7 +6,7 @@ resources:
   - hajimari
   # - flaresolverr
   # - prowlarr
-  # - qbittorrent
+  - qbittorrent/ks.yaml
   - sonarr/ks.yaml
   - recyclarr
   - jellyfin

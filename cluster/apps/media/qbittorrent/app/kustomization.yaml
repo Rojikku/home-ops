@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - config-pvc.yaml
   - secrets.sops.yaml
-  - helm-release.yaml
-  - dashboard
+  - helmrelease.yaml
+  - cronjobs

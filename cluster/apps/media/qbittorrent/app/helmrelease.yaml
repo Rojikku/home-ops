@@ -7,7 +7,7 @@ metadata:
   labels:
     setGateway: true
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: app-template
@@ -16,16 +16,22 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
   install:
+    createNamespace: true
     remediation:
       retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    podLabels:
-      setGateway: "true"
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/onedr0p/qbittorrent
       tag: 4.5.2@sha256:621c2e012820a2f5d4a4e37ca6bf8aec40ebd0183f6f7d274808a7ac45a135d0
@@ -72,15 +78,9 @@ spec:
           - hosts:
               - *host
             secretName: "qbittorrent-tls"
-
-  valuesFrom:
-    - kind: Secret
-      name: "qbt"
-      valuesKey: user
-      optional: false
-      targetPath: metrics.exporter.env.user
-    - kind: Secret
-      name: "qbt"
-      valuesKey: password
-      optional: false
-      targetPath: metrics.exporter.env.password
+    resources:
+      requests:
+        cpu: 10m
+        memory: 250Mi
+      limits:
+        memory: 6000Mi
