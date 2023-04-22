@@ -162,7 +162,7 @@ spec:
         insecureSkipVerify: true
     kubeScheduler:
       enabled: false
-      endpoints:
+      endpoints: &cp
         - 192.168.0.100
         - 192.168.0.101
         - 192.168.0.102
@@ -176,38 +176,16 @@ spec:
         insecureSkipVerify: true
     kubeProxy:
       enabled: false
-      endpoints:
-        - 192.168.0.100
-        - 192.168.0.101
-        - 192.168.0.102
+      endpoints: *cp
     kubeEtcd:
       enabled: true
-      endpoints:
-        - 192.168.0.100
-        - 192.168.0.101
-        - 192.168.0.102
+      endpoints: *cp
       service:
         enabled: false
         port: 2379
         targetPort: 2379
         selector:
           component: etcd
-    prometheusOperator:
-      image:
-        repository: quay.io/prometheus-operator/prometheus-operator
-        tag: v0.64.0
-      prometheusConfigReloader:
-        # image to use for config and rule reloading
-        image:
-          repository: quay.io/prometheus-operator/prometheus-config-reloader
-          tag: v0.64.0
-        resources:
-          requests:
-            cpu: 100m
-            memory: 50Mi
-          limits:
-            cpu: 200m
-            memory: 100Mi
     prometheus:
       ingress:
         enabled: true
