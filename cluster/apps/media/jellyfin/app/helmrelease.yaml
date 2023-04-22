@@ -5,7 +5,7 @@ metadata:
   name: jellyfin
   namespace: media
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: app-template
@@ -14,14 +14,22 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
   install:
+    createNamespace: true
     remediation:
       retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: jellyfin/jellyfin
       tag: 10.8.9
@@ -34,6 +42,11 @@ spec:
       TZ: "${TIMEZONE}"
     securityContext:
       runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      supplementalGroups:
+        - 44
+        - 109
 
     service:
       main:
@@ -82,21 +95,6 @@ spec:
         server: "172.16.0.54"
         path: /volume1/Media
         mountPath: /media
-
-    # -- Configure the Security Context for the Pod
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
-      fsGroup: 1000
-    #   # Hardware acceleration using an Intel iGPU w/ QuickSync
-    #   # These IDs below should be matched to your `video` and `render` group on the host
-    #   # To obtain those IDs run the following grep statement on the host:
-    #   # $ cat /etc/group | grep "video\|render"
-    #   # video:x:44:
-    #   # render:x:109:
-    #   supplementalGroups:
-    #   - 44
-    #   - 109
 
     resources:
       requests:
