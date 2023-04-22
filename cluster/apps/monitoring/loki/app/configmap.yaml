@@ -50,6 +50,20 @@ data:
             annotations:
               summary: "Zwavejs2mqtt is unable to reach MQTT"
       #
+      # frigate
+      #
+      - name: frigate
+        rules:
+          - alert: FrigateUnableToReachMQTT
+            expr: |
+              sum(count_over_time({app="frigate"} |~ "(?i)unable to connect to mqtt server"[2m])) > 0
+            for: 2m
+            labels:
+              severity: critical
+              category: logs
+            annotations:
+              summary: "Frigate is unable to reach MQTT"
+      #
       # *arr
       #
       - name: arr
@@ -86,6 +100,20 @@ data:
               category: logs
             annotations:
               summary: "Home Assistant is unable to connect to postgresql"
+      #
+      # valetudo
+      #
+      - name: valetudo
+        rules:
+          - alert: ValetudoUnableToReachMQTT
+            expr: |
+              sum by (hostname) (count_over_time({hostname="valetudo"} |~ "(?i).*error.*mqtt.*"[2m])) > 0
+            for: 2m
+            labels:
+              severity: critical
+              category: logs
+            annotations:
+              summary: "Valetudo is unable to connect to mqtt"
       #
       # node-red
       #
