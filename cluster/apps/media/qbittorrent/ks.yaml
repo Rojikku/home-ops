@@ -21,7 +21,7 @@ spec:
     - apiVersion: batch/v1
       kind: CronJob
       name: qbittorrent-tag-tracker-errors
-      namespace: default
+      namespace: media
   interval: 15m
   retryInterval: 1m
   timeout: 3m
