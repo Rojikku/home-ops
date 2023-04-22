@@ -5,7 +5,7 @@ resources:
   - hajimari
   - prowlarr
   - qbittorrent
-  - sonarr
+  - sonarr/ks.yaml
   - recyclarr
   - jellyfin
   - ombi

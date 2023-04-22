@@ -5,7 +5,7 @@ metadata:
   name: sonarr
   namespace: media
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: app-template
@@ -14,29 +14,53 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
   install:
+    createNamespace: true
     remediation:
       retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/onedr0p/sonarr-develop
       tag: 4.0.0.451@sha256:e7738ea6dd940191ab3044b134f186dca4cc7dcd5fd8f73d550c8a34d870703f
       pullPolicy: IfNotPresent
-
     env:
       TZ: "${TIMEZONE}"
     securityContext:
       runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
 
     service:
       main:
         ports:
           http:
-            port: 8989
+            port: &port 8989
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /ping
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
 
     persistence:
       config:
@@ -77,23 +101,7 @@ spec:
 
     resources:
       requests:
-        cpu: "100m"
-        memory: "256Mi"
+        cpu: 100m
+        memory: 256Mi
       limits:
-        memory: "2048Mi"
-
-    metrics:
-      enabled: true
-      serviceMonitor:
-        interval: 3m
-        scrapeTimeout: 1m
-      prometheusRule:
-        enabled: false
-      exporter:
-        image:
-          repository: ghcr.io/onedr0p/exportarr
-          tag: v1.3.1
-        env:
-          port: 9794
-          additionalMetrics: true
-          unknownQueueItems: true
+        memory: 2048Mi
