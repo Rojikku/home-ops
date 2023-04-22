@@ -147,6 +147,21 @@ spec:
       persistence:
         size: 10Gi
         storageClass: ceph-block
+    backend:
+      persistence:
+        storageClass: ceph-block
+        size: 10Gi
+      extraVolumeMounts:
+        - name: rules
+          mountPath: /rules/fake
+        - name: scratch
+          mountPath: /tmp/scratch
+      extraVolumes:
+        - name: rules
+          configMap:
+            name: loki-alerting-rules
+        - name: scratch
+          emptyDir: {}
   valuesFrom:
     - kind: ConfigMap
       name: "loki-obc"
