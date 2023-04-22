@@ -4,4 +4,4 @@ resources:
   - secrets.sops.yaml
   - backup-pvc.yaml
   - postgres-db.yaml
-  - helm-release.yaml
+  - helmrelease.yaml
