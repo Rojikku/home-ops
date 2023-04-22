@@ -9,5 +9,5 @@ resources:
   - qbittorrent/ks.yaml
   - sonarr/ks.yaml
   - recyclarr
-  - jellyfin
+  - jellyfin/ks.yaml
   - ombi
