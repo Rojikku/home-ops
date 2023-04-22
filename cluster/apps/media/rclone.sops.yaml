@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: rclone-conf
-    namespace: hass
+    namespace: media
 stringData:
     rclone.conf: ENC[AES256_GCM,data:Jnbfm+KviH48fmNcD4QVDwquze3WyMVn/2eFbS/1ta32JLmTgiBKLFpp0NETnJlh4S1HNXA/+4f6bkaCm4hRQTCNsE29B1Nc/Uktv1c2j9OKJ99l/Zo/7ovutzCDW3TSVqqEU6Awu9wJKtcZDfWHY1tcgI9RcbFq8Rgy0QjQW9XZbBG0asY/d1Y7piKBq2mzkpgWsjphsuVFsFNPcIV+w2BHiZ6kHhcshFCpC1swe+jPbGV3ZYBag1zzYY/ePWMPQt3Y,iv:A1d0csSIBxxzADo2Ggxzh9XKJHxjQUz+Ex1sfrQkyy0=,tag:h+QzcpP4/ZCzbwRSKk16VA==,type:str]
 sops:
@@ -21,8 +21,8 @@ sops:
             d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
             mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-04-21T00:32:39Z"
-    mac: ENC[AES256_GCM,data:dox2nvaZ9IBkYOnN1yq5ssJfyW33UGq89Pxo5Ad6BKrc/bdySr/miSG5SD80kUN7GSb6vLi//MDDDS1tLcoiuwxnvBDeLZIVmlUTIQwoPKerxu8ec0SkTTHULA9iOdSIvefNiaIk7XkbR5XzBv5WptEWVp8iQJZLbiR24jEBq4I=,iv:eESAFazq9Xyv2X/mBVnW6uWqgYgApUu2JAGcaFTsBUQ=,tag:0PeetGF28pkgnig+BHp/GA==,type:str]
+    lastmodified: "2023-04-22T01:00:22Z"
+    mac: ENC[AES256_GCM,data:rRLUmJ+frpWv+8IgtM9tznXt08g8bWW1zNNA+7ZmQn9iqd4/e8Xn+GSXr8bQHXJQBssabyXXqVhR6odtt0Vt74ksaz5hEivwvbrsCElCnIBgVRsh8sc6n7uZpw6P6CjjCvY0OxiD39AzH3CLd2ut+LdQk0YVzwy92BXO3Q98uuI=,iv:hME2o/bLtOFpeRKSvj5nG6yWbQ9azcSFGjURC522Fe0=,tag:B39XLuqRPEZYvX0oMLsbQA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
