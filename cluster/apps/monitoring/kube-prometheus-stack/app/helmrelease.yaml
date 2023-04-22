@@ -31,9 +31,6 @@ spec:
     fullnameOverride: prometheus
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
-      image:
-        repository: quay.io/prometheus/alertmanager
-        tag: v0.25.0
       config:
         global:
           slack_api_url: "${SECRET_ALERT_MANAGER_DISCORD_WEBHOOK}"
@@ -210,25 +207,23 @@ spec:
       thanosServiceMonitor:
         enabled: false
       prometheusSpec:
-        image:
-          repository: quay.io/prometheus/prometheus
-          tag: v2.43.0
-        replicas: 2
-        replicaExternalLabelName: "replica"
+        replicas: 3
+        replicaExternalLabelName: __replica__
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
-        retention: 6h
         enableAdminAPI: true
         walCompression: true
+        retention: 2d
+        retentionSize: 15GB
         storageSpec:
           volumeClaimTemplate:
             spec:
               storageClassName: "ceph-block"
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 20Gi
         additionalScrapeConfigs:
           - job_name: node-exporter
             honor_timestamps: true
