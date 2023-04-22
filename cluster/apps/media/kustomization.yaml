@@ -5,7 +5,7 @@ resources:
   - rclone.sops.yaml
   - hajimari
   # - flaresolverr
-  # - prowlarr
+  - prowlarr/ks.yaml
   - qbittorrent/ks.yaml
   - sonarr/ks.yaml
   - recyclarr

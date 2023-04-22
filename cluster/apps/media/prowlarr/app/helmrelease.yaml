@@ -5,7 +5,7 @@ metadata:
   name: prowlarr
   namespace: media
 spec:
-  interval: 5m
+  interval: 15m
   chart:
     spec:
       chart: app-template
@@ -14,16 +14,22 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      interval: 5m
+  maxHistory: 2
   install:
+    createNamespace: true
     remediation:
       retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
-    podLabels:
-      setGateway: "true"
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
       tag: 1.3.3.3217@sha256:a2c28aaa50bcd21d3ef33601cada24153ed4f1e160db4613b6464c0f90d941bd
@@ -34,6 +40,7 @@ spec:
     securityContext:
       runAsUser: 1000
       runAsGroup: 1000
+      fsGroup: 1000
     persistence:
       config:
         enabled: true
@@ -43,7 +50,23 @@ spec:
       main:
         ports:
           http:
-            port: 9696
+            port: &port 9696
+
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /ping
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
 
     ingress:
       main:
@@ -66,3 +89,9 @@ spec:
           - hosts:
               - *host
             secretName: "prowlarr-tls"
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 1Gi
