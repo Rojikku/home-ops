@@ -1,0 +1,20 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: authentik
+  namespace: networking
+spec:
+  sourcePVC: postgres-db-authentik-postgres-1-0
+  trigger:
+    # Synchronize every 30 minutes
+    schedule: "*/30 * * * *"
+  rclone:
+    rcloneConfigSection: "NAS"
+    rcloneDestPath: "/k8s/networking/authentik"
+    rcloneConfig: "rclone-conf"
+    copyMethod: Snapshot
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
