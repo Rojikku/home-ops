@@ -4,4 +4,5 @@ resources:
   - config-pvc.yaml
   - secrets.sops.yaml
   - helmrelease.yaml
+  - volsync.yaml
   - cronjobs
