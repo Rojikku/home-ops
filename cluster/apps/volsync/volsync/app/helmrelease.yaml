@@ -28,8 +28,12 @@ spec:
   values:
     image:
       repository: quay.io/tflower/volsync:restic-rclone-env
-      tag: ""
-      image: sha256:ec813c78f247269335ee5fde2a24532dab65604d48cfd8b9c8c2078a6fa27361
+    rclone:
+      repository: quay.io/tflower/volsync:restic-rclone-env
+    restic:
+      repository: quay.io/tflower/volsync:restic-rclone-env
+    rsync:
+      repository: quay.io/tflower/volsync:restic-rclone-env
     manageCRDs: true
     metrics:
       disableAuth: true
