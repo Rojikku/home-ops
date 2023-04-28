@@ -27,8 +27,8 @@ spec:
     keepHistory: false
   values:
     image:
-      repository: quay.io/tflower/volsync:restic-rclone-env
-      image: sha256:ec813c78f247269335ee5fde2a24532dab65604d48cfd8b9c8c2078a6fa27361
+      repository: quay.io/tflower/volsync:restic-rclone-env@sha256:ec813c78f247269335ee5fde2a24532dab65604d48cfd8b9c8c2078a6fa27361
+      image: ""
       tag: ""
     rclone:
       repository: quay.io/tflower/volsync:restic-rclone-env
