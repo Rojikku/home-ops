@@ -26,7 +26,7 @@ spec:
   sourcePVC: zwave-pvc
   trigger:
     # Synchronize every 5 minutes
-    schedule: "*/5 * * * *"
+    schedule: "*/30 * * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 10
