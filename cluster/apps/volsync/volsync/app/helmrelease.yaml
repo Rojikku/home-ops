@@ -29,15 +29,6 @@ spec:
     image:
       repository: quay.io/tflower/volsync:restic-rclone-env
       tag: restic-rclone-env
-    rclone:
-      repository: quay.io/tflower/volsync:restic-rclone-env
-      tag: restic-rclone-env
-    restic:
-      repository: quay.io/tflower/volsync:restic-rclone-env
-      tag: restic-rclone-env
-    rsync:
-      repository: quay.io/tflower/volsync:restic-rclone-env
-      tag: restic-rclone-env
     manageCRDs: true
     metrics:
       disableAuth: true
