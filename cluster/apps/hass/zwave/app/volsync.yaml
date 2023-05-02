@@ -32,10 +32,11 @@ spec:
     pruneIntervalDays: 10
     repository: restic-conf-zwave
     retain:
+      hourly: 36
       daily: 10
       weekly: 6
       monthly: 4
-      within: 3d
+      within: 1d
     moverSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
