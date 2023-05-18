@@ -9,7 +9,8 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "ghcr.io/onedr0p/prowlarr-nightly",
-        "ghcr.io/onedr0p/sonarr-develop"
+        "ghcr.io/onedr0p/sonarr-develop",
+        "linuxserver/ombi"
       ]
     },
     {
