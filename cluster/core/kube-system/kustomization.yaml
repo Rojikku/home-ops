@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./cert-manager/ks.yaml
-  - ./metallb
   - ./metrics-server
   - ./reloader
   - ./device-manager
