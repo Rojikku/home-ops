@@ -7,7 +7,7 @@ on:
     paths: ["kubernetes/**/helmrelease.yaml"]
 
 env:
-  BOT_USERNAME: rosey-bot[bot]
+  BOT_USERNAME: rin-the-good-bot[bot]
   KUBERNETES_DIR: kubernetes/
 
 jobs:
