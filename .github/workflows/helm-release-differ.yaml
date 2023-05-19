@@ -4,11 +4,11 @@ name: "HelmRelease Diff"
 on:
   pull_request:
     branches: ["main"]
-    paths: ["kubernetes/**/helmrelease.yaml"]
+    paths: ["cluster/**/helmrelease.yaml"]
 
 env:
   BOT_USERNAME: rin-the-good-bot[bot]
-  KUBERNETES_DIR: kubernetes/
+  KUBERNETES_DIR: cluster/
 
 jobs:
   changed-files:
