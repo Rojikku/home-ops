@@ -28,6 +28,8 @@ spec:
   values:
     crds:
       enabled: true
+    psp:
+      create: false
     prometheus:
       serviceAccount: kube-prometheus-stack-prometheus
       namespace: monitoring
