@@ -35,7 +35,7 @@ jobs:
         with:
           json: true
           files: |
-            kubernetes/**/helmrelease.yaml
+            cluster/**/helmrelease.yaml
 
       - id: set-matrix
         run: echo "matrix={\"file\":${{ steps.changed-files.outputs.all_changed_files }}}" >> "${GITHUB_OUTPUT}"
