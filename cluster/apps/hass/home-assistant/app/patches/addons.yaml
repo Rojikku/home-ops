@@ -27,12 +27,12 @@ spec:
           ingressClassName: traefik
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/enable: "true"
-          hajimari.io/appName: "Hass Config"
-          hajimari.io/icon: cib:visual-studio-code
-          hajimari.io/instance: "hajimari"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+            hajimari.io/enable: "true"
+            hajimari.io/appName: "Hass Config"
+            hajimari.io/icon: cib:visual-studio-code
+            hajimari.io/instance: "hajimari"
+            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+            traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
           hosts:
             - host: &host "hass-code.${SECRET_DOMAIN}"
               paths:
