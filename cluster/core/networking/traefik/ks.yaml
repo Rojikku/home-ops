@@ -1,21 +1,21 @@
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cluster-core-traefik-certificates
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: cluster-core-cert-manager-issuers
-  path: ./cluster/core/networking/ingress-nginx/certificates
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: home-ops-flux
-  wait: true
-  interval: 30m
-  retryInterval: 1m
-  timeout: 5m
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: cluster-core-traefik-certificates
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: cluster-core-cert-manager-issuers
+#   path: ./cluster/core/networking/traefik/certificates
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: home-ops-flux
+#   wait: true
+#   interval: 30m
+#   retryInterval: 1m
+#   timeout: 5m
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -24,7 +24,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-core-traefik-certificates
+    # - name: cluster-core-traefik-certificates
     - name: cluster-core-metallb-config
     - name: cluster-core-cert-manager-issuers
   path: ./cluster/core/networking/traefik/app
