@@ -15,11 +15,6 @@ spec:
         name: traefik
         namespace: flux-system
       interval: 5m
-  dependsOn:
-    - name: cert-manager
-      namespace: kube-system
-    - name: metallb
-      namespace: kube-system
   values:
     image:
       name: traefik
