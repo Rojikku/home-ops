@@ -10,6 +10,7 @@ stringData:
     POSTGRES_SERVER: ENC[AES256_GCM,data:tED+WlH9uYzpXthDQASeGCPymUDMmK9i6GqxI+2y9B2hrSBUKCXQ6Ks=,iv:rVQqgz0ma+NntyCXWKZjRhumnBJO4Nl+HBjYGRClYGA=,tag:PMOalOgCBCtAAG4KZpe3Fw==,type:str]
     POSTGRES_PORT: ENC[AES256_GCM,data:1pUDuQ==,iv:mg//f9/bEO1DKS3M5eEIXN3V9u1N8VAtP6yokww4bt8=,tag:Dwuj1CMLTmUPc4YNyT78fA==,type:str]
     POSTGRES_DB: ENC[AES256_GCM,data:hCFVwDmWjy0=,iv:LIJQb2G4TQZy4kD7kcs1jDfwFqkw4X4ML533xKqpWhc=,tag:bxmQk17UDlp4/jiOh08Yew==,type:str]
+    DEFAULT_EMAIL: ENC[AES256_GCM,data:Tp70rdvXe+bV82Vb0aHAjSgpMwElJsM=,iv:XhoqQ6EjDhtBojFyV+rMslXoKWR4uNW185HYa8WjtL0=,tag:zHnrE2YQak8JpYRts+a2lw==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -25,8 +26,8 @@ sops:
             d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
             mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-05-22T23:33:44Z"
-    mac: ENC[AES256_GCM,data:TllgEiP/38f+pN4Y+X0dbm9FSseJ6CvLIditjkVQcqAOYI19N7LKz5BQd4p4vlEhhfLFH8n87aPmimVks7bZHy07qyhB5yHZMxQYuREeYG9PQdD4TTdWfJdYd96SIkM6Ywxe/+dMdAg43IhtlV84vGnQQmHaUqrdPXRh+pL1v8E=,iv:lK1hTIaZXi2NPrOabOWFQffH6FkzwDYoTe8NI/n+bsk=,tag:kh+3j9IgpnXwYCvAmuHvOw==,type:str]
+    lastmodified: "2023-05-22T23:40:05Z"
+    mac: ENC[AES256_GCM,data:Wliea59kiCKrZe78hMSF0IU6m/FkOcoKnX39CsgssWhjZzVvF2rE2d+AWA8uWr7CnkUUXVOWqMDYFbS6vHad/6EVjGVyHPM/C3PeCOLo7VzexkZYrMBQzVvorCLjWxrflOQGsuBId1UFaq7NoZoyqeaoaw4N57RG5ypAaHbfm1U=,iv:5+7to3eiAU7MFDscKfgBeO7oz7LgG00h5ecdyBcffvs=,tag:nEOyiU6HPlQp93+cvWTCDA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
