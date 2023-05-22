@@ -47,6 +47,11 @@ spec:
           name: mealie
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
+    service:
+      main:
+        ports:
+          http:
+            port: 9000
     probes:
       liveness:
         enabled: false
