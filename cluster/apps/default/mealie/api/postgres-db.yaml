@@ -2,7 +2,7 @@
 apiVersion: kubegres.reactive-tech.io/v1
 kind: Kubegres
 metadata:
-  name: hass-postgres
+  name: mealie-postgres
   namespace: default
 spec:
   replicas: 1
