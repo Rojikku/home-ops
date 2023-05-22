@@ -1,0 +1,32 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mealie
+    namespace: default
+stringData:
+    POSTGRES_USER: ENC[AES256_GCM,data:PQBN1y83ukw=,iv:5O9GIH6dWnzYzFhwVmi7uU409YGprHyN3WZ7r4OhWLQ=,tag:cMID6Mhv1Vy8UCIQRmMj5A==,type:str]
+    POSTGRES_PASSWORD: ENC[AES256_GCM,data:4EmpbGAzn4xSLoWdbzwzUBh2h2cgOab1bKXbJ56S1PTjxrxj2HOpVcROjhFLbyrRKpxIczfXWy9zgXCNRV5N,iv:MEWM8WurIoB+iACZTS+gJH9nyT8gzypRORdvEo0CzTc=,tag:o8h6FBD6+tpBxs+uMMP7jA==,type:str]
+    POSTGRES_SERVER: ENC[AES256_GCM,data:0iUp9mvoQQrP7/6Rmw5tuoK3sIXErvQBZhoy2zvIMKo=,iv:wapcTvjG3p+vZTcSyJg5J66ZVrEm7rihbOetNmT6Tfw=,tag:LMGLcwJ0SFcGcZyeUaNHhw==,type:str]
+    POSTGRES_PORT: ENC[AES256_GCM,data:1pUDuQ==,iv:mg//f9/bEO1DKS3M5eEIXN3V9u1N8VAtP6yokww4bt8=,tag:Dwuj1CMLTmUPc4YNyT78fA==,type:str]
+    POSTGRES_DB: ENC[AES256_GCM,data:hCFVwDmWjy0=,iv:LIJQb2G4TQZy4kD7kcs1jDfwFqkw4X4ML533xKqpWhc=,tag:bxmQk17UDlp4/jiOh08Yew==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-05-22T23:10:02Z"
+    mac: ENC[AES256_GCM,data:h2siHD0EWT63zSii5PUaQZ/F73LBVkZ6IZ+bFBL8rXnHG9CDPO0ei3AAW0IzNI8HOuw5TIe2uVjiFhSkHph/aD8WndfRj201jGAftvyPyHHmXrGG9SrnsZnItZlYMxJuUHaw5MLaVGcssq2YcuhGyV1oV49dULhfTF4/dYnfTso=,iv:dQK8febLwBYETPzH1aSYbSI/ZVGcBsSh65/P6n1gNA0=,tag:PBXEZgfCwrqG7YR1hwsZUg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

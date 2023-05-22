@@ -1,0 +1,74 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mealie-api
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: hkotel/mealie
+      tag: api-nightly@sha256:0f0de57298398e89e6c27467837ba4cf19563e1f835aae4a3bc211911b4f7fe2
+    env:
+      TZ: "${TIMEZONE}"
+      PUID: 1000
+      PGID: 1000
+      ALLOW_SIGNUP: true
+      BASE_URL: "mealie.${SECRET_DOMAIN}"
+      DB_ENGINE: postgres
+      MAX_WORKERS: 1
+      WEB_CONCURRENCY: 1
+    envFrom:
+      - secretRef:
+          name: mealie
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
+    persistence:
+      config:
+        enabled: true
+        existingClaim: mealie-pvc
+        mountPath: /app/data
+    podAnnotations:
+      secret.reloader.stakater.com/reload: "mealie"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100Mi
+      limits:
+        memory: 1000Mi
