@@ -45,7 +45,7 @@ spec:
       main:
         ports:
           http:
-            port: 9925
+            port: 3001
     ingress:
       main:
         enabled: true
