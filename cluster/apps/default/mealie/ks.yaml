@@ -19,7 +19,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: mealie-api
-      namespace: hass
+      namespace: default
   interval: 15m
   retryInterval: 1m
   timeout: 3m
@@ -45,7 +45,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: mealie-frontend
-      namespace: hass
+      namespace: default
   interval: 15m
   retryInterval: 1m
   timeout: 3m
