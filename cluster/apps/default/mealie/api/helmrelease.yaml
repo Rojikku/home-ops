@@ -38,7 +38,7 @@ spec:
       PUID: 1000
       PGID: 1000
       ALLOW_SIGNUP: true
-      BASE_URL: "mealie.${SECRET_DOMAIN}"
+      BASE_URL: "https://mealie.${SECRET_DOMAIN}"
       DB_ENGINE: postgres
       MAX_WORKERS: 1
       WEB_CONCURRENCY: 1
