@@ -35,7 +35,7 @@ spec:
   dependsOn:
     - name: cluster-core-rook-ceph-cluster
     - name: cluster-apps-volsync
-  path: ./cluster/apps/default/frontend/api
+  path: ./cluster/apps/default/mealie/frontend
   prune: true
   sourceRef:
     kind: GitRepository
