@@ -37,6 +37,9 @@ spec:
           resolve_timeout: 5m
         receivers:
           - name: "null" # quote
+          - name: "pagerduty"
+            pagerduty_configs:
+              - service_key: "${PAGERDUTY_INTEGRATION_KEY}"
           - name: "discord"
             slack_configs:
               - channel: "#prometheus"
@@ -64,7 +67,7 @@ spec:
           group_wait: 1m
           group_interval: 10m
           repeat_interval: 12h
-          receiver: "discord"
+          receiver: "pagerduty"
           routes:
             - receiver: "null"
               match:
