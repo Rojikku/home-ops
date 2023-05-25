@@ -41,10 +41,10 @@ spec:
             webhook_configs:
               - url: "https://hc-ping.com/${HEALTHCHECKS_PROMETHEUS_KEY}"
                 send_resolved: true
-          - name: "pagerduty"
+          - name: pagerduty
             pagerduty_configs:
               - routing_key: "${PAGERDUTY_INTEGRATION_KEY}"
-          - name: "discord"
+          - name: discord
             slack_configs:
               - channel: "#prometheus"
                 icon_url: https://avatars3.githubusercontent.com/u/3380462
@@ -67,9 +67,9 @@ spec:
           group_wait: 1m
           group_interval: 10m
           repeat_interval: 12h
-          receiver: "pagerduty"
+          receiver: pagerduty
           routes:
-            - receiver: "healthchecks"
+            - receiver: healthchecks
               group_wait: 0s
               group_interval: 2m
               repeat_interval: 2m
@@ -79,7 +79,7 @@ spec:
               matchers:
                 - alertname =~ "InfoInhibitor"
                 - alertname =~ "CephNodeNetworkPacketDrops"
-            - receiver: "discord"
+            - receiver: discord
               matchers:
                 - severity = "critical"
               continue: true
