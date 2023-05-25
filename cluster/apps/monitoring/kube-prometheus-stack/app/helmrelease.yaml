@@ -179,6 +179,12 @@ spec:
     kubeEtcd:
       enabled: true
       endpoints: *cp
+      service:
+        enabled: false
+        port: 2379
+        targetPort: 2379
+        selector:
+          component: etcd
     kubeProxy:
       enabled: false # Disabled because eBPF
       endpoints: *cp
