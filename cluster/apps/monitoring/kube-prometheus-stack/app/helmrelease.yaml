@@ -39,7 +39,7 @@ spec:
           - name: "null" # quote
           - name: "pagerduty"
             pagerduty_configs:
-              - service_key: "${PAGERDUTY_INTEGRATION_KEY}"
+              - routing_key: "${PAGERDUTY_INTEGRATION_KEY}"
           - name: "discord"
             slack_configs:
               - channel: "#prometheus"
