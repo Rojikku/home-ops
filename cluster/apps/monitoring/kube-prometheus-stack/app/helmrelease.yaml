@@ -197,7 +197,14 @@ spec:
     kubeScheduler:
       enabled: true
       endpoints: *cp
+      service:
+        enabled: true
+        port: 10259
+        targetPort: 10259
       serviceMonitor:
+        enabled: true
+        https: true
+        insecureSkipVerify: true
         metricRelabelings:
           # Remove duplicate metrics
           - sourceLabels: ["__name__"]
