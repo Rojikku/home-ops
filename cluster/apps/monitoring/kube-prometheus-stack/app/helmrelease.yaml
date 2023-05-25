@@ -172,10 +172,6 @@ spec:
         targetPort: 10257
         selector:
           k8s-app: kube-controller-manager
-      endpoints: &cp
-        - 192.168.0.100
-        - 192.168.0.101
-        - 192.168.0.102
       serviceMonitor:
         https: true
         insecureSkipVerify: true
@@ -186,7 +182,10 @@ spec:
             action: keep
     kubeEtcd:
       enabled: true
-      endpoints: *cp
+      endpoints: &cp
+        - 192.168.0.100
+        - 192.168.0.101
+        - 192.168.0.102
       service:
         enabled: false
         port: 2379
