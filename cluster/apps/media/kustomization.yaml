@@ -7,6 +7,6 @@ resources:
   - prowlarr/ks.yaml
   - qbittorrent/ks.yaml
   - sonarr/ks.yaml
-  - recyclarr
+  - recyclarr/ks.yaml
   - jellyfin/ks.yaml
   - ombi
