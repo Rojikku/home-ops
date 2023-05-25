@@ -177,6 +177,8 @@ spec:
         - 192.168.0.101
         - 192.168.0.102
       serviceMonitor:
+        https: true
+        insecureSkipVerify: true
         metricRelabelings:
           # Remove duplicate metrics
           - sourceLabels: ["__name__"]
