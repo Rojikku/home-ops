@@ -28,8 +28,9 @@ spec:
     schedule: "*/30 * * * *"
   restic:
     copyMethod: Snapshot
-    pruneIntervalDays: 10
+    pruneIntervalDays: 5
     repository: restic-conf-mealie
+    cacheCapacity: 2Gi
     retain:
       hourly: 36
       daily: 10
