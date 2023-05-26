@@ -37,7 +37,7 @@ spec:
           resolve_timeout: 5m
         receivers:
           - name: "null" # quote
-          - name: "healthchecks"
+          - name: healthchecks
             webhook_configs:
               - url: "https://hc-ping.com/${HEALTHCHECKS_PROMETHEUS_KEY}"
                 send_resolved: true
@@ -78,6 +78,8 @@ spec:
             - receiver: "null"
               matchers:
                 - alertname =~ "InfoInhibitor"
+            - receiver: "null"
+              matchers:
                 - alertname =~ "CephNodeNetworkPacketDrops"
             - receiver: discord
               matchers:
