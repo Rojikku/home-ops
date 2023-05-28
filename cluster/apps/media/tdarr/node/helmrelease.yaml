@@ -43,6 +43,12 @@ spec:
       runAsGroup: 1000
       fsGroup: 1000
 
+    service:
+      main:
+        ports:
+          node:
+            port: 8266
+
     probes:
       liveness: &probes
         enabled: false
