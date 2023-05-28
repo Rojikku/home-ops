@@ -39,7 +39,8 @@ spec:
       PUID: 1000
       PGID: 1000
       UMASK_SET: 022
-      internalNode: true
+      serverIP: tdarr
+      internalNode: false
       inContainer: true
     securityContext:
       runAsUser: 0
