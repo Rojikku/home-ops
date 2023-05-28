@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: restic-conf-unmanic
+  name: restic-conf-tdarr
   namespace: media
 stringData:
-  RESTIC_REPOSITORY: ${RESTIC_TEMPLATE}/media/unmanic
+  RESTIC_REPOSITORY: ${RESTIC_TEMPLATE}/media/tdarr
   RESTIC_PASSWORD: ${RESTIC_PASSWORD}
   RCLONE_CONFIG_NAS_TYPE: sftp
   RCLONE_CONFIG_NAS_HOST: ${NAS_IP}
@@ -19,17 +19,17 @@ stringData:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: unmanic
+  name: tdarr
   namespace: media
 spec:
-  sourcePVC: unmanic-pvc
+  sourcePVC: tdarr-pvc
   trigger:
     # Synchronize every 30 minutes
     schedule: "*/30 * * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 5
-    repository: restic-conf-unmanic
+    repository: restic-conf-tdarr
     cacheCapacity: 2Gi
     retain:
       hourly: 36

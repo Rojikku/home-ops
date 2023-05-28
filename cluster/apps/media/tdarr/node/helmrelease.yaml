@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: unmanic
+  name: tdarr-node
   namespace: media
 spec:
   interval: 15m
@@ -31,14 +31,11 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: josh5/unmanic
-      tag: 0.2.4
+      repository: ghcr.io/haveagitgat/tdarr_node
+      tag: 2.00.20
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-      CONFIG_DIR: /config
-      LIBRARY_DIR: /mnt/drive
-      CACHE_DIR: /tmp/unmanic
       PUID: 1000
       PGID: 1000
     securityContext:
@@ -46,11 +43,6 @@ spec:
       runAsGroup: 1000
       fsGroup: 1000
 
-    service:
-      main:
-        ports:
-          http:
-            port: &port 8888
     probes:
       liveness: &probes
         enabled: false
@@ -58,7 +50,7 @@ spec:
         spec:
           httpGet:
             path: /ping
-            port: *port
+            port: 8266
           initialDelaySeconds: 0
           periodSeconds: 10
           timeoutSeconds: 1
@@ -70,38 +62,21 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: unmanic-pvc
+        existingClaim: tdarr-pvc
+        mountPath: /app
       media:
         enabled: true
         type: nfs
         server: "172.16.0.54"
         path: /volume1/Media
-        mountPath: /mnt/drive
+        mountPath: /media
       cache:
         enabled: true
-        existingClaim: unmanic-cache-pvc
-        mountPath: /tmp/unmanic
+        existingClaim: tdarr-cache-pvc
+        mountPath: /temp
     ingress:
       main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/enable: "true"
-          hajimari.io/appName: "unmanic"
-          # hajimari.io/icon: ""
-          hajimari.io/instance: "sonarr"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
-        hosts:
-          - host: &host "unmanic.r.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-            secretName: "unmanic-tls"
+        enabled: false
 
     resources:
       requests:

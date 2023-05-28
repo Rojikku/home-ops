@@ -9,5 +9,5 @@ resources:
   - sonarr/ks.yaml
   - recyclarr/ks.yaml
   - jellyfin/ks.yaml
-  - unmanic/ks.yaml
+  - tdarr/ks.yaml
   - ombi

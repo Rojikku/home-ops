@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: unmanic-pvc
+  name: tdarr-pvc
   namespace: media
 spec:
   accessModes:
@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: unmanic-cache-pvc
+  name: tdarr-cache-pvc
   namespace: media
 spec:
   accessModes:

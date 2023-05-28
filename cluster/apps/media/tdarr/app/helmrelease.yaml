@@ -1,0 +1,112 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tdarr
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+    image:
+      repository: ghcr.io/haveagitgat/tdarr
+      tag: 2.00.20.1
+      pullPolicy: IfNotPresent
+    env:
+      TZ: "${TIMEZONE}"
+      PUID: 1000
+      PGID: 1000
+      UMASK_SET: 022
+      internalNode: true
+      initContainer: true
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8265
+    probes:
+      liveness: &probes
+        enabled: false
+        custom: true
+        spec:
+          httpGet:
+            path: /ping
+            port: *port
+          initialDelaySeconds: 0
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
+      startup:
+        enabled: false
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: tdarr-pvc
+        mountPath: /app
+      media:
+        enabled: true
+        type: nfs
+        server: "172.16.0.54"
+        path: /volume1/Media
+        mountPath: /media
+      cache:
+        enabled: true
+        existingClaim: tdarr-cache-pvc
+        mountPath: /temp
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "tdarr"
+          # hajimari.io/icon: ""
+          hajimari.io/instance: "sonarr"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+        hosts:
+          - host: &host "tdarr.r.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: "tdarr-tls"
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 2048Mi
