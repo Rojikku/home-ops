@@ -52,6 +52,8 @@ spec:
         ports:
           http:
             port: &port 8265
+          nodes:
+            port: 8266
     probes:
       liveness: &probes
         enabled: false
