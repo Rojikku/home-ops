@@ -28,6 +28,7 @@ spec:
   values:
     controller:
       type: statefulset
+      replicas: 3
       annotations:
         reloader.stakater.com/auto: "true"
     image:
@@ -99,4 +100,4 @@ spec:
         cpu: 100m
         memory: 256Mi
       limits:
-        memory: 2048Mi
+        memory: 4096Mi
