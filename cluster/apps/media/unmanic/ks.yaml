@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: cluster-apps-unmanic
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: cluster-core-rook-ceph-cluster
+    - name: cluster-apps-volsync
+  path: ./cluster/apps/media/unmanic/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops-flux
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: unmanic
+      namespace: media
+  interval: 15m
+  retryInterval: 1m
+  timeout: 3m
