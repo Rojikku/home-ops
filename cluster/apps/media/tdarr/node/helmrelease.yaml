@@ -69,7 +69,15 @@ spec:
       config:
         enabled: true
         existingClaim: tdarr-pvc
-        mountPath: /app
+        mountPath: /app/configs
+      server:
+        enabled: true
+        existingClaim: tdarr-server-pvc
+        mountPath: /app/server
+      logs:
+        enabled: true
+        existingClaim: tdarr-logs-pvc
+        mountPath: /app/logs
       media:
         enabled: true
         type: nfs
