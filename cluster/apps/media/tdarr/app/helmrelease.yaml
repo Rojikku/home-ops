@@ -91,9 +91,7 @@ spec:
         mountPath: /media
       cache:
         enabled: true
-        type: nfs
-        server: "172.16.0.54"
-        path: /volume1/Cache
+        existingClaim: tdarr-cache-pvc
         mountPath: /temp
     ingress:
       main:

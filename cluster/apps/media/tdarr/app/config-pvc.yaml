@@ -37,3 +37,16 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: ceph-filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tdarr-cache-pvc
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: ceph-filesystem
