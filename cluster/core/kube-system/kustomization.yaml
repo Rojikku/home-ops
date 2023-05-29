@@ -7,4 +7,5 @@ resources:
   - ./metrics-server
   - ./reloader
   - ./device-manager
+  - ./node-feature-discovery/ks.yaml
   - ./snapshot-controller/ks.yaml
