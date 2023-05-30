@@ -32,7 +32,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: hkotel/mealie
-      tag: api-nightly@sha256:020fd5362d4e3f8b44a6dca8cda671df29939eddb988d89d51b3b884f4e36a81
+      tag: api-nightly@sha256:1a94a01602a9fb5b0a3b18f95957bce92ec4fd5626a94e726937f274e3388b74
     env:
       TZ: "${TIMEZONE}"
       PUID: 1000
