@@ -83,16 +83,18 @@ spec:
         enabled: true
         existingClaim: zwave-pvc
         mountPath: "/usr/src/app/store"
-      usb:
-        enabled: true
-        type: hostPath
-        hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_C130206D-if00-port0
-        hostPathType: CharDevice
+      # usb: # Required privileged: true
+      #   enabled: true
+      #   type: hostPath
+      #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_C130206D-if00-port0
+      #   hostPathType: CharDevice
     nodeSelector:
       gocontrol.feature.node.kubernetes.io/zwave: "true"
     resources:
       requests:
         cpu: 100m
         memory: 100Mi
+        smarter-devices/ttyUSB0: 1
       limits:
         memory: 500Mi
+        smarter-devices/ttyUSB0: 1
