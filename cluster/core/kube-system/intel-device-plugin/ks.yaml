@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-intel-device-plugin-operator
+  name: cluster-core-intel-device-plugin
   namespace: flux-system
 spec:
   dependsOn:
