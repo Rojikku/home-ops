@@ -30,6 +30,7 @@ spec:
     copyMethod: Direct
     pruneIntervalDays: 5
     repository: restic-conf-tdarr
+    storageClassName: ceph-filesystem
     cacheCapacity: 2Gi
     retain:
       hourly: 36
