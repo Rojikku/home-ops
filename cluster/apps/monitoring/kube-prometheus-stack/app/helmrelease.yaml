@@ -75,20 +75,35 @@ spec:
             #   repeat_interval: 2m
             #   matchers:
             #     - alertname =~ "Watchdog"
+            # - receiver: "null"
+            #   matchers:
+            #     - alertname =~ "InfoInhibitor"
+            # - receiver: "null"
+            #   matchers:
+            #     - alertname =~ "CephNodeNetworkPacketDrops"
+            # - receiver: discord
+            #   matchers:
+            #     - severity = "critical"
             - receiver: "null"
-              matchers:
-                - alertname =~ "InfoInhibitor"
+              match:
+                alertname: Watchdog
             - receiver: "null"
-              matchers:
-                - alertname =~ "CephNodeNetworkPacketDrops"
-            - receiver: discord
-              matchers:
-                - severity = "critical"
+              match:
+                service: sonarr-metrics
+            - receiver: "null"
+              match:
+                alertname: InfoInhibitor
+            - receiver: "null"
+              match:
+                alertname: CephNodeNetworkPacketDrops
+            - receiver: "discord"
+              match_re:
+                severity: critical
               continue: true
         inhibit_rules:
-          - source_matchers:
+          - source_match:
               severity: "critical"
-            target_matchers:
+            target_match:
               severity: "warning"
             equal: ["alertname", "namespace"]
       ingress:
