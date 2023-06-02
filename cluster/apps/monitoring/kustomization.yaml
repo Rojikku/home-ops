@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - kube-prometheus-stack/ks.yaml
   - hajimari
-  # - loki/ks.yaml
+  - loki/ks.yaml
   - grafana
   - speedtest-exporter
   - pushgateway
