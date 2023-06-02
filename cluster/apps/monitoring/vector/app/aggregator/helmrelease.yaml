@@ -41,6 +41,7 @@ spec:
         volumeMounts:
           - { name: geoip, mountPath: /usr/share/GeoIP }
     controller:
+      type: statefulset
       replicas: 3
       strategy: RollingUpdate
       annotations:
