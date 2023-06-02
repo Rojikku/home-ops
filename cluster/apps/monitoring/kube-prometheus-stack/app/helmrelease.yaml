@@ -37,10 +37,10 @@ spec:
           resolve_timeout: 5m
         receivers:
           - name: "null" # quote
-          # - name: healthchecks
-          #   webhook_configs:
-          #     - url: "https://hc-ping.com/${HEALTHCHECKS_PROMETHEUS_KEY}"
-          #       send_resolved: true
+          - name: healthchecks
+            webhook_configs:
+              - url: "https://hc-ping.com/${HEALTHCHECKS_PROMETHEUS_KEY}"
+                send_resolved: true
           - name: pagerduty
             pagerduty_configs:
               - routing_key: "${PAGERDUTY_INTEGRATION_KEY}"
@@ -69,36 +69,21 @@ spec:
           repeat_interval: 12h
           receiver: pagerduty
           routes:
-            # - receiver: healthchecks
-            #   group_wait: 0s
-            #   group_interval: 2m
-            #   repeat_interval: 2m
-            #   matchers:
-            #     - alertname =~ "Watchdog"
-            # - receiver: "null"
-            #   matchers:
-            #     - alertname =~ "InfoInhibitor"
-            # - receiver: "null"
-            #   matchers:
-            #     - alertname =~ "CephNodeNetworkPacketDrops"
-            # - receiver: discord
-            #   matchers:
-            #     - severity = "critical"
+            - receiver: healthchecks
+              group_wait: 0s
+              group_interval: 2m
+              repeat_interval: 2m
+              matchers:
+                - alertname =~ "Watchdog"
             - receiver: "null"
-              match:
-                alertname: Watchdog
+              matchers:
+                - alertname =~ "InfoInhibitor"
             - receiver: "null"
-              match:
-                service: sonarr-metrics
-            - receiver: "null"
-              match:
-                alertname: InfoInhibitor
-            - receiver: "null"
-              match:
-                alertname: CephNodeNetworkPacketDrops
-            - receiver: "discord"
-              match_re:
-                severity: critical
+              matchers:
+                - alertname =~ "CephNodeNetworkPacketDrops"
+            - receiver: discord
+              matchers:
+                - severity = "critical"
               continue: true
         inhibit_rules:
           - source_matchers:
