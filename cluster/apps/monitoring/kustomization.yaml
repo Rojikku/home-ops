@@ -5,6 +5,7 @@ resources:
   - kube-prometheus-stack/ks.yaml
   - hajimari
   - loki/ks.yaml
+  - vector/ks.yaml
   - grafana
   - speedtest-exporter
   - pushgateway
