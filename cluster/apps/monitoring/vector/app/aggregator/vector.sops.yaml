@@ -1,0 +1,29 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: vector-aggregator
+    namespace: monitoring
+stringData:
+    GEOIPUPDATE_ACCOUNT_ID: ENC[AES256_GCM,data:HgiaUeWG,iv:8rfwLlWPjll3bns7biRxApdIXwV22owCphi2TtvNAOU=,tag:fHPTU1dZqmukn/ojFVN/XQ==,type:str]
+    GEOIPUPDATE_LICENSE_KEY: ENC[AES256_GCM,data:eh8LpQ3w6JakXKY1J40XzokM7l6cDn6dBGkv8ve4wZG3d7lUWTK7gw==,iv:ubM2GRkRd6gEYtTjMStOXARKBzcwktAkGF2q+Dwg7+8=,tag:ZcAMKR2gJdZubHHMOhwFQg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-06-02T22:51:54Z"
+    mac: ENC[AES256_GCM,data:S5XT1GPxLPxOtUXjUhE/3ZotzqdxGjVsKC1unXBEf2lRuQ8O2u8ZxhUs5rWYO47gQGe4QudRsfmASSmFP7ipFSr/gjcLUNaWeBQTqEIwX3mgxqYg6NQaqF+yv5ugsBtrOy+bJYzOXjhjMlh/qFG89iD95cLkGWVMtRL1eRoqXOU=,iv:knlC2qDDkxJQESYE8TqbmoiCtNcuSozLoyLYEx4qxpM=,tag:GMvJ0cKDr79ByHZJyy8/Zw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
