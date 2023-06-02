@@ -27,7 +27,7 @@ spec:
     # Synchronize every 30 minutes
     schedule: "*/30 * * * *"
   restic:
-    copyMethod: Snapshot
+    copyMethod: Direct
     pruneIntervalDays: 5
     repository: restic-conf-tdarr
     cacheCapacity: 2Gi
