@@ -166,8 +166,6 @@ If desired, login to the web UI with the password from:
 kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
 ```
 
-5. Setup labels for my pods so that things will deploy correctly later.
-```
-kubectl label node k8s-3 feature.node.kubernetes.io/custom-zwave=true
-```
+5. Node feature discovery will automatically label my nodes with the correct USB devices.
+
 6. Restore from backup with method of choice
