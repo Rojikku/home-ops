@@ -8,7 +8,7 @@ spec:
   interval: 30m0s
   ref:
     branch: main
-    # renovate: datasource=github-releases depName=reactive-tech/kubegres
+    # renovate: datasource=github-releases depName=intel/intel-device-plugins-for-kubernetes
     tag: v0.27.0
   url: https://github.com/intel/intel-device-plugins-for-kubernetes
   ignore: |
