@@ -27,9 +27,10 @@ spec:
     # Synchronize every 30 minutes
     schedule: "*/30 * * * *"
   restic:
-    copyMethod: Snapshot
+    copyMethod: Direct
     pruneIntervalDays: 5
     repository: restic-conf-mealie
+    storageClassName: ceph-filesystem
     cacheCapacity: 2Gi
     retain:
       hourly: 36
