@@ -61,3 +61,18 @@ spec:
           - hosts:
               - *host
             secretName: "ombi-tls"
+      app:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - host: &host2 "ombi-app.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host2
+            secretName: "ombi-app-tls"
