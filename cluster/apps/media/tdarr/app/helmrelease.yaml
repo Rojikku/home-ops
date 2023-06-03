@@ -118,7 +118,7 @@ spec:
             secretName: "tdarr-tls"
 
     affinity:
-      podAffinity:
+      nodeAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
           - preference:
               matchExpressions:
