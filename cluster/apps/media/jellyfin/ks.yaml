@@ -7,6 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-core-rook-ceph-cluster
+    - name: cluster-core-intel-device-plugin
     - name: cluster-apps-volsync
   path: ./cluster/apps/media/jellyfin/app
   prune: true

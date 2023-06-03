@@ -82,29 +82,31 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-pvc
-
       # Cache does NOT contain temporary transcoding data.
       cache:
         enabled: true
         mountPath: /cache
         existingClaim: jellyfin-cache-pvc
-
       media:
         enabled: true
         type: nfs
         server: "172.16.0.54"
         path: /volume1/Media
         mountPath: /media
+      transcode:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        mountPath: /transcode
+
+    nodeSelector:
+      intel.feature.node.kubernetes.io/gpu: "true"
 
     resources:
       requests:
-        # Hardware acceleration using an Intel iGPU w/ QuickSync and
-        # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
-        # gpu.intel.com/i915: 1
+        gpu.intel.com/i915: 1
         cpu: 200m
         memory: 256Mi
-    #   limits:
-    #     # Hardware acceleration using an Intel iGPU w/ QuickSync and
-    #     # using intel-gpu-plugin (https://github.com/intel/intel-device-plugins-for-kubernetes)
-    #     gpu.intel.com/i915: 1
-    #     memory: 4096Mi
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 4Gi
