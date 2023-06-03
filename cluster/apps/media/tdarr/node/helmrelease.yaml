@@ -28,7 +28,7 @@ spec:
   values:
     controller:
       type: statefulset
-      replicas: 3
+      replicas: 1
       annotations:
         reloader.stakater.com/auto: "true"
     image:
@@ -42,6 +42,7 @@ spec:
       UMASK_SET: 002
       serverIP: tdarr
       inContainer: true
+      nodeName: intel-gpu
     securityContext:
       runAsUser: 0
       runAsGroup: 0
@@ -73,10 +74,6 @@ spec:
         enabled: true
         existingClaim: tdarr-pvc
         mountPath: /app/configs
-      server:
-        enabled: true
-        existingClaim: tdarr-server-pvc
-        mountPath: /app/server
       logs:
         enabled: true
         existingClaim: tdarr-logs-pvc
@@ -101,5 +98,7 @@ spec:
       requests:
         cpu: 100m
         memory: 256Mi
+        gpu.intel.com/i915: 1
       limits:
-        memory: 16Gi
+        memory: 8Gi
+        gpu.intel.com/i915: 1
