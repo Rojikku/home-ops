@@ -28,7 +28,6 @@ spec:
   values:
     controller:
       type: daemonset
-      replicas: 2
       annotations:
         reloader.stakater.com/auto: "true"
     image:
