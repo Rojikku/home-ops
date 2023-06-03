@@ -51,9 +51,9 @@ spec:
           # hajimari.io/icon: ""
           hajimari.io/instance: "sonarr"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          # traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
-          - host: &host "ombi.r.${SECRET_DOMAIN}"
+          - host: &host "ombi.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
