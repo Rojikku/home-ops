@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controller:
-      type: statefulset
+      type: daemonset
       replicas: 2
       annotations:
         reloader.stakater.com/auto: "true"
@@ -93,6 +93,10 @@ spec:
     ingress:
       main:
         enabled: false
+
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
+      intel.feature.node.kubernetes.io/gpu: "true"
 
     resources:
       requests:
