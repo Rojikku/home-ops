@@ -39,6 +39,7 @@ spec:
       prometheusRule:
         enabled: true
     controller:
+      type: statefulset
       enabled: true
       # -- Controller log level. Must be one of: `all`, `debug`, `info`, `warn`, `error` or `none`
       logLevel: info
