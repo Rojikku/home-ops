@@ -81,6 +81,7 @@ spec:
             - receiver: "null"
               matchers:
                 - alertname =~ "CephNodeNetworkPacketDrops"
+                - alertname =~ "AlertmanagerClusterFailedToSendAlerts"
             - receiver: discord
               matchers:
                 - severity = "critical"
