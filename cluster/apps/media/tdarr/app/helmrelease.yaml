@@ -117,6 +117,17 @@ spec:
               - *host
             secretName: "tdarr-tls"
 
+    affinity:
+      podAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - preference:
+              matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - k8s-3
+            weight: 50
+
     resources:
       requests:
         cpu: 100m
