@@ -95,7 +95,6 @@ spec:
         enabled: false
 
     nodeSelector:
-      node-role.kubernetes.io/worker: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
 
     resources:
