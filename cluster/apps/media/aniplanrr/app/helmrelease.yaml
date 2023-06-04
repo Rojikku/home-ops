@@ -38,10 +38,10 @@ spec:
       TZ: "${TIMEZONE}"
       SONARRURL: "http://sonarr:8989/api"
       SONARRAPIKEY: "${SONARR_APIKEY}"
-      ANILIST_USERNAME: Rojikku
+      ANILIST_USERNAME: "Rojikku"
       MONITOR: all
       RETRY: "True"
-      INTERVAL: "300"
+      INTERVAL: "30"
     securityContext:
       runAsUser: 1000
       runAsGroup: 1000
