@@ -41,7 +41,7 @@ spec:
       ANILIST_USERNAME: Rojikku
       MONITOR: all
       RETRY: "True"
-      INTERVAL: 300
+      INTERVAL: "300"
     securityContext:
       runAsUser: 1000
       runAsGroup: 1000
