@@ -11,3 +11,4 @@ resources:
   - jellyfin/ks.yaml
   - tdarr/ks.yaml
   - ombi
+  - aniplanrr/ks.yaml
