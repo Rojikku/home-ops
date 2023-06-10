@@ -36,9 +36,9 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-      SONARRURL: "http://sonarr:8989/api"
+      SONARRURL: "http://sonarr:8989/api/"
       SONARRAPIKEY: "${SONARR_APIKEY}"
-      RADARRURL: "http://radarr:7878/api"
+      RADARRURL: "http://radarr:7878/api/"
       RADARRAPIKEY: "${RADARR_APIKEY}"
       ANILIST_USERNAME: "Rojikku"
       MONITOR: all
