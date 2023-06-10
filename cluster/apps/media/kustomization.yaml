@@ -10,5 +10,5 @@ resources:
   - recyclarr/ks.yaml
   - jellyfin/ks.yaml
   - tdarr/ks.yaml
-  - ombi
+  - ombi/ks.yaml
   - aniplanrr/ks.yaml
