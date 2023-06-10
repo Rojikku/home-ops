@@ -38,8 +38,8 @@ spec:
       TZ: "${TIMEZONE}"
       SONARRURL: "http://sonarr:8989/api"
       SONARRAPIKEY: "${SONARR_APIKEY}"
-      RADARRURL: "http://localhost/"
-      RADARRAPIKEY: ""
+      RADARRURL: "http://radarr:7878/api"
+      RADARRAPIKEY: "${RADARR_APIKEY}"
       ANILIST_USERNAME: "Rojikku"
       MONITOR: all
       RETRY: "True"
