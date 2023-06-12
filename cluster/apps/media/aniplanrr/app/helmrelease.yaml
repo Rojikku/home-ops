@@ -32,7 +32,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/noggl/aniplanrr
-      tag: main@sha256:9874a5cda0a3caade22ee0fc1137450792a123d43d689bece7892f8b15b9d72e
+      tag: main@sha256:a41d0ac487b7389ac08085d1fac0142138eb7517cb3829c56af4fd1767494184
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
