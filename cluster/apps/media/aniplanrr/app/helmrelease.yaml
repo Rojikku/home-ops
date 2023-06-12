@@ -46,6 +46,8 @@ spec:
       MONITOR: "all"
       RETRY: "True"
       INTERVAL: "600"
+      RESPECTFUL_ADDING: "True"
+      AUTO_FILL_MAPPING: "True"
     securityContext:
       runAsUser: 1000
       runAsGroup: 1000
