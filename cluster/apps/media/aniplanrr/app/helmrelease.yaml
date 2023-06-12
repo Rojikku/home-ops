@@ -36,10 +36,10 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-      SONARRURL: "http://sonarr:8989/api/"
+      SONARRURL: "http://sonarr:8989/"
       SONARRAPIKEY: "${SONARR_APIKEY}"
       SONARRANIMEPATH: "/mnt/drive/Shows/"
-      RADARRURL: "http://radarr:7878/api/"
+      RADARRURL: "http://radarr:7878/"
       RADARRAPIKEY: "${RADARR_APIKEY}"
       RADARRANIMEPATH: "/mnt/drive/Movies/"
       ANILIST_USERNAME: "Rojikku"
