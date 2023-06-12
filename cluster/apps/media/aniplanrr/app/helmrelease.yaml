@@ -32,16 +32,18 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/noggl/aniplanrr
-      tag: main@sha256:419439c6b19460c3fd5c3a61791f6bb7fefff168ea68090982d5b23f3fe6edba
+      tag: main@sha256:9874a5cda0a3caade22ee0fc1137450792a123d43d689bece7892f8b15b9d72e
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
       SONARRURL: "http://sonarr:8989/api/"
       SONARRAPIKEY: "${SONARR_APIKEY}"
+      SONARRANIMEPATH: "/mnt/drive/Shows/"
       RADARRURL: "http://radarr:7878/api/"
       RADARRAPIKEY: "${RADARR_APIKEY}"
+      RADARRANIMEPATH: "/mnt/drive/Movies/"
       ANILIST_USERNAME: "Rojikku"
-      MONITOR: all
+      MONITOR: "all"
       RETRY: "True"
       INTERVAL: "600"
     securityContext:
