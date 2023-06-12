@@ -1,0 +1,47 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: aniplanrr
+  namespace: media
+spec:
+  values:
+    addons:
+      codeserver:
+        enabled: true
+        image:
+          repository: ghcr.io/coder/code-server
+          tag: 4.13.0
+        env:
+          TZ: America/New_York
+        workingDir: /config
+        args:
+          - --auth
+          - "none"
+          - --user-data-dir
+          - "/config/.vscode"
+          - --extensions-dir
+          - "/config/.vscode"
+        ingress:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            cert-manager.io/cluster-issuer: "letsencrypt-production"
+            hajimari.io/enable: "true"
+            hajimari.io/appName: "AniPLanrr Config"
+            hajimari.io/icon: cib:visual-studio-code
+            hajimari.io/instance: "sonarr"
+            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+            traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+          hosts:
+            - host: &host "aniplanrr.${SECRET_DOMAIN}"
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - *host
+              secretName: "aniplanrr-tls"
+        volumeMounts:
+          - name: config
+            mountPath: /config
