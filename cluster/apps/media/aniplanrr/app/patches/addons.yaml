@@ -28,7 +28,7 @@ spec:
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-production"
             hajimari.io/enable: "true"
-            hajimari.io/appName: "AniPLanrr Config"
+            hajimari.io/appName: "AniPlanrr Config"
             hajimari.io/icon: cib:visual-studio-code
             hajimari.io/instance: "sonarr"
             traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
