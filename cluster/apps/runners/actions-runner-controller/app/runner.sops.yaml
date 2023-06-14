@@ -1,0 +1,30 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: actions-runner-controller-auth-secret
+    namespace: runners
+stringData:
+    github_app_id: ENC[AES256_GCM,data:EsDz7Omi,iv:34CDX50OQfnp4bO2vXNhgzsdc/7BXHnlFQbI+o8VatY=,tag:uV7HcjuVsHFQq6y23Ds2zA==,type:str]
+    github_app_installation_id: ENC[AES256_GCM,data:skRhShzjmCE=,iv:ne8/v0HVTqoPO6+luV5dagim/0X4FkAB3hu9gI7GJEQ=,tag:N6VvV/FuWAKQ1W2fdw2Lgw==,type:str]
+    github_app_private_key: ENC[AES256_GCM,data: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,iv:a/0GzH1VL9WlqrQeMlriyOhN0zb9TfScTIqgcZsIjsE=,tag:SA+ZPIL7bZaDClIPJ3s/3w==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-06-14T14:11:01Z"
+    mac: ENC[AES256_GCM,data:Xq2kPrvMfg4ZkIrNfuL7gKBpZnIGtjmIY6tBkKtQ5SD1j9NVsXX9fcUvqWDS44Z5eKYvfbQP1ZKKe6bET1ZW3rjLUzbQcBK0Z6cGarS/Cht+zPLcK55Ji6+sgqg5FhGf+TkAU7oKBzoiKHOhJYU58I/0iJ67f5/4wtQspG2lLPE=,iv:TwXFnkgy/IqTCIVTHAYtAiEpQwS6u2P5/gYdHp2L9Bo=,tag:P8o9uiq6XNkmltCH58VAtQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

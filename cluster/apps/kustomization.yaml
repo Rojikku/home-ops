@@ -6,6 +6,7 @@ resources:
   - networking
   - monitoring
   - flux-system
+  - runners
   - hass
   - media
   - volsync
