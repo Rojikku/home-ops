@@ -1,11 +1,25 @@
 {
   "packageRules": [
     {
+      "description": "Auto merge container digests",
+      "matchDatasources": ["docker"],
+      "automerge": true,
+      "ignoreTests": true,
+      "automergeType": "branch",
+      "matchUpdateTypes": ["digest"],
+      "matchPackageNames": [
+        "ghcr.io/onedr0p/",
+        "ghcr.io/bjw-s",
+        "ghcr.io/noggl",
+        "ghcr.io/Rojikku"
+      ]
+    },
+    {
       "description": "Auto merge containers",
       "matchDatasources": ["docker"],
       "automerge": true,
+      "ignoreTests": true,
       "automergeType": "branch",
-      "requiredStatusChecks": null,
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "ghcr.io/onedr0p/prowlarr-nightly",
