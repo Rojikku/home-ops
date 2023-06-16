@@ -35,13 +35,6 @@ spec:
       tag: 2.8.2
     env:
       TZ: "${TIMEZONE}"
-      # REGISTRY_HTTP_TLS_CERTIFICATE: "/certs/tls.crt"
-      # REGISTRY_HTTP_TLS_KEY: "/certs/tls.key"
-      REGISTRY_AUTH: htpasswd
-      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet
     service:
       main:
         ports:
@@ -54,6 +47,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-auth@kubernetescrd
         hosts:
           - host: &host "registry.${SECRET_DOMAIN}"
             paths:
@@ -68,19 +62,6 @@ spec:
         enabled: true
         existingClaim: registry-pvc
         mountPath: /var/lib/registry
-      cert:
-        enabled: true
-        type: secret
-        name: registry-tls
-        mountPath: /certs
-        readOnly: true
-      htpasswd:
-        enabled: true
-        type: secret
-        name: registry
-        subPath: htpasswd
-        mountPath: /auth/htpasswd
-        readOnly: true
     resources:
       requests:
         cpu: 100m
