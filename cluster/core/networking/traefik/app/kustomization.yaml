@@ -4,3 +4,5 @@ resources:
   - helmrelease.yaml
   - dashboard
   - authentik-mid.yaml
+  - auth.sops.yaml
+  - auth-mid.yaml
