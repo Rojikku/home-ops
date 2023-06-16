@@ -29,7 +29,7 @@ spec:
     image:
       repository: quay.io/tflower/volsync
       tag: ""
-      image: quay.io/tflower/volsync@sha256:004b9025ac67313ff7d6ded08fe06ebbb8dd59aaa90f5a0d08a05458943220db
+      image: quay.io/tflower/volsync@sha256:b33490244ce7169ec0f1163f556711d37863fbd7347979d76f5a5e1e069f209c
     manageCRDs: true
     metrics:
       disableAuth: true
