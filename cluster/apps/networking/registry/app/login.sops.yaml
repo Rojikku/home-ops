@@ -1,0 +1,29 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: login
+    namespace: networking
+data:
+    .dockerconfigjson: ENC[AES256_GCM,data:vWCdQTjUDZgi539y/CrYwc4EGLA0M+8PC/VziA5wp6/d8UcNgf53XIdXlmvCvuAtY1KmJ1rVRlqAYsjmKIGw9EyJq0LPRh/pCARzkcMkhjm+DJkftlePbGR1PlQ6E0PPlZzAimqNoIC4ixS/fHS1w35+C0spVtRsc59tp8vNP38nsA==,iv:6I1DaXe4re61tvk0NYTXIMM8Bgyzv3M9C6sXIsjfTIg=,tag:jyFFky1tYOkr2nXOnUHPFw==,type:str]
+type: kubernetes.io/dockerconfigjson
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-06-16T00:50:59Z"
+    mac: ENC[AES256_GCM,data:pPhvZ2CjdYAEpdmlSTIqVrtqEg0cKnU4JxBMobPOiMpdHqy+Hkf78mCXghtRRD6DBk7MtvfUy/rqreOPL1E0/qyHKaoUxHk8GtYpvjGjYZRBEH1fMWx8Us6y61rmVXnhntC2M2QGzIolgYw5zxVDNFwIeic7NixmSCLRj2ZlrJo=,iv:HPU0fVhowVzcMZQVbPkcYsObzEKn/qwwn0FRhProWFY=,tag:4RdBvyDaupmoNymQMR5IpA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
