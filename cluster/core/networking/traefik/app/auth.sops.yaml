@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-    name: registry
+    name: authsecret
     namespace: networking
 data:
     users: ENC[AES256_GCM,data:P2QM0kroz5y6hdBOWOGWTkU6EQf29tZ1JXw5jYmjrADRDUwEqMac7YEPaqYv35KtuY/u+4Lo2bWRxifqYypIuA==,iv:OUW5zp7++tUdNybkWCqU7Y/YXtgETJr6QdVAg4kM5/Y=,tag:d/IH3H+HqHty9pmAQLgYog==,type:str]
@@ -21,8 +21,8 @@ sops:
             d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
             mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-06-16T00:32:03Z"
-    mac: ENC[AES256_GCM,data:nhCh2nYm+medSIOYCGx9VD43WRnyq/RHXK0fyjmQ6qRlTlQk1Solp7hqoMeqYiMouNkGedtsGJq5JDUU9H02fCap9ARGLMVt5h0svHwv1hFjNIiymxoCbAALJ87eMskh2EbQ7liSG7PTioqRnTmcHtsBXd514FyMGkp3wHREtXI=,iv:yLjizBEio/6fh3+mDHEpvUqpM9/u1vtOwpXBE+9aniM=,tag:fbFNn6QvlF2JBYiMa/quVw==,type:str]
+    lastmodified: "2023-06-16T00:43:18Z"
+    mac: ENC[AES256_GCM,data:h3N74zgaIzIQ6N00CMkIKjwTmFp4ktjhi8x0AbmBPFgvXQ3OCzonjwPULSR0jEJQLh9kIl9suKfG5PTg1mznwGKji5o+Zjw/pBOO3MOKVDOWYQhIEHD0LrcBZ9ar0Ns7FFD8jzHX3qTQ0hT0Fpyo5pqaOll0sM7jDnyVc4iOvLA=,iv:DFqeT4ci678JEffl3tGh4OhL6Wahh9lbRI2zELNojaw=,tag:ZiDxYHm9SbjjUKlm5wgDSw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
