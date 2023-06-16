@@ -5,6 +5,7 @@ metadata:
     name: cloudflared
     namespace: networking
 stringData:
+    TUNNEL_ID: ENC[AES256_GCM,data:vIU2bRDnQ0O9GCv6Z9UjJF1j0WToYMXuZXG824FiNQAPbram,iv:n/L2ybNEzuLsKr3x8jUFk3ANgiRa4WYOxO+Rd6fCn9I=,tag:QJ3xAzDFaHavcGrBNoy8Og==,type:str]
     credentials.json: ENC[AES256_GCM,data:fDfjQlKbNuqwf2fXEuIwvBxHRm6I01DBeUc9AEkIeiRAcyvajjYqBbB+tXXr4EgHLWf8aYVl8zRSYZmbY7ZdhSmsDGWX8vLh5uPBK2XuXh9dJrOoGyhZYJxQIHUQFB5e1tD9wNYZ7XPR73FkKFPxoXkJcvVxtX4nivdyHJsbjJK2Wl8E3IvkoMMptqavAw1eNOMvOgZ/ZdRtG3kJPOR9Vuj+,iv:DPVgN0LOcllbaWK95r0dtBYHWn5nHjEi3Zd2zPkkUgc=,tag:vgEDaQ6SsJet8Oj/5954Mg==,type:str]
 sops:
     kms: []
@@ -21,8 +22,8 @@ sops:
             d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
             mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-06-16T20:17:53Z"
-    mac: ENC[AES256_GCM,data:O/8BMJGYPV4I5gBMwnfFEdA1cPOuE3oFNz5zQuVUlQ7xtpbFcK6zBWL6vrwPTUHcGbC+aQBNeXxqwYemw6tna0i9B8W8oB/p0nQ8gvS67PyaxoFeGZEZ+d6+aSvH51fwTtEDOi7JdQ22FhPa8Uy9pabfi8GJIq7sjEYAvtOE/U8=,iv:Qizyaci2ZgBSx3XXX+1R21/36h2s5WwtbtlBTT/lWwI=,tag:oL7odM6vfLdFJybncf75Fw==,type:str]
+    lastmodified: "2023-06-16T20:28:44Z"
+    mac: ENC[AES256_GCM,data:8snoXqyx31/IedJcB8z1avmtXJ2lliajXwKvGrSUK4tq1zkZlChvpNqfpLwMj9ERZFftl5rpIoGQy58VAErEUc6omVcMDvn7JR9Z2CEvf4ev1P1P0OwrPT/at6xiKAbm/nNEevljSrX2Frdt1L/z+flWO9AOVXz6lB/CvLc50IA=,iv:dcG0Zp2+kbA4Ax4RC9rb2mmNpuI5j/5JdsTU3faBpqM=,tag:b5gyjEtYRlql2tcACFk8NA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.7.3
