@@ -1,20 +1,17 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: cluster-core-cloudflared
   namespace: flux-system
-  labels:
-    substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-core-ingress-nginx
-  path: ./kubernetes/apps/networking/cloudflared/app
+    - name: cluster-core-traefik
+  path: ./cluster/core/networking/cloudflared/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: home-ops-flux
   wait: true
   interval: 30m
   retryInterval: 1m

@@ -1,0 +1,28 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cloudflared
+    namespace: networking
+data:
+    credentials.json: ENC[AES256_GCM,data:qJv9L+fCTnCLdMs6Xyk+EeVXfsYoZO8gjF9J7wYjd3YpIBopblPXZjfqB0QTuP50ACOaviZiPcf2kvArn9Rsj/pLU34XEWiZKDsvv+DqIx1PRuSYkpUeN7WtOUb/SnFcfiTBoeQA9KtNYX8wGqqq23g9iIotBPijKkW7Li71OqoVD6prtzYazHXBj+kJ+hukT16We4qRcT3uMAzHnH3+lldwwMkNsnDYgFyftWYAetCAAhzxFg==,iv:F+z2bgf0Ue1puIYeYZeKrvWJk4P/NpqtOE0IvpeYJWI=,tag:NOBtimTfkGY2DR6BrDX7/g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-06-16T19:43:09Z"
+    mac: ENC[AES256_GCM,data:ByFGKcO1ORoQDQ6Ds8DTnyHg1cw8ZzOGNxPFsfy5D3U4h8Kbe6ZjsaokgupMvyfl1CShemx0th4Z3DAFesD6RUVCsih4xvUr+h3MUGrF5FvcMsqz4TGrD+JL6xq4T7f19k5Yhk8aT9Ns7hm/Td1lKMyiJ9R3fLK2GLo/hJA92wA=,iv:V5oYdYIJ9Bo4a+CtU9Ujcy5Mk1Lg+k3l/165Vu4UAk4=,tag:/7hLEn0dzaSHi1E0Xhes5w==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

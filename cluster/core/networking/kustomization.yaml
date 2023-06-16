@@ -4,3 +4,4 @@ resources:
   - ./namespace.yaml
   - ./metallb/ks.yaml
   - ./traefik/ks.yaml
+  - ./cloudflared/ks.yaml
