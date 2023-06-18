@@ -6,3 +6,4 @@ resources:
   - ./woodpecker.sops.yaml
   - ./postgres-db.yaml
   - ./helmrelease.yaml
+  - ./volsync.yaml
