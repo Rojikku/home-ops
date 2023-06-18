@@ -36,8 +36,9 @@ spec:
           - monitoring
           - rook-ceph
           - hass
-      name: "Rojikku"
-      instanceName: "hajimari"
+          - runners
+      name: Rojikku
+      instanceName: hajimari
       lightTheme: blues
       # customApps:
       #   - name: Some External Cluster Service
