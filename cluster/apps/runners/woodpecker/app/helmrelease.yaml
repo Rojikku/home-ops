@@ -41,6 +41,8 @@ spec:
       WOODPECKER_GITHUB_CLIENT: ${WOODPECKER_GITHUB_CLIENT}
       WOODPECKER_GITHUB_SECRET: ${WOODPECKER_GITHUB_SECRET}
 
+    extraSecretNamesForEnvFrom: {}
+
     persistentVolume:
       storageClass: ceph-block
 
