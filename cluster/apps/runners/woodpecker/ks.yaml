@@ -5,6 +5,9 @@ metadata:
   name: cluster-apps-woodpecker-server
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cluster-apps-volsync
+    - name: cluster-core-rook-ceph-cluster
   path: ./cluster/apps/runners/woodpecker/app
   prune: true
   sourceRef:
