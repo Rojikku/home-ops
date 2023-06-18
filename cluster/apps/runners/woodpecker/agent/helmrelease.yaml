@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: woodpecker-agent
-      version: 0.1.5
+      version: 0.15.6
       sourceRef:
         kind: HelmRepository
         name: woodpecker
