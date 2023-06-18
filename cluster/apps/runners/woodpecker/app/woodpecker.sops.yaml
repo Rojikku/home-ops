@@ -1,0 +1,28 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: woodpecker-db
+    namespace: runners
+stringData:
+    postgresPassword: ENC[AES256_GCM,data:USJLpsxCHxzdgYcB/Blwsos/2O5DKck3JMntlEDrZg==,iv:/Ll5iCL+En6OQkW8dt+fgwdFJt5WXRJr9BiJJCi5bgU=,tag:JEiFbWt7zumTT6qRTRSxpw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-06-18T16:29:08Z"
+    mac: ENC[AES256_GCM,data:CF+z99cJserwDFfrgPtgRt7eviX96mCmRE/wkslYXzyxIOz/bQPLlQ6k+sPV0XD4arwjj/s/+y+DcopWd8K4oZLWlFeIhUIwpoROZLPJPqjk8vHIuWgnuDqnpHWgTY2UV97oDTQEHjloPpnfeLQMJpjyGttkFE1rJ6Kva/krTnc=,iv:U9vaSX2onj0780JQfO6gKwn/B7hNK7vmoxPIbGnUlng=,tag:JltmpE9q2dugNTvy2RcLKw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3

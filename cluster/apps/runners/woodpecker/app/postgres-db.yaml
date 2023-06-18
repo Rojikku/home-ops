@@ -1,0 +1,23 @@
+---
+apiVersion: kubegres.reactive-tech.io/v1
+kind: Kubegres
+metadata:
+  name: woodpecker-db
+  namespace: runners
+spec:
+  replicas: 1
+  image: docker.io/library/postgres:15.3
+  database:
+    size: 5Gi
+    storageClassName: ceph-block
+  env:
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: woodpecker-db
+          key: postgresPassword
+    - name: POSTGRES_REPLICATION_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: woodpecker-db
+          key: postgresPassword

@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./actions-runner-controller/ks.yaml
+  - ./woodpecker/ks.yaml
