@@ -48,7 +48,8 @@ spec:
         registry: docker.io
         repository: woodpeckerci/woodpecker-server
         pullPolicy: IfNotPresent
-        tag: v0.15.9
+        # tag: v0.15.9
+        tag: next@sha256:579a5bc279fd4ab3bcf5e3462dfce3df3a74cdee7f3b5489067157321da9d34c
 
       persistentVolume:
         storageClass: ceph-block
@@ -89,4 +90,5 @@ spec:
         registry: docker.io
         repository: woodpeckerci/woodpecker-agent
         pullPolicy: IfNotPresent
-        tag: v0.15.9
+        # tag: v0.15.9
+        tag: next@sha256:d658ac27d0f3611f8123fee7cabea7132c9013ae0dd246577d2122c9590d9214
