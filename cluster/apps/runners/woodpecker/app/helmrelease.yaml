@@ -41,6 +41,9 @@ spec:
       WOODPECKER_GITHUB_CLIENT: ${WOODPECKER_GITHUB_CLIENT}
       WOODPECKER_GITHUB_SECRET: ${WOODPECKER_GITHUB_SECRET}
 
+    persistentVolume:
+      storageClass: ceph-block
+
     ingress:
       main:
         enabled: true
