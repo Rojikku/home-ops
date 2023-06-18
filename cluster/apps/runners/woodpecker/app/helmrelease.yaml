@@ -54,25 +54,24 @@ spec:
         storageClass: ceph-block
 
       ingress:
-        main:
-          enabled: true
-          ingressClassName: traefik
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-production
-            hajimari.io/enable: "true"
-            hajimari.io/appName: Woodpecker
-            hajimari.io/icon: home-assigitstant
-            hajimari.io/instance: hajimari
-            traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          hosts:
-            - host: &host "woodpecker.${SECRET_DOMAIN}"
-              paths:
-                - path: /
-                  pathType: Prefix
-          tls:
-            - hosts:
-                - *host
-              secretName: woodpecker-tls
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          hajimari.io/enable: "true"
+          hajimari.io/appName: Woodpecker
+          hajimari.io/icon: home-assigitstant
+          hajimari.io/instance: hajimari
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        hosts:
+          - host: &host "woodpecker.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: woodpecker-tls
     agent:
       env:
         WOODPECKER_SERVER: woodpecker-server:9000
