@@ -2,31 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-woodpecker-server
+  name: cluster-apps-woodpecker
   namespace: flux-system
 spec:
   dependsOn:
     - name: cluster-apps-volsync
     - name: cluster-core-rook-ceph-cluster
   path: ./cluster/apps/runners/woodpecker/app
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: home-ops-flux
-  wait: true
-  interval: 30m
-  retryInterval: 1m
-  timeout: 5m
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cluster-apps-woodpecker-agent
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: cluster-apps-woodpecker-server
-  path: ./cluster/apps/runners/woodpecker/agent
   prune: true
   sourceRef:
     kind: GitRepository

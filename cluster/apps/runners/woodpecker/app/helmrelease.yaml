@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: woodpecker-server
+  name: woodpecker
   namespace: runners
 spec:
   interval: 30m
   chart:
     spec:
-      chart: woodpecker-server
-      version: 0.15.6
+      chart: woodpecker
+      version: 0.1.5
       sourceRef:
         kind: HelmRepository
         name: woodpecker
@@ -28,41 +28,70 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    env:
-      WOODPECKER_ADMIN: Rojikku,Technetium1
-      WOODPECKER_HOST: "https://woodpecker.${SECRET_DOMAIN}"
-      WOODPECKER_GITHUB: "true"
-      WOODPECKER_REPO_OWNERS: Rojikku
-      WOODPECKER_AGENT_SECRET: ${WOODPECKER_AGENT_SECRET}
-      WOODPECKER_DATABASE_DRIVER: postgres
-      WOODPECKER_DATABASE_DATASOURCE: postgresql://postgres:${WOODPECKER_POSTGRES_PASSWORD}@woodpecker-db/postgres?sslmode=disable
-      WOODPECKER_DEBUG_PRETTY: true
-      WOODPECKER_DEBUG_NOCOLOR: false
-      WOODPECKER_GITHUB_CLIENT: ${WOODPECKER_GITHUB_CLIENT}
-      WOODPECKER_GITHUB_SECRET: ${WOODPECKER_GITHUB_SECRET}
+    server:
+      env:
+        WOODPECKER_ADMIN: Rojikku,Technetium1
+        WOODPECKER_HOST: "https://woodpecker.${SECRET_DOMAIN}"
+        WOODPECKER_GITHUB: "true"
+        WOODPECKER_REPO_OWNERS: Rojikku
+        WOODPECKER_AGENT_SECRET: ${WOODPECKER_AGENT_SECRET}
+        WOODPECKER_DATABASE_DRIVER: postgres
+        WOODPECKER_DATABASE_DATASOURCE: postgresql://postgres:${WOODPECKER_POSTGRES_PASSWORD}@woodpecker-db/postgres?sslmode=disable
+        WOODPECKER_DEBUG_PRETTY: true
+        WOODPECKER_DEBUG_NOCOLOR: false
+        WOODPECKER_GITHUB_CLIENT: ${WOODPECKER_GITHUB_CLIENT}
+        WOODPECKER_GITHUB_SECRET: ${WOODPECKER_GITHUB_SECRET}
 
-    extraSecretNamesForEnvFrom: {}
+      extraSecretNamesForEnvFrom: {}
 
-    persistentVolume:
-      storageClass: ceph-block
+      image:
+        registry: docker.io
+        repository: woodpeckerci/woodpecker-agent
+        pullPolicy: IfNotPresent
+        tag: v0.15.9
 
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: traefik
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          hajimari.io/enable: "true"
-          hajimari.io/appName: Woodpecker
-          hajimari.io/icon: home-assigitstant
-          hajimari.io/instance: hajimari
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        hosts:
-          - host: &host "woodpecker.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - *host
-            secretName: woodpecker-tls
+      persistentVolume:
+        storageClass: ceph-block
+
+      ingress:
+        main:
+          enabled: true
+          ingressClassName: traefik
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-production
+            hajimari.io/enable: "true"
+            hajimari.io/appName: Woodpecker
+            hajimari.io/icon: home-assigitstant
+            hajimari.io/instance: hajimari
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          hosts:
+            - host: &host "woodpecker.${SECRET_DOMAIN}"
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - *host
+              secretName: woodpecker-tls
+    agent:
+      env:
+        WOODPECKER_SERVER: woodpecker-server:9000
+        WOODPECKER_BACKEND: kubernetes
+        WOODPECKER_BACKEND_K8S_NAMESPACE: runners
+        WOODPECKER_AGENT_SECRET: ${WOODPECKER_AGENT_SECRET}
+        WOODPECKER_MAX_PROCS: 4
+        WOODPECKER_DEBUG_PRETTY: true
+        WOODPECKER_DEBUG_NOCOLOR: false
+        WOODPECKER_BACKEND_K8S_STORAGE_CLASS: ceph-filesystem
+        WOODPECKER_BACKEND_K8S_VOLUME_SIZE: 10G
+        WOODPECKER_BACKEND_K8S_STORAGE_RWX: true
+      dind:
+        enabled: false
+        image: ""
+      extraSecretNamesForEnvFrom: {}
+      replicaCount: 2
+      image:
+        registry: docker.io
+        repository: woodpeckerci/woodpecker-agent
+        pullPolicy: IfNotPresent
+        tag: v0.15.9
