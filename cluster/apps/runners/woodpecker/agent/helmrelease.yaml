@@ -43,3 +43,7 @@ spec:
       enabled: false
       image: ""
     extraSecretNamesForEnvFrom: {}
+    replicaCount: 2
+    image:
+      registry: docker.io
+      repository: woodpeckerci/woodpecker-agent
