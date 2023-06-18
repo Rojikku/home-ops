@@ -79,11 +79,7 @@ spec:
         WOODPECKER_MAX_PROCS: 4
         WOODPECKER_DEBUG_PRETTY: true
         WOODPECKER_DEBUG_NOCOLOR: false
-        WOODPECKER_BACKEND: kubernetes
-        WOODPECKER_BACKEND_K8S_NAMESPACE: runners
         WOODPECKER_BACKEND_K8S_STORAGE_CLASS: ceph-filesystem
-        WOODPECKER_BACKEND_K8S_VOLUME_SIZE: 10G
-        WOODPECKER_BACKEND_K8S_STORAGE_RWX: true
       dind:
         enabled: false
         image: ""
