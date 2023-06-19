@@ -65,7 +65,7 @@ metadata:
   name: woodpecker
   namespace: runners
 spec:
-  sourcePVC: woodpecker-server
+  sourcePVC: data-woodpecker-server-0
   trigger:
     # Synchronize every 30 minutes
     schedule: "*/30 * * * *"
