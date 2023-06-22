@@ -61,7 +61,7 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           hajimari.io/enable: "true"
           hajimari.io/appName: Woodpecker
-          hajimari.io/icon: home-assigitstant
+          hajimari.io/icon: git
           hajimari.io/instance: hajimari
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
