@@ -45,8 +45,6 @@ spec:
     envFrom:
       - secretRef:
           name: mealie
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet
     service:
       main:
         ports:
