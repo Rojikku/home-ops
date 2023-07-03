@@ -30,7 +30,7 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 5
     repository: restic-conf-jellyfin
-    cacheCapacity: 2Gi
+    cacheCapacity: 4Gi
     retain:
       hourly: 36
       daily: 10
