@@ -15,6 +15,6 @@ data:
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
   K8S_VERSION: v1.26.0
   # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
-  TALOS_IMAGE: ghcr.io/siderolabs/installer:v1.4.5
+  TALOS_IMAGE: ghcr.io/siderolabs/installer:v1.4.7
   # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
   KUBELET_IMAGE: ghcr.io/siderolabs/kubelet:v1.27.2
