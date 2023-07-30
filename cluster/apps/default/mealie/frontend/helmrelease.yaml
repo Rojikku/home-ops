@@ -32,7 +32,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: hkotel/mealie
-      tag: frontend-nightly@sha256:02038edcd246da7300ae088c0a7a505f450a96707d7f201f5224b07185123b5f
+      tag: frontend-nightly@sha256:935765ba70c74800b73aba0ad787b4fef66496c3e76ea868053c8fccba1d3fdc
     env:
       TZ: "${TIMEZONE}"
       API_URL: http://mealie-api:9000
