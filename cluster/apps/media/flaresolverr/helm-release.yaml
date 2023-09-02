@@ -20,7 +20,7 @@ spec:
       setGateway: "true"
     image:
       repository: ghcr.io/flaresolverr/flaresolverr
-      tag: v3.3.2
+      tag: v3.3.3
       pullPolicy: IfNotPresent
     service:
       main:
