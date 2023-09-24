@@ -32,7 +32,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/haveagitgat/tdarr_node
-      tag: 2.11.01
+      tag: 2.12.01
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
