@@ -89,4 +89,4 @@ spec:
         repository: woodpeckerci/woodpecker-agent
         pullPolicy: IfNotPresent
         # tag: v0.15.9
-        tag: next@sha256:4e26d0fc0eb65132c34d87edcb30b198d22d71d2e9e52537b7e62ac8417f13d6
+        tag: next@sha256:0590e52321828e6cff8588ce6210b8a8c0ef55343d680d98087986cfdba8c027
