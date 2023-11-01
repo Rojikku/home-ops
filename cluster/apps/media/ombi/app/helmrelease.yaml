@@ -28,7 +28,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: linuxserver/ombi
-      tag: 4.43.4-development
+      tag: 4.43.6-development
       pullPolicy: IfNotPresent
 
     env:
