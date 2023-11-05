@@ -11,9 +11,9 @@ data:
   CP_ENDPOINT: 192.168.0.90
   # Sidero Versions
   # renovate: datasource=github-releases depName=siderolabs/talos
-  TALOS_VERSION: v1.3.0
+  TALOS_VERSION: v1.5.4
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
-  K8S_VERSION: v1.26.0
+  K8S_VERSION: v1.27.7
   # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
   TALOS_IMAGE: ghcr.io/siderolabs/installer:v1.5.4
   # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
