@@ -1,5 +1,5 @@
 ---
-apiVersion: cluster.x-k8s.io/v1alpha4
+apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   name: cluster-0
@@ -40,7 +40,7 @@ spec:
   template:
     spec:
       serverClassRef:
-        apiVersion: metal.sidero.dev/v1alpha1
+        apiVersion: metal.sidero.dev/v1alpha2
         kind: ServerClass
         name: controlplane
 ---
@@ -52,21 +52,6 @@ metadata:
 spec:
   controlPlaneConfig:
     controlplane:
-      configPatches:
-        - op: add
-          path: /machine/network
-          value:
-            interfaces:
-              - interface: eth0
-                dhcp: true
-                vip:
-                  ip: ${CP_ENDPOINT}
-        - op: add
-          path: /machine/kubelet/nodeIP
-          value:
-            validSubnets:
-              - 192.168.0.0/24
-              - '!${CP_ENDPOINT}/32'
       generateType: controlplane
       talosVersion: ${TALOS_VERSION}
     init:
@@ -145,7 +130,7 @@ spec:
             fs.inotify.max_user_instances: 8192
 
 ---
-apiVersion: cluster.x-k8s.io/v1alpha4
+apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
   name: cluster-0-workers
@@ -178,7 +163,7 @@ spec:
   template:
     spec:
       serverClassRef:
-        apiVersion: metal.sidero.dev/v1alpha1
+        apiVersion: metal.sidero.dev/v1alpha2
         kind: ServerClass
         name: workers
 # K8s-3
