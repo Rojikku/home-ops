@@ -8,7 +8,7 @@ spec:
     hardware:
       - system:
           manufacturer: Shenzhen Wangang Technology Co., Ltd
-      - compute:
+        compute:
           processors:
             - manufacturer: Intel(R) Corporation
               version: Intel(R) Celeron(R) N5105 @ 2.00GHz

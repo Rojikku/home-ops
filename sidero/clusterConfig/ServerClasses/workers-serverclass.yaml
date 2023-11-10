@@ -8,7 +8,7 @@ spec:
     hardware:
       - system:
           manufacturer: AZW
-      - compute:
+        compute:
           processors:
             - manufacturer: Intel(R) Corporation
               version: Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz

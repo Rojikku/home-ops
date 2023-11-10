@@ -8,7 +8,7 @@ spec:
     hardware:
       - system:
           manufacturer: Unknown
-      - compute:
+        compute:
           processors:
             - manufacturer: Intel(R) Corporation
               version: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
