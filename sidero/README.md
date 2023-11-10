@@ -114,8 +114,8 @@ Generate cluster configuration:
 ```sh
 CONTROL_PLANE_SERVERCLASS=controlplane \
 WORKER_SERVERCLASS=any \
-TALOS_VERSION=v0.14.1 \
-KUBERNETES_VERSION=v1.23.3 \
+TALOS_VERSION=v1.5.5 \
+KUBERNETES_VERSION=v1.28.3 \
 CONTROL_PLANE_PORT=6443 \
 CONTROL_PLANE_ENDPOINT=192.168.0.90 \
 clusterctl generate cluster cluster-0 -i sidero > cluster-0.yaml

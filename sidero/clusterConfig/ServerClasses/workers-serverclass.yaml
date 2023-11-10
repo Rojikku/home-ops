@@ -18,9 +18,3 @@ spec:
     - op: replace
       path: /machine/install/disk
       value: /dev/sda
-    - op: add
-      path: /machine/install/extensions/image
-      value: ghcr.io/siderolabs/i915-ucode:20231030
-    - op: add
-      path: /machine/install/extensions/image
-      value: ghcr.io/siderolabs/intel-ucode:20230808
