@@ -11,7 +11,7 @@ spec:
         compute:
           processors:
             - manufacturer: Intel(R) Corporation
-              version: Intel(R) Celeron(R) N5105 @ 2.00GHz
+              productName: Intel(R) Celeron(R) N5105 @ 2.00GHz
   configPatches:
     - op: replace
       path: /machine/install/disk

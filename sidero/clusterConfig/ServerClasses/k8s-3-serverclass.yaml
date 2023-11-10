@@ -11,7 +11,7 @@ spec:
         compute:
           processors:
             - manufacturer: Intel(R) Corporation
-              version: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
+              productName: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
   configPatches:
     - op: replace
       path: /machine/install/disk
