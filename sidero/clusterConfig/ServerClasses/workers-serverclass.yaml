@@ -5,13 +5,15 @@ metadata:
   name: workers
 spec:
   qualifiers:
-    cpu:
-      - manufacturer: Intel(R) Corporation
-        version: Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz
-      - manufacturer: Intel(R) Corporation
-        version: Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
-    systemInformation:
-      - manufacturer: AZW
+    hardware:
+      - system:
+          manufacturer: AZW
+      - compute:
+          processors:
+            - manufacturer: Intel(R) Corporation
+              version: Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz
+            - manufacturer: Intel(R) Corporation
+              version: Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
   configPatches:
     - op: replace
       path: /machine/install/disk

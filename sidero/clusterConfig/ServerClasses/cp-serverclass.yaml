@@ -5,11 +5,13 @@ metadata:
   name: controlplane
 spec:
   qualifiers:
-    cpu:
-      - manufacturer: Intel(R) Corporation
-        version: Intel(R) Celeron(R) N5105 @ 2.00GHz
-    systemInformation:
-      - manufacturer: Shenzhen Wangang Technology Co., Ltd
+    hardware:
+      - system:
+          manufacturer: Shenzhen Wangang Technology Co., Ltd
+      - compute:
+          processors:
+            - manufacturer: Intel(R) Corporation
+              version: Intel(R) Celeron(R) N5105 @ 2.00GHz
   configPatches:
     - op: replace
       path: /machine/install/disk

@@ -5,11 +5,13 @@ metadata:
   name: k8s-3
 spec:
   qualifiers:
-    cpu:
-      - manufacturer: Intel(R) Corporation
-        version: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
-    systemInformation:
-      - manufacturer: Unknown
+    hardware:
+      - system:
+          manufacturer: Unknown
+      - compute:
+          processors:
+            - manufacturer: Intel(R) Corporation
+              version: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
   configPatches:
     - op: replace
       path: /machine/install/disk
