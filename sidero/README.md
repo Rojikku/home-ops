@@ -6,7 +6,7 @@ My installation notes based off of [official docs](https://www.sidero.dev/v0.5/g
 
 Download the latest Talos RPi4 image and install it on the SD card
 ```sh
-curl -LO https://github.com/siderolabs/talos/releases/download/latest/metal-rpi_4-arm64.img.xz
+curl -LO https://github.com/siderolabs/talos/releases/download/v1.5.5/metal-rpi_generic-arm64.raw.xz
 xz -d metal-rpi_4-arm64.img.xz
 sudo dd if=metal-rpi_4-arm64.img of=/dev/sdc bs=4M conv=fsync status=progress
 sudo sync
@@ -24,7 +24,7 @@ set -gx SIDERO_ENDPOINT 192.168.0.95
 Generate Talos machine configuration for a single-node cluster:
 
 ```sh
-talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"},{"op": "replace", "path": "/machine/kubelet/image", "value": "ghcr.io/siderolabs/kubelet:v1.26.0"}]' sidero https://$SIDERO_ENDPOINT:6443/
+talosctl gen config --config-patch='[{"op": "add", "path": "/cluster/allowSchedulingOnMasters", "value": true},{"op": "replace", "path": "/machine/install/disk", "value": "/dev/mmcblk0"},{"op": "replace", "path": "/machine/kubelet/image", "value": "ghcr.io/siderolabs/kubelet:v1.28.3"}]' sidero https://$SIDERO_ENDPOINT:6443/
 ```
 Optionally, if talosctl recently updated, you can not set the latest kubelet version and it'll autocomplete.
 Talosctl must be up to date to generate with the latest version of talos images.

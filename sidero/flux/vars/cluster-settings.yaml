@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 data:
   # Environmental Data
-  TIMEZONE: "America/New_York"
+  TIMEZONE: America/New_York
   # IPs
   CP_ENDPOINT: 192.168.0.90
   # Sidero Versions
