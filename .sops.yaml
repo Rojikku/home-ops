@@ -8,3 +8,7 @@ creation_rules:
     encrypted_regex: "^(data|stringData)$"
     age: >-
       age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+  - path_regex: sidero/.*\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    age: >-
+      age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
