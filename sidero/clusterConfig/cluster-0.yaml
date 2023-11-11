@@ -60,10 +60,17 @@ spec:
           path: /machine/network
           value:
             interfaces:
-              - interface: eth0
+              - deviceSelector:
+                  busPath: 0*
                 dhcp: true
                 vip:
                   ip: ${CP_ENDPOINT}
+        - op: add
+          path: /machine/kubelet/nodeIP
+          value:
+            validSubnets:
+              - 192.168.0.0/24
+              - '!${CP_ENDPOINT}/32'
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
