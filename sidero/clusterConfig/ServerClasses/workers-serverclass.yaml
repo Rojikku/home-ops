@@ -1,19 +1,17 @@
 ---
-apiVersion: metal.sidero.dev/v1alpha2
+apiVersion: metal.sidero.dev/v1alpha1
 kind: ServerClass
 metadata:
   name: workers
 spec:
   qualifiers:
-    hardware:
-      - system:
-          manufacturer: AZW
-        compute:
-          processors:
-            - manufacturer: Intel(R) Corporation
-              productName: Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz
-            - manufacturer: Intel(R) Corporation
-              productName: Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
+    cpu:
+      - manufacturer: Intel(R) Corporation
+        version: Intel(R) Core(TM) i5-1035G4 CPU @ 1.10GHz
+      - manufacturer: Intel(R) Corporation
+        version: Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
+    systemInformation:
+      - manufacturer: AZW
   configPatches:
     - op: replace
       path: /machine/install/disk

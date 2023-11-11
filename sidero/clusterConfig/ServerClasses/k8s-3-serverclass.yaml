@@ -1,17 +1,15 @@
 ---
-apiVersion: metal.sidero.dev/v1alpha2
+apiVersion: metal.sidero.dev/v1alpha1
 kind: ServerClass
 metadata:
   name: k8s-3
 spec:
   qualifiers:
-    hardware:
-      - system:
-          manufacturer: Unknown
-        compute:
-          processors:
-            - manufacturer: Intel(R) Corporation
-              productName: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
+    cpu:
+      - manufacturer: Intel(R) Corporation
+        version: Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
+    systemInformation:
+      - manufacturer: Unknown
   configPatches:
     - op: replace
       path: /machine/install/disk

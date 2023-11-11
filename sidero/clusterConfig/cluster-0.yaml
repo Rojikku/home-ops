@@ -40,7 +40,7 @@ spec:
   template:
     spec:
       serverClassRef:
-        apiVersion: metal.sidero.dev/v1alpha2
+        apiVersion: metal.sidero.dev/v1alpha1
         kind: ServerClass
         name: controlplane
 ---
