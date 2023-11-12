@@ -51,8 +51,26 @@ spec:
         fs.inotify.max_user_watches: 1048576
         fs.inotify.max_user_instances: 8192
     - op: replace
+      path: /cluster/apiServer/image
+      value: k8s.gcr.io/kube-apiserver:${K8S_VERSION}
+    - op: replace
+      path: /cluster/controllerManager/image
+      value: k8s.gcr.io/kube-controller-manager:${K8S_VERSION}
+    - op: replace
+      path: /cluster/scheduler/image
+      value: k8s.gcr.io/kube-scheduler:${K8S_VERSION}
+    - op: replace
       path: /machine/kubelet/image
       value: ${KUBELET_IMAGE}
+    - op: add
+      path: /machine/network
+      value:
+        interfaces:
+          - deviceSelector:
+              busPath: 0*
+            dhcp: true
+            vip:
+              ip: ${CP_ENDPOINT}
     - op: add
       path: /cluster/coreDNS
       value:
