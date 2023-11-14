@@ -26,10 +26,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: quay.io/tflower/volsync
-      tag: ""
-      image: quay.io/tflower/volsync@sha256:004b9025ac67313ff7d6ded08fe06ebbb8dd59aaa90f5a0d08a05458943220db
     manageCRDs: true
     metrics:
       disableAuth: true
