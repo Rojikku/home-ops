@@ -18,4 +18,4 @@ data:
   # TALOS_IMAGE: ghcr.io/siderolabs/installer:v1.5.5
   TALOS_IMAGE: factory.talos.dev/installer/e5bf2f7c0696230b234ff3265d6fddecc66713339e5ed3bfd589e7ad9e6db463:v1.5.5
   # renovate: datasource=github-releases image=ghcr.io/siderolabs/installer
-  KUBELET_IMAGE: ghcr.io/siderolabs/kubelet:v1.28.3
+  KUBELET_IMAGE: ghcr.io/siderolabs/kubelet:v1.28.4
