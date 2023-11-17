@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: restic-conf-hass
-  namespace: hass
+  name: restic-conf-factorio
+  namespace: default
 stringData:
-  RESTIC_REPOSITORY: ${RESTIC_TEMPLATE}/hass/hass
+  RESTIC_REPOSITORY: ${RESTIC_TEMPLATE}/default/factorio
   RESTIC_PASSWORD: ${RESTIC_PASSWORD}
   RCLONE_CONFIG_NAS_TYPE: sftp
   RCLONE_CONFIG_NAS_HOST: ${NAS_ADDR}
@@ -19,17 +19,17 @@ stringData:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: hass
-  namespace: hass
+  name: factorio
+  namespace: factorio
 spec:
-  sourcePVC: hass-pvc
+  sourcePVC: factorio-pvc
   trigger:
     # Synchronize every 30 minutes
     schedule: "*/30 * * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 5
-    repository: restic-conf-hass
+    repository: restic-conf-factorio
     cacheCapacity: 2Gi
     retain:
       hourly: 36
