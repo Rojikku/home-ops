@@ -1,0 +1,30 @@
+# yamllint disable
+apiVersion: v1
+kind: Secret
+metadata:
+    name: factorio
+    namespace: default
+stringData:
+    UPDATE_MODS_ON_START: ENC[AES256_GCM,data:e1bOAw==,iv:73OF2H2LvyMeQvRkGx018aY9nFNK+bkx/UfYd+3qRBc=,tag:2+ZtuQHA3daLYko1ovx5sw==,type:str]
+    TOKEN: ENC[AES256_GCM,data:hf/C9sBWMU8dNSr/uJa27GHb3WpSchi+TE5MeFx2,iv:bnD3uAwjiE7qLe2nG0AVmkjVLYwr1gBBHUNTNlullJ8=,tag:cTq36z6S138C9TZ1iPfzrA==,type:str]
+    USERNAME: ENC[AES256_GCM,data:o5jK9GhR2A==,iv:jq3AUvqiNKwzk7MVojxMaYZD/eScl4/SPOXhErf4A0g=,tag:KsgOTs3ZH+oyT0ePIXH6nA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1l6h2hpu26ufmw0px2ukm23xjj6u5prxazuq3zdr07htfmmk46dxslksp44
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3RWJoMVE0MmV5eE10V0V5
+            ZTN4OWgwOVhqS1NhRGhMSFMzSjFpaHpZZ1V3Cm9TS1htSkNuVUVsQzUrQW4vQnM2
+            YnU2VDVqa2g3eXhOR1NOM3hBNHRxUm8KLS0tIGs3YkdVMHZrQXFSUjB6NkN0eVA0
+            d1haUHg5K2lvT0U0NHFPNldUdGZTbzgKi5Mh+OVM+tc5jD9YXx4y4wyNWCscsOOy
+            mfczkNIycr++mk1QTF7zXasHaC/NA6E8r0fTCAyDRBu0Vt3WJ/5p2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-11-17T22:39:22Z"
+    mac: ENC[AES256_GCM,data:F/aDiXSlUXG3jHWTrvpZkTwVYn/DHLQiYxm4DLrBQg7/pRYNLuTGV/CRArMJsd4IWNQB3gqEicMQyf5qhYOfUe0fZzL8wAShTqaj64MrQT9UWzAk8fGc6J53o6iZckGAA7biaKXT17kQbXwZFmg5zTABTSOLNQB2H50sKwQa1cM=,iv:nZ2CPPenvkRAX6AGnUiN1hWgYUTYJIEbC3Iq/Tw3t/w=,tag:B8K4QR/FPW9MhjHPeiY1eQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
