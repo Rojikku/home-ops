@@ -46,7 +46,7 @@ spec:
         loadBalancerIP: "${SVC_FACTORIO_ADDR}"
         externalTrafficPolicy: Local
         ports:
-          factorio:
+          http:
             port: 34197
           rcon:
             port: 27015
