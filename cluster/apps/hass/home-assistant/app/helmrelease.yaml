@@ -38,31 +38,31 @@ spec:
             fsGroup: 1000
             fsGroupChangePolicy: OnRootMismatch
 
-    containers:
-      main:
-        image:
-          repository: ghcr.io/home-assistant/home-assistant
-          tag: 2023.11.2
-        env:
-          TZ: "${TIMEZONE}"
-        envFrom:
-          - secretRef:
-              name: home-assistant
-        hostNetwork: true
-        dnsPolicy: ClusterFirstWithHostNet
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-          limits:
-            memory: 2000Mi
-        probes:
-          liveness:
-            enabled: false
-          readiness:
-            enabled: false
-          startup:
-            enabled: false
+        containers:
+          main:
+            image:
+              repository: ghcr.io/home-assistant/home-assistant
+              tag: 2023.11.2
+            env:
+              TZ: "${TIMEZONE}"
+            envFrom:
+              - secretRef:
+                  name: home-assistant
+            hostNetwork: true
+            dnsPolicy: ClusterFirstWithHostNet
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100Mi
+              limits:
+                memory: 2000Mi
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
 
     service:
       main:
