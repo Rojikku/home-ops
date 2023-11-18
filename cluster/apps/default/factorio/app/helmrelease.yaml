@@ -47,6 +47,8 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
+            port: 80
+          factorio:
             port: 34197
             protocol: UDP
           rcon:
