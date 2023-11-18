@@ -48,6 +48,7 @@ spec:
         ports:
           http:
             port: 34197
+            protocol: UDP
           rcon:
             port: 27015
     ingress:

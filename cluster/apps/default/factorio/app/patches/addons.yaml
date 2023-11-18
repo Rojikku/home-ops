@@ -26,12 +26,12 @@ spec:
           enabled: true
           ingressClassName: traefik
           annotations:
-            cert-manager.io/cluster-issuer: "letsencrypt-production"
+            cert-manager.io/cluster-issuer: letsencrypt-production
             hajimari.io/enable: "true"
-            hajimari.io/appName: "Factorio Config"
+            hajimari.io/appName: Factorio Config
             hajimari.io/icon: cib:visual-studio-code
-            hajimari.io/instance: "hajimari"
-            traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+            hajimari.io/instance: hajimari
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
           hosts:
             - host: &host "factorio.${SECRET_DOMAIN}"
@@ -41,7 +41,7 @@ spec:
           tls:
             - hosts:
                 - *host
-              secretName: "factorio-code-tls"
+              secretName: factorio-code-tls
         volumeMounts:
           - name: config
             mountPath: /factorio
