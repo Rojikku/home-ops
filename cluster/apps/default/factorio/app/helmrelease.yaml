@@ -32,7 +32,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: factoriotools/factorio
-      tag: 1.1.94
+      tag: 1.1.99
     env:
       TZ: "${TIMEZONE}"
     envFrom:
