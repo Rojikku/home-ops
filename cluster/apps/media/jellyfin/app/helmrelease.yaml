@@ -32,7 +32,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: jellyfin/jellyfin
-      tag: 10.8.12
+      tag: 10.8.13
       pullPolicy: IfNotPresent
 
     # -- environment variables. See [image docs](https://jellyfin.org/docs/general/administration/configuration.html) for more details.
