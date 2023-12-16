@@ -5,7 +5,7 @@ resources:
   - kube-system
   - networking
   - monitoring
-  - flux-system
+  - flux-system/kustomization.yaml
   - runners
   - hass
   - media
