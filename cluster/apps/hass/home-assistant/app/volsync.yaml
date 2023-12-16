@@ -41,3 +41,46 @@ spec:
       runAsUser: 1000
       runAsGroup: 1000
       fsGroup: 1000
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: restic-conf-hassdb
+  namespace: hass
+stringData:
+  RESTIC_REPOSITORY: ${RESTIC_TEMPLATE}/hass/hassdb
+  RESTIC_PASSWORD: ${RESTIC_PASSWORD}
+  RCLONE_CONFIG_NAS_TYPE: sftp
+  RCLONE_CONFIG_NAS_HOST: ${NAS_ADDR}
+  RCLONE_CONFIG_NAS_USER: k8s
+  RCLONE_CONFIG_NAS_PORT: "2212"
+  RCLONE_CONFIG_NAS_PASS: ${NAS_PASS}
+  RCLONE_CONFIG_NAS_SHELL_TYPE: unix
+  RCLONE_CONFIG_NAS_MD5SUM_COMMAND: none
+  RCLONE_CONFIG_NAS_SHA1SUM_COMMAND: none
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: hass
+  namespace: hass
+spec:
+  sourcePVC: postgres-db-hass-postgres-1-0
+  trigger:
+    # Synchronize every 30 minutes
+    schedule: "*/30 * * * *"
+  restic:
+    copyMethod: Snapshot
+    pruneIntervalDays: 5
+    repository: restic-conf-hass
+    cacheCapacity: 2Gi
+    retain:
+      hourly: 36
+      daily: 10
+      weekly: 6
+      monthly: 6
+      within: 1d
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
