@@ -5,7 +5,7 @@ metadata:
   name: &app nodered
   namespace: flux-system
 spec:
-  targetNamespace: hass
+  targetNamespace: &namespace hass
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
@@ -25,3 +25,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      NAMESPACE: *namespace
