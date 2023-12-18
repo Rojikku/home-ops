@@ -33,10 +33,6 @@ spec:
       tolerations:
         - effect: NoSchedule
           operator: Exists
-    admissionController:
-      tolerations:
-        - effect: NoSchedule
-          operator: Exists
     crds:
       enabled: true
     pspEnable: false
