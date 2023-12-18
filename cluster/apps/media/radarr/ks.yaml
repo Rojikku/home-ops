@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: core-rook-ceph-cluster
-    - name: cluster-apps-volsync
+    - name: volsync
     - name: cluster-apps-qbt
   path: ./cluster/apps/media/radarr/app
   prune: true

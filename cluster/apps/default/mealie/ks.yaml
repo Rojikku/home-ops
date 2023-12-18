@@ -9,7 +9,7 @@ metadata:
 spec:
   dependsOn:
     - name: core-rook-ceph-cluster
-    - name: cluster-apps-volsync
+    - name: volsync
   path: ./cluster/apps/default/mealie/api
   prune: true
   sourceRef:
@@ -34,7 +34,7 @@ metadata:
 spec:
   dependsOn:
     - name: core-rook-ceph-cluster
-    - name: cluster-apps-volsync
+    - name: volsync
     - name: cluster-apps-mealie-api
   path: ./cluster/apps/default/mealie/frontend
   prune: true

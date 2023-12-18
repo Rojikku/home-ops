@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: core-rook-ceph-cluster
-    - name: cluster-apps-volsync
+    - name: volsync
     - name: cluster-core-metallb-config
   path: ./cluster/apps/hass/mosquitto/app
   prune: true

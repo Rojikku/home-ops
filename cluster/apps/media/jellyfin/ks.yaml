@@ -8,7 +8,7 @@ spec:
   dependsOn:
     - name: core-rook-ceph-cluster
     - name: cluster-core-intel-device-plugin
-    - name: cluster-apps-volsync
+    - name: volsync
   path: ./cluster/apps/media/jellyfin/app
   prune: true
   sourceRef:
