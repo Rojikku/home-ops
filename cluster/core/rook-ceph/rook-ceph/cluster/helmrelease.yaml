@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: rook-ceph-cluster
@@ -42,20 +42,20 @@ spec:
     ingress:
       dashboard:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          cert-manager.io/cluster-issuer: letsencrypt-production
           hajimari.io/enable: "true"
-          hajimari.io/icon: "database"
-          hajimari.io/instance: "hajimari"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          hajimari.io/icon: database
+          hajimari.io/instance: hajimari
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         host:
           name: &host "rook.${SECRET_DOMAIN}"
-          path: "/"
+          path: /
         tls:
           - hosts:
               - *host
-            secretName: "rook-tls"
+            secretName: rook-tls
     configOverride: |
       [global]
       bdev_enable_discard = true
@@ -69,6 +69,14 @@ spec:
           tolerations:
             - effect: NoSchedule
               operator: Exists
+        mgr: &placement
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: node-role.kubernetes.io/control-plane
+                      operator: Exists
+        mon: *placement
       crashCollector:
         disable: false
       dashboard:
@@ -81,13 +89,13 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: "k8s-3"
+          - name: k8s-3
             devices:
               - name: sdb
-          - name: "k8s-4"
+          - name: k8s-4
             devices:
               - name: nvme0n1
-          - name: "k8s-5"
+          - name: k8s-5
             devices:
               - name: nvme0n1
     cephBlockPools:
@@ -112,6 +120,11 @@ spec:
             csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
             csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
             csi.storage.k8s.io/fstype: ext4
+    cephBlockPoolsVolumeSnapshotClass:
+      enabled: true
+      name: csi-ceph-blockpool
+      isDefault: false
+      deletionPolicy: Delete
     cephFileSystems:
       - name: ceph-filesystem
         spec:
