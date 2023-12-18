@@ -8,7 +8,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-core-rook-ceph-cluster
+    - name: core-rook-ceph-cluster
     - name: cluster-apps-volsync
   path: ./cluster/apps/networking/authentik/app
   prune: true

@@ -5,7 +5,8 @@ metadata:
   name: rook-ceph-cluster
   namespace: rook-ceph
 spec:
-  interval: 15m
+  interval: 30m
+  timeout: 15m
   chart:
     spec:
       chart: rook-ceph-cluster
@@ -17,6 +18,10 @@ spec:
   dependsOn:
     - name: traefik
       namespace: networking
+    - name: rook-ceph-operator
+      namespace: rook-ceph
+    - name: snapshot-controller
+      namespace: kube-system
   install:
     createNamespace: true
     remediation:

@@ -5,7 +5,8 @@ metadata:
   name: rook-ceph-operator
   namespace: rook-ceph
 spec:
-  interval: 15m
+  interval: 30m
+  timeout: 15m
   chart:
     spec:
       chart: rook-ceph
@@ -22,26 +23,33 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: snapshot-controller
+      namespace: kube-system
   values:
     tolerations:
       - effect: NoSchedule
         operator: Exists
-    agent:
-      tolerations:
-        - effect: NoSchedule
-          operator: Exists
-    discover:
-      tolerations:
-        - effect: NoSchedule
-          operator: Exists
-    crds:
-      enabled: true
+    # agent:
+    #   tolerations:
+    #     - effect: NoSchedule
+    #       operator: Exists
+    # discover:
+    #   tolerations:
+    #     - effect: NoSchedule
+    #       operator: Exists
+    csi:
+      enableLiveness: true
+      serviceMonitor:
+        enabled: true
     pspEnable: false
     monitoring:
       enabled: true
     resources:
       requests:
-        cpu: 10m
+        cpu: 100m
         memory: 256Mi
       limits:
         memory: 1Gi

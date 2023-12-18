@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-core-rook-ceph-cluster
+    - name: core-rook-ceph-cluster
     - name: cluster-apps-volsync
   path: ./cluster/apps/media/tdarr/app
   prune: true
@@ -29,7 +29,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-core-rook-ceph-cluster
+    - name: core-rook-ceph-cluster
     - name: cluster-core-intel-device-plugin
     - name: cluster-apps-volsync
     - name: cluster-apps-tdarr

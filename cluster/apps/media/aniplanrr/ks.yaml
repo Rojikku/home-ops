@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-core-rook-ceph-cluster
+    - name: core-rook-ceph-cluster
     - name: cluster-apps-volsync
     - name: cluster-apps-sonarr
   path: ./cluster/apps/media/aniplanrr/app
