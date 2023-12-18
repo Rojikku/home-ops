@@ -17,7 +17,7 @@ includes:
   precommit: .taskfiles/PreCommitTasks.yml
   rook: .taskfiles/RookTasks.yml
   ansible: .taskfiles/ansible.yml
-  flux: .taskfiles/flux.yml
+  flux: .taskfiles/Flux/Taskfile.yaml
   format: .taskfiles/format.yml
   lint: .taskfiles/lint.yml
   terraform: .taskfiles/terraform.yml
