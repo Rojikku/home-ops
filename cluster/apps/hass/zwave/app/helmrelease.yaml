@@ -5,11 +5,11 @@ metadata:
   name: zwavejs
   namespace: hass
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,48 +25,67 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+    - name: volsync
+      namespace: volsync
   values:
-    controller:
-      type: statefulset
-    image:
-      repository: ghcr.io/zwave-js/zwave-js-ui
-      tag: 9.6.0
-    env:
-      TZ: "${TIMEZONE}"
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/zwave-js/zwave-js-ui
+              tag: 9.6.0@sha256:716bd40a1ce44f66b2e362202d5eaa0da5cdaa141d7473053ace1cf0d97606e7
+            env:
+              TZ: "${TIMEZONE}"
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8091
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              privileged: true
+            resources:
+              requests:
+                cpu: 50m
+                memory: 64Mi
+              limits:
+                memory: 512Mi
+        pod:
+          nodeSelector:
+            gocontrol.feature.node.kubernetes.io/zwave: "true"
     service:
       main:
         ports:
           http:
-            port: &port 8091
-          websocket:
-            enabled: true
-            port: 3000
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /health
             port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
-      startup:
-        enabled: false
+          websocket:
+            port: 3000
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          cert-manager.io/cluster-issuer: letsencrypt-production
           hajimari.io/enable: "true"
-          hajimari.io/appName: "zwavejs"
-          hajimari.io/icon: "z-wave"
-          hajimari.io/instance: "hajimari"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          hajimari.io/appName: zwavejs
+          hajimari.io/icon: z-wave
+          hajimari.io/instance: hajimari
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
           - host: &host "zwavejs.${SECRET_DOMAIN}"
             paths:
@@ -75,21 +94,15 @@ spec:
         tls:
           - hosts:
               - *host
-            secretName: "zwave-tls"
+            secretName: zwave-tls
     securityContext:
       privileged: false
     persistence:
       config:
         enabled: true
         existingClaim: zwave-pvc
-        mountPath: "/usr/src/app/store"
-      # usb: # Required privileged: true
-      #   enabled: true
-      #   type: hostPath
-      #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_C130206D-if00-port0
-      #   hostPathType: CharDevice
-    nodeSelector:
-      gocontrol.feature.node.kubernetes.io/zwave: "true"
+        globalMounts:
+          - path: /usr/src/app/store
     resources:
       requests:
         cpu: 100m
