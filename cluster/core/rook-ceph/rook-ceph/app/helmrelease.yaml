@@ -29,17 +29,17 @@ spec:
     - name: snapshot-controller
       namespace: kube-system
   values:
-    tolerations:
-      - effect: NoSchedule
-        operator: Exists
-    # agent:
-    #   tolerations:
-    #     - effect: NoSchedule
-    #       operator: Exists
-    # discover:
-    #   tolerations:
-    #     - effect: NoSchedule
-    #       operator: Exists
+    # tolerations:
+    #   - effect: NoSchedule
+    #     operator: Exists
+    agent:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+    discover:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
     csi:
       enableLiveness: true
       serviceMonitor:
