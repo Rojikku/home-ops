@@ -30,6 +30,7 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 5
     repository: restic-conf-mealie-db
+    volumeSnapshotClassName: csi-ceph-blockpool
     cacheCapacity: 2Gi
     retain:
       hourly: 36
@@ -74,6 +75,7 @@ spec:
     pruneIntervalDays: 5
     repository: restic-conf-mealie
     storageClassName: ceph-filesystem
+    volumeSnapshotClassName: csi-ceph-filesystem
     cacheCapacity: 2Gi
     retain:
       hourly: 36

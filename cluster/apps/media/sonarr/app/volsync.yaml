@@ -30,6 +30,7 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 5
     repository: restic-conf-sonarr
+    volumeSnapshotClassName: csi-ceph-blockpool
     cacheCapacity: 2Gi
     retain:
       hourly: 36

@@ -30,6 +30,7 @@ spec:
     copyMethod: Snapshot
     pruneIntervalDays: 5
     repository: restic-conf-jellyfin
+    volumeSnapshotClassName: csi-ceph-blockpool
     cacheCapacity: 4Gi
     retain:
       hourly: 36
