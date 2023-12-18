@@ -46,7 +46,7 @@ spec:
       fsGroup: 1000
 ---
 apiVersion: volsync.backube/v1alpha1
-kind: ReplicationSource
+kind: ReplicationDestination
 metadata:
   name: "${APP}-dst"
 spec:
