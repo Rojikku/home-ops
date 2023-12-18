@@ -23,17 +23,17 @@ spec:
     remediation:
       retries: 3
   values:
-    # tolerations:
-    #   - effect: NoSchedule
-    #     operator: Exists
-    # agent:
-    #   tolerations:
-    #     - effect: NoSchedule
-    #       operator: Exists
-    # discover:
-    #   tolerations:
-    #     - effect: NoSchedule
-    #       operator: Exists
+    tolerations:
+      - effect: NoSchedule
+        operator: Exists
+    agent:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+    discover:
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
     crds:
       enabled: true
     pspEnable: false
