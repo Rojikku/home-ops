@@ -62,10 +62,12 @@ spec:
               privileged: true
             resources:
               requests:
-                cpu: 50m
-                memory: 64Mi
+                cpu: 100m
+                memory: 100Mi
+                smarter-devices/ttyUSB0: 1
               limits:
-                memory: 512Mi
+                memory: 500Mi
+                smarter-devices/ttyUSB0: 1
         pod:
           nodeSelector:
             gocontrol.feature.node.kubernetes.io/zwave: "true"
@@ -106,11 +108,3 @@ spec:
         existingClaim: zwave-js-ui
         globalMounts:
           - path: /usr/src/app/store
-    resources:
-      requests:
-        cpu: 100m
-        memory: 100Mi
-        smarter-devices/ttyUSB0: 1
-      limits:
-        memory: 500Mi
-        smarter-devices/ttyUSB0: 1
