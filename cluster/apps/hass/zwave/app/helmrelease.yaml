@@ -103,7 +103,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: zwave-pvc
+        existingClaim: zwave-js-ui
         globalMounts:
           - path: /usr/src/app/store
     resources:
