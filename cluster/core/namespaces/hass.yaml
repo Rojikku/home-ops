@@ -5,7 +5,8 @@ metadata:
   name: hass
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    volsync.backube/privileged-movers: "true"
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/enforce-version: v1.26
     pod-security.kubernetes.io/warn: privileged
+  annotations:
+    volsync.backube/privileged-movers: "true"
