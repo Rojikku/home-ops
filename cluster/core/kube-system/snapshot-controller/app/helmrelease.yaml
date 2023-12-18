@@ -5,7 +5,7 @@ metadata:
   name: snapshot-controller
   namespace: kube-system
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
       chart: snapshot-controller
@@ -14,15 +14,18 @@ spec:
         kind: HelmRepository
         name: piraeus
         namespace: flux-system
+  maxHistory: 2
   install:
-    createNamespace: true
     crds: CreateReplace
     remediation:
       retries: 3
   upgrade:
+    cleanupOnFail: true
     crds: CreateReplace
     remediation:
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     controller:
       replicaCount: 3

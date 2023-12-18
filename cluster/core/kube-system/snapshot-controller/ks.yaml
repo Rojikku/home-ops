@@ -2,21 +2,18 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-snapshot-controller
+  name: &app core-snapshot-controller
   namespace: flux-system
-  labels:
-    substitution.flux.home.arpa/enabled: "true"
 spec:
+  targetNamespace: kube-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   path: ./cluster/core/kube-system/snapshot-controller/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: home-ops-flux
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: snapshot-controller
-      namespace: kube-system
   interval: 30m
   retryInterval: 2m
   timeout: 1m
