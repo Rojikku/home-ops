@@ -1,11 +1,11 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: ombi
   namespace: media
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
       chart: app-template
