@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mosquitto
+  namespace: hass
 spec:
   accessModes: ["ReadWriteMany"]
   resources:
