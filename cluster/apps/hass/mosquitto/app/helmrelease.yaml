@@ -32,13 +32,13 @@ spec:
         type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
-        initContainers:
-          init-config:
-            image:
-              repository: docker.io/library/eclipse-mosquitto
-              tag: 2.0.18@sha256:8c49a0fab9a1ee9bf5d229061eec4e279f04484c07f60c85c13821788360ce4f
-            command: ["/bin/sh", "-c"]
-            args: ["cp /tmp/secret/* /mosquitto/external_config/ && mosquitto_passwd -U /mosquitto/external_config/mosquitto_pwd"]
+        # initContainers:
+        #   init-config:
+        #     image:
+        #       repository: docker.io/library/eclipse-mosquitto
+        #       tag: 2.0.18@sha256:8c49a0fab9a1ee9bf5d229061eec4e279f04484c07f60c85c13821788360ce4f
+        #     command: ["/bin/sh", "-c"]
+        #     args: ["cp /tmp/secret/* /mosquitto/external_config/ && mosquitto_passwd -U /mosquitto/external_config/mosquitto_pwd"]
         containers:
           main:
             image:
@@ -88,9 +88,6 @@ spec:
         name: mosquitto-secret
         advancedMounts:
           main:
-            init-config:
-              - path: /tmp/secret
-      external-config:
-        type: emptyDir
-        globalMounts:
-          - path: /mosquitto/external_config
+            main:
+              - path: /mosquitto/external_config
+                subPath: mosquitto_pwd
