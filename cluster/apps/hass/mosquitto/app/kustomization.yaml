@@ -8,7 +8,7 @@ configMapGenerator:
   - name: mosquitto-configmap
     namespace: hass
     files:
-      - mosquitto.conf=./resources/mosquitto.conf
+      - mosquitto.conf=./config/mosquitto.conf
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
