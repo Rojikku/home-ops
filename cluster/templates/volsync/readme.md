@@ -21,7 +21,7 @@ spec:
 and then call the template in your applications `kustomization.yaml`
 
 ```yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.config.k8s.io/v1
 kind: Kustomization
 resources:
   # ...
