@@ -89,5 +89,5 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: /mosquitto/external_config
+              - path: /mosquitto/external_config/mosquitto_pwd
                 subPath: mosquitto_pwd
