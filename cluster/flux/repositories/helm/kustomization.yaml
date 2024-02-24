@@ -33,6 +33,5 @@ resources:
   - ./stakater.yaml
   - ./tf-controller.yaml
   - ./traefik.yaml
-  - ./weave-gitops.yaml
   - ./woodpecker.yaml
   - ./k8s-at-home-charts.yaml
