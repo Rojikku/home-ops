@@ -6,6 +6,6 @@ resources:
   - hajimari
   - loki/ks.yaml
   - vector/ks.yaml
-  - grafana
+  - grafana/ks.yaml
   - speedtest-exporter
   - pushgateway

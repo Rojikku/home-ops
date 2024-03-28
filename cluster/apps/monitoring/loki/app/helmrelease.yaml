@@ -6,7 +6,7 @@ metadata:
   namespace: monitoring
 spec:
   interval: 30m
-  timeout: 25m
+  timeout: 15m
   chart:
     spec:
       chart: loki
@@ -15,7 +15,6 @@ spec:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-  maxHistory: 2
   install:
     createNamespace: true
     remediation:
@@ -24,8 +23,16 @@ spec:
     cleanupOnFail: true
     remediation:
       retries: 3
+      strategy: rollback
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: rook-ceph-cluster
+      namespace: rook-ceph
+    - name: vector-agent
+      namespace: monitoring
+    - name: vector-aggregator
+      namespace: monitoring
   values:
     loki:
       structuredConfig:
