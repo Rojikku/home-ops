@@ -5,7 +5,7 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
       chart: grafana
@@ -17,11 +17,11 @@ spec:
       interval: 5m
   values:
     podAnnotations:
-      secret.reloader.stakater.com/reload: "grafana"
+      secret.reloader.stakater.com/reload: grafana
     replicas: 2
-    envFromSecret: "grafana"
+    envFromSecret: grafana
     admin:
-      existingSecret: "grafana"
+      existingSecret: grafana
       userKey: admin-user
       passwordKey: admin-password
     env:
