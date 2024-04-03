@@ -99,7 +99,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: hass-pvc
+        existingClaim: hass
         advancedMounts:
           main:
             main:
