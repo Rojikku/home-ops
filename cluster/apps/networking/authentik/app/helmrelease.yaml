@@ -27,13 +27,8 @@ spec:
       podAnnotations:
         secret.reloader.stakater.com/reload: authentik
       envFrom:
-        AUTHENTIK_POSTGRESQL__PASSWORD:
-          secretKeyRef:
+        - secretRef:
             key: postgresPassword
-            name: authentik
-        AUTHENTIK_SECRET_KEY:
-          secretKeyRef:
-            key: secretKey
             name: authentik
     server:
       ingress:
