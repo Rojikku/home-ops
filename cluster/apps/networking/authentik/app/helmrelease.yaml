@@ -53,10 +53,11 @@ spec:
             - &host "auth.${SECRET_DOMAIN}"
           paths:
             - /
-      tls:
-        - hosts:
-            - *host
-          secretName: authentik-tls
+          pathType: Prefix
+          tls:
+            - hosts:
+                - *host
+              secretName: authentik-tls
       resources:
         requests:
           cpu: 100m
