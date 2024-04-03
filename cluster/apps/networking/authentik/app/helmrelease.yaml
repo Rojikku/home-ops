@@ -24,47 +24,47 @@ spec:
     global:
       image:
         repository: ghcr.io/goauthentik/server
-    ingress:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
-        hajimari.io/enable: "true"
-        hajimari.io/appName: "Authentik"
-        hajimari.io/icon: "shield-lock"
-        hajimari.io/instance: "hajimari"
-        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-      hosts:
-        - host: &host "auth.${SECRET_DOMAIN}"
+      podAnnotations:
+        secret.reloader.stakater.com/reload: authentik
+      envFrom:
+        AUTHENTIK_POSTGRESQL__PASSWORD:
+          secretKeyRef:
+            key: postgresPassword
+            name: authentik
+        AUTHENTIK_SECRET_KEY:
+          secretKeyRef:
+            key: secretKey
+            name: authentik
+    server:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          hajimari.io/enable: "true"
+          hajimari.io/appName: Authentik
+          hajimari.io/icon: shield-lock
+          hajimari.io/instance: hajimari
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          hosts:
+            - &host "auth.${SECRET_DOMAIN}"
           paths:
-            - path: /
-              pathType: Prefix
+            - /
       tls:
         - hosts:
             - *host
-          secretName: "authentik-tls"
-    envValueFrom:
-      AUTHENTIK_POSTGRESQL__PASSWORD:
-        secretKeyRef:
-          key: postgresPassword
-          name: authentik
-      AUTHENTIK_SECRET_KEY:
-        secretKeyRef:
-          key: secretKey
-          name: authentik
+          secretName: authentik-tls
     authentik:
       log_level: debug
       postgresql:
-        host: "authentik-postgres"
-        name: "postgres"
-        user: "postgres"
+        host: authentik-postgres
+        name: postgres
+        user: postgres
     redis:
       enabled: true
       image:
         repository: library/redis
-        tag: "7.2.4"
-    podAnnotations:
-      secret.reloader.stakater.com/reload: "authentik"
+        tag: 7.2.4
     resources:
       requests:
         cpu: 100m
