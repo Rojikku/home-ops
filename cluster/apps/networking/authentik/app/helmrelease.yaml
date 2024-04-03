@@ -49,6 +49,12 @@ spec:
         - hosts:
             - *host
           secretName: authentik-tls
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          memory: 512Mi
     authentik:
       log_level: debug
       postgresql:
@@ -60,9 +66,3 @@ spec:
       image:
         repository: library/redis
         tag: 7.2.4
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        memory: 512Mi
