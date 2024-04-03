@@ -64,6 +64,7 @@ spec:
 
     service:
       main:
+        controller: main
         type: LoadBalancer
         loadBalancerIP: "${SVC_HASS_ADDR}"
         externalTrafficPolicy: Local
