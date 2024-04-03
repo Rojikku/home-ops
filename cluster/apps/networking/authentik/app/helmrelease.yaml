@@ -5,7 +5,7 @@ metadata:
   name: authentik
   namespace: networking
 spec:
-  interval: 5m
+  interval: 30m
   chart:
     spec:
       chart: authentik
@@ -14,7 +14,15 @@ spec:
         kind: HelmRepository
         name: authentik
         namespace: flux-system
-      interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   dependsOn:
     - name: traefik
       namespace: networking
