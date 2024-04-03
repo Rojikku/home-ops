@@ -19,9 +19,9 @@ spec:
     - name: traefik
       namespace: networking
   values:
-    nodeSelector:
-      kubernetes.io/arch: amd64
     global:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       image:
         repository: ghcr.io/goauthentik/server
       podAnnotations:
