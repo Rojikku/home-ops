@@ -17,11 +17,11 @@ spec:
   install:
     createNamespace: true
     remediation:
-      strategy: rollback
       retries: 3
   upgrade:
     cleanupOnFail: true
     remediation:
+      strategy: rollback
       retries: 3
   uninstall:
     keepHistory: false
