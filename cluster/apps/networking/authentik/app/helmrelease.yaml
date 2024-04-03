@@ -49,15 +49,15 @@ spec:
           hajimari.io/icon: shield-lock
           hajimari.io/instance: hajimari
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          hosts:
-            - &host "auth.${SECRET_DOMAIN}"
-          paths:
-            - /
-          pathType: Prefix
-          tls:
-            - hosts:
-                - *host
-              secretName: authentik-tls
+        hosts:
+          - &host "auth.${SECRET_DOMAIN}"
+        paths:
+          - /
+        pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: authentik-tls
       resources:
         requests:
           cpu: 100m
