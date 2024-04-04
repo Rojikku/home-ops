@@ -66,6 +66,8 @@ spec:
         provisioning: /etc/grafana/provisioning
       analytics:
         check_for_updates: false
+        reporting_enabled: false
+        check_for_plugin_updates: false
       database:
         type: postgres
         user: postgres
