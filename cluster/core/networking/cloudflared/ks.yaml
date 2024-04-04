@@ -5,10 +5,11 @@ metadata:
   name: cluster-core-cloudflared
   namespace: flux-system
 spec:
+  targetNamespace: networking
   dependsOn:
     - name: cluster-core-traefik
   path: ./cluster/core/networking/cloudflared/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: home-ops-flux
