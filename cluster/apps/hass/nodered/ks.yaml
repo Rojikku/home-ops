@@ -12,7 +12,7 @@ spec:
   dependsOn:
     - name: core-rook-ceph-cluster
     - name: volsync
-    - name: cluster-apps-hass
+    - name: hass
   path: ./cluster/apps/hass/nodered/app
   prune: true
   sourceRef:
