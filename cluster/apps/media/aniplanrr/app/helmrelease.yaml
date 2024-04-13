@@ -49,6 +49,7 @@ spec:
       INTERVAL: "600"
       RESPECTFUL_ADDING: "True"
       AUTO_FILL_MAPPING: "True"
+      LOGGING: "False"
 
     service:
       main:
