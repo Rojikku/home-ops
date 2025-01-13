@@ -34,7 +34,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/onedr0p/qbittorrent
-      tag: 4.6.4@sha256:b9af0f2173572a69d2c02eab8f701ef7b04f61689efe1c5338b96445d528dec4
+      tag: 5.0.3@sha256:19597e4a5c5e52702ff6b4ea5c4b5f9f42433d6c2f1ef1d2db5964938bf44557
       pullPolicy: IfNotPresent
     securityContext:
       runAsUser: 1000
