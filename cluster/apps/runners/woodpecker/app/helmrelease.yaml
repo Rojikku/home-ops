@@ -49,7 +49,7 @@ spec:
         repository: woodpeckerci/woodpecker-server
         pullPolicy: IfNotPresent
         # tag: v0.15.9
-        tag: next@sha256:ae286e33f7ce537912ecbe43ce425a59648e196494b68d4f3cd751204a0e08d0
+        tag: next@sha256:3fd254fa3c8e819d0e576cf6a3084fcb37b58f7976159f00c789aa1589c72120
 
       persistentVolume:
         storageClass: ceph-block
