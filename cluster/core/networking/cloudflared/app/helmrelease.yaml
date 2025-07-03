@@ -33,7 +33,7 @@ spec:
           app:
             image:
               repository: docker.io/cloudflare/cloudflared
-              tag: 2024.4.0@sha256:f2a8f348ad721b1a5f2836ca63c08d9a7629081e086a530c8b8bf05bc7fe0f01
+              tag: 2025.7.0@sha256:803b17adb5326a38ce397b9c9f374289ad290ee5526d204b5879a1423b6f5c3e
             env:
               NO_AUTOUPDATE: "true"
               TUNNEL_CRED_FILE: /etc/cloudflared/creds/credentials.json
