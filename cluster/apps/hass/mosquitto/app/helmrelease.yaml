@@ -43,7 +43,7 @@ spec:
           main:
             image:
               repository: docker.io/library/eclipse-mosquitto
-              tag: 2.0.18@sha256:cb3afd02611b0c58b328196ab00de0158322b4c1e014841fb182d2a0ea3a79b9
+              tag: 2.0.22@sha256:d219d3a72847f3aed6a1d66975972d3b17f86e39e8f6f6b86b4088b879c1a2d6
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
