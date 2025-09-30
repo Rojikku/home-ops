@@ -40,7 +40,7 @@ spec:
           main:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
-              tag: 9.12.0@sha256:b3e81d29666116cdc8a5e80e9b57af73f04af627f84bf23cb2d6a6b050de61dc
+              tag: 11.3.1@sha256:0191a3fb96ff88cbc4c7f12e28a10de118def0ea343c39ddc6ce046b6ef78503
             env:
               TZ: "${TIMEZONE}"
             probes:
