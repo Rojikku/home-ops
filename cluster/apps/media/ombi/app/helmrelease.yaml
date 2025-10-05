@@ -38,7 +38,7 @@ spec:
           main:
             image:
               repository: linuxserver/ombi
-              tag: 4.50.1-development
+              tag: 4.50.2-development
               pullPolicy: IfNotPresent
             env:
               TZ: "${TIMEZONE}"
