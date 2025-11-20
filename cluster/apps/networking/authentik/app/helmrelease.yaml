@@ -74,4 +74,4 @@ spec:
       enabled: true
       image:
         repository: library/redis
-        tag: 7.2.4
+        tag: 8.4.0
