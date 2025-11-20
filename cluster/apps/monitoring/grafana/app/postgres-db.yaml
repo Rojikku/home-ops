@@ -19,7 +19,7 @@ spec:
                       - postgres-name
               topologyKey: "kubernetes.io/hostname"
   replicas: 2
-  image: docker.io/library/postgres:15.4
+  image: docker.io/library/postgres:18.1
   database:
     size: 5Gi
     storageClassName: ceph-block
