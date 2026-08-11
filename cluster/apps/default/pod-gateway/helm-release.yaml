@@ -146,7 +146,7 @@ spec:
         # -- image pullPolicy of the webhook
         pullPolicy: IfNotPresent
         # -- image tag of the webhook
-        tag: v3.10.0@sha256:a8ed630613de277244dfe203cd11d05905d7eeba8d8c41e399b02ee9a847b2f5
+        tag: v3.12.0@sha256:6f6ab596afd5fef0ca4648eadfb21cd37ba86fa5afa8b85edcc072976a61fbed
 
       # -- number of webhook instances to deploy
       replicas: 1
